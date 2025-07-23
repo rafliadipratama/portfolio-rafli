@@ -164,3 +164,15 @@ footer {
   margin-top: 6px;
   display: block;
 }
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  nav,
+  footer,
+  button {
+    display: none;
+  }
+}
