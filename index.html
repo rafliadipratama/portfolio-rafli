@@ -611,10 +611,7 @@
     <section id="portfolio" class="py-16 bg-white px-6" data-aos="fade-up">
       <h2 class="text-3xl font-bold text-center mb-10">Projects</h2>
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <!-- Template untuk tiap project -->
-        <!-- Gunakan ini berulang kali dan ganti isi konten sesuai kebutuhan -->
-
-        <!-- Project 1 -->
+        <!-- Project Template -->
         <div class="bg-gray-100 p-6 rounded shadow" data-aos="zoom-in">
           <div class="relative group mb-4">
             <img
@@ -622,15 +619,14 @@
               alt="SEO Audit App"
               class="rounded w-full h-40 object-cover"
             />
-            <a
-              href="assets/images/seo-audit-app.jpg"
-              target="_blank"
-              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded"
+            <div
+              data-src="assets/images/seo-audit-app.jpg"
+              class="open-modal absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded cursor-pointer"
             >
               <i
                 class="fas fa-eye text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"
               ></i>
-            </a>
+            </div>
           </div>
           <h3 class="text-xl font-semibold mb-2">SEO Audit App (Laravel)</h3>
           <p class="text-gray-600 mb-3">
@@ -655,6 +651,7 @@
           >
         </div>
 
+        <!-- Repeat for other projects -->
         <!-- Project 2 -->
         <div
           class="bg-gray-100 p-6 rounded shadow"
@@ -667,15 +664,14 @@
               alt="E-Certificate App"
               class="rounded w-full h-40 object-cover"
             />
-            <a
-              href="assets/images/e-certificate-app.jpg"
-              target="_blank"
-              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded"
+            <div
+              data-src="assets/images/e-certificate-app.jpg"
+              class="open-modal absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded cursor-pointer"
             >
               <i
                 class="fas fa-eye text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"
               ></i>
-            </a>
+            </div>
           </div>
           <h3 class="text-xl font-semibold mb-2">
             E-Certificate App (Laravel)
@@ -708,15 +704,14 @@
               alt="Maqdis Academy"
               class="rounded w-full h-40 object-cover"
             />
-            <a
-              href="assets/images/maqdis-landing.jpg"
-              target="_blank"
-              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded"
+            <div
+              data-src="assets/images/maqdis-landing.jpg"
+              class="open-modal absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded cursor-pointer"
             >
               <i
                 class="fas fa-eye text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"
               ></i>
-            </a>
+            </div>
           </div>
           <h3 class="text-xl font-semibold mb-2">
             Maqdis Academy Landing Page (ReactJS)
@@ -755,15 +750,14 @@
               alt="News App"
               class="rounded w-full h-40 object-cover"
             />
-            <a
-              href="assets/images/news-app.jpg"
-              target="_blank"
-              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded"
+            <div
+              data-src="assets/images/news-app.jpg"
+              class="open-modal absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded cursor-pointer"
             >
               <i
                 class="fas fa-eye text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"
               ></i>
-            </a>
+            </div>
           </div>
           <h3 class="text-xl font-semibold mb-2">
             News App (React + TypeScript)
@@ -802,15 +796,14 @@
               alt="Inventarisku"
               class="rounded w-full h-40 object-cover"
             />
-            <a
-              href="assets/images/inventarisku.jpg"
-              target="_blank"
-              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded"
+            <div
+              data-src="assets/images/inventarisku.jpg"
+              class="open-modal absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded cursor-pointer"
             >
               <i
                 class="fas fa-eye text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"
               ></i>
-            </a>
+            </div>
           </div>
           <h3 class="text-xl font-semibold mb-2">Inventarisku (Laravel)</h3>
           <p class="text-gray-600 mb-3">
@@ -847,15 +840,14 @@
               alt="EcoTasks"
               class="rounded w-full h-40 object-cover"
             />
-            <a
-              href="assets/images/ecotasks.jpg"
-              target="_blank"
-              class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded"
+            <div
+              data-src="assets/images/ecotasks.jpg"
+              class="open-modal absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition duration-300 rounded cursor-pointer"
             >
               <i
                 class="fas fa-eye text-white text-2xl opacity-0 group-hover:opacity-100 transition duration-300"
               ></i>
-            </a>
+            </div>
           </div>
           <h3 class="text-xl font-semibold mb-2">EcoTasks (To-Do App)</h3>
           <p class="text-gray-600 mb-3">
@@ -952,5 +944,52 @@
       AOS.init({ duration: 800, offset: 100, once: true });
     </script>
     <script src="js/main.js"></script>
+
+    <!-- Image Modal -->
+    <div
+      id="imageModal"
+      class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden"
+    >
+      <span
+        id="closeModal"
+        class="absolute top-4 right-6 text-white text-4xl cursor-pointer"
+        >&times;</span
+      >
+      <img
+        id="modalImage"
+        src=""
+        alt="Preview"
+        class="max-w-full max-h-full rounded shadow-lg"
+      />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const closeModal = document.getElementById("closeModal");
+
+        document.querySelectorAll(".open-modal").forEach((el) => {
+          el.addEventListener("click", function (e) {
+            e.preventDefault();
+            const imgSrc = el.getAttribute("data-src");
+            modalImage.src = imgSrc;
+            modal.classList.remove("hidden");
+          });
+        });
+
+        closeModal.addEventListener("click", function () {
+          modal.classList.add("hidden");
+          modalImage.src = "";
+        });
+
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+            modalImage.src = "";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
