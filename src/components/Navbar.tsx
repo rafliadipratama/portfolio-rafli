@@ -11,10 +11,11 @@ export const Navbar: React.FC = () => {
     { href: "#overview", label: { id: "Ikhtisar", en: "Overview" } },
     { href: "#workflow-simulator", label: { id: "Simulasi CPOB", en: "GMP Simulator" } },
     { href: "#disc-assessment", label: { id: "Kalkulator DISC", en: "DISC Engine" } },
+    { href: "#api-playground", label: { id: "Mock REST API", en: "Mock API" } },
+    { href: "#projects", label: { id: "Proyek Rekayasa", en: "Projects" } },
     { href: "#experience", label: { id: "Pengalaman", en: "Experience" } },
-    { href: "#projects", label: { id: "Proyek Rekayasa", en: "Engineering Projects" } },
     { href: "#skills", label: { id: "Teknologi", en: "Tech Stack" } },
-    { href: "#education-certs", label: { id: "Sertifikasi", en: "Credentials" } },
+    { href: "#github-telemetry", label: { id: "GitHub Telemetri", en: "GitHub Activity" } },
     { href: "#contact", label: { id: "Kontak", en: "Contact" } },
   ];
 

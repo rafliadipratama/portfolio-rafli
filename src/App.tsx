@@ -5,10 +5,12 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { WorkflowSimulator } from './components/WorkflowSimulator';
 import { DiscCalculator } from './components/DiscCalculator';
+import { ApiPlayground } from './components/ApiPlayground';
 import { ProjectsGrid } from './components/ProjectsGrid';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { SkillsMatrix } from './components/SkillsMatrix';
+import { GithubTelemetry } from './components/GithubTelemetry';
 import { EducationCertificates } from './components/EducationCertificates';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -65,9 +67,11 @@ export const AppContent: React.FC = () => {
         <Hero onOpenTerminal={() => setTerminalOpen(true)} />
         <WorkflowSimulator />
         <DiscCalculator />
+        <ApiPlayground />
         <ProjectsGrid onSelectProject={setSelectedProject} />
         <ExperienceTimeline />
         <SkillsMatrix />
+        <GithubTelemetry />
         <EducationCertificates />
         <ContactSection />
       </main>

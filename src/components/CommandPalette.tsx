@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { PROJECTS } from '../data/portfolioData';
-import { Search, X, Layers, Briefcase, Cpu, FileDown, Terminal, Globe, ChevronRight, BrainCircuit } from 'lucide-react';
+import { Search, X, Layers, Briefcase, Cpu, FileDown, Terminal, Globe, ChevronRight, BrainCircuit, GitBranch } from 'lucide-react';
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -50,7 +50,9 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   const quickNav = [
     { label: language === 'id' ? 'Simulasi CPOB / GMP' : 'GMP State Machine Simulator', href: '#workflow-simulator', icon: <Cpu className="w-4 h-4 text-emerald-400" /> },
     { label: language === 'id' ? 'Kalkulator Psikometri DISC' : 'Interactive DISC Engine', href: '#disc-assessment', icon: <BrainCircuit className="w-4 h-4 text-rose-400" /> },
+    { label: language === 'id' ? 'Live Mock REST API Playground' : 'Mock REST API Playground', href: '#api-playground', icon: <Terminal className="w-4 h-4 text-cyan-400" /> },
     { label: language === 'id' ? 'Semua Proyek Rekayasa' : 'All Engineering Projects', href: '#projects', icon: <Layers className="w-4 h-4 text-sky-400" /> },
+    { label: language === 'id' ? 'GitHub Telemetri & Aktivitas' : 'GitHub Activity Telemetry', href: '#github-telemetry', icon: <GitBranch className="w-4 h-4 text-emerald-400" /> },
     { label: language === 'id' ? 'Pengalaman Kerja Industri' : 'Professional Work Experience', href: '#experience', icon: <Briefcase className="w-4 h-4 text-amber-400" /> },
     { label: language === 'id' ? 'Matriks Kompetensi & Stack' : 'Skills & Tech Matrix', href: '#skills', icon: <Cpu className="w-4 h-4 text-indigo-400" /> },
     { label: language === 'id' ? 'Pendidikan & Lisensi BNSP' : 'Education & BNSP Credentials', href: '#education-certs', icon: <FileDown className="w-4 h-4 text-purple-400" /> },

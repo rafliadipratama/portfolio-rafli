@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Project } from '../types';
 import { useLanguage } from '../context/LanguageContext';
-import { X, ExternalLink, Layers, Cpu, CheckCircle2 } from 'lucide-react';
+import { X, ExternalLink, Layers, Cpu, CheckCircle2, Database } from 'lucide-react';
 import { GithubIcon, GitlabIcon } from './SocialIcons';
+import { DatabaseSchemaViewer } from './DatabaseSchemaViewer';
 
 interface ProjectDetailModalProps {
   project: Project | null;
@@ -11,14 +12,14 @@ interface ProjectDetailModalProps {
 
 export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project, onClose }) => {
   const { language } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'features'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'features' | 'schema'>('overview');
 
   if (!project) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-3xl max-h-[90vh] bg-[#0c1220] border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-4xl max-h-[92vh] bg-[#0c1220] border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={e => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -78,6 +79,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
             }`}
           >
             {language === 'id' ? 'Fitur Rekayasa' : 'Engineering Features'}
+          </button>
+          <button
+            onClick={() => setActiveTab('schema')}
+            className={`py-3 px-4 border-b-2 font-medium transition-colors flex items-center gap-1.5 ${
+              activeTab === 'schema'
+                ? 'border-cyan-400 text-cyan-300'
+                : 'border-transparent text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <Database className="w-3.5 h-3.5 text-cyan-400" />
+            <span>{language === 'id' ? 'Skema Basis Data (ERD)' : 'Database ERD'}</span>
           </button>
         </div>
 
@@ -177,6 +189,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   </li>
                 ))}
               </ul>
+            </div>
+          )}
+
+          {activeTab === 'schema' && (
+            <div className="space-y-4">
+              <DatabaseSchemaViewer />
             </div>
           )}
         </div>
