@@ -10,6 +10,21 @@ interface ProjectsGridProps {
   onSelectProject: (project: Project) => void;
 }
 
+const getCategoryBadgeStyle = (category: string) => {
+  switch (category) {
+    case 'laravel':
+      return 'bg-gradient-to-r from-rose-950/90 to-red-950/90 text-rose-300 border-rose-500/50 shadow-sm shadow-rose-500/10';
+    case 'react':
+      return 'bg-gradient-to-r from-cyan-950/90 to-sky-950/90 text-cyan-300 border-cyan-500/50 shadow-sm shadow-cyan-500/10';
+    case 'fullstack':
+      return 'bg-gradient-to-r from-purple-950/90 to-indigo-950/90 text-purple-300 border-purple-500/50 shadow-sm shadow-purple-500/10';
+    case 'javascript':
+      return 'bg-gradient-to-r from-amber-950/90 to-yellow-950/90 text-amber-300 border-amber-500/50 shadow-sm shadow-amber-500/10';
+    default:
+      return 'bg-slate-950/90 text-sky-400 border-slate-700/80';
+  }
+};
+
 export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) => {
   const { language } = useLanguage();
   const [filter, setFilter] = useState<'all' | 'laravel' | 'react' | 'fullstack' | 'javascript'>('all');
@@ -61,9 +76,9 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 key={tab.id}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => setFilter(tab.id as any)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all ${
                   filter === tab.id
-                    ? 'bg-sky-500 text-slate-950 font-bold shadow-md shadow-sky-500/20'
+                    ? 'bg-gradient-to-r from-sky-400 via-indigo-300 to-cyan-400 text-slate-950 font-bold shadow-md shadow-sky-500/25 ring-1 ring-sky-300'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
                 }`}
               >
@@ -99,7 +114,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
 
                   {/* Badge Overlay */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                    <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-950/85 backdrop-blur-md text-sky-400 border border-slate-700/80">
+                    <span className={`px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider backdrop-blur-md border ${getCategoryBadgeStyle(project.category)}`}>
                       {project.category}
                     </span>
                     {project.badge && (

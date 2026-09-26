@@ -4,6 +4,7 @@ import { TelemetryBar } from './components/TelemetryBar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { WorkflowSimulator } from './components/WorkflowSimulator';
+import { DiscCalculator } from './components/DiscCalculator';
 import { ProjectsGrid } from './components/ProjectsGrid';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
@@ -63,6 +64,7 @@ export const AppContent: React.FC = () => {
       <main>
         <Hero onOpenTerminal={() => setTerminalOpen(true)} />
         <WorkflowSimulator />
+        <DiscCalculator />
         <ProjectsGrid onSelectProject={setSelectedProject} />
         <ExperienceTimeline />
         <SkillsMatrix />

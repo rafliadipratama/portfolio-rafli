@@ -10,6 +10,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { href: "#overview", label: { id: "Ikhtisar", en: "Overview" } },
     { href: "#workflow-simulator", label: { id: "Simulasi CPOB", en: "GMP Simulator" } },
+    { href: "#disc-assessment", label: { id: "Kalkulator DISC", en: "DISC Engine" } },
     { href: "#experience", label: { id: "Pengalaman", en: "Experience" } },
     { href: "#projects", label: { id: "Proyek Rekayasa", en: "Engineering Projects" } },
     { href: "#skills", label: { id: "Teknologi", en: "Tech Stack" } },
