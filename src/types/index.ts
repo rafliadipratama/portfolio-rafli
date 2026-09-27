@@ -13,6 +13,11 @@ export interface Project {
     en: string;
   };
   metrics?: string[];
+  impactHighlights?: {
+    id: string;
+    en: string;
+    icon?: string;
+  }[];
   architecture?: {
     id: string;
     en: string;
@@ -29,6 +34,13 @@ export interface Project {
   featured?: boolean;
   role: string;
   badge?: string;
+  productionCode?: {
+    title: { id: string; en: string };
+    filename: string;
+    language: string;
+    snippet: string;
+    rationale: { id: string; en: string };
+  };
 }
 
 export interface Experience {

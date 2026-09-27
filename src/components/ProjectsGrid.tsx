@@ -137,6 +137,21 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                     <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
                       {project.tagline[language]}
                     </p>
+
+                    {/* Production Impact Badges */}
+                    {project.impactHighlights && project.impactHighlights.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {project.impactHighlights.slice(0, 2).map((impact, i) => (
+                          <span
+                            key={i}
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-950/70 text-emerald-300 border border-emerald-600/40"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            <span>{impact[language]}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div className="mt-5 space-y-4">

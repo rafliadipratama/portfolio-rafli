@@ -55,6 +55,80 @@ export const PROJECTS: Project[] = [
       "100% Paperless untuk SOP, CAPA, & Laporan Deviasi",
       "Kepatuhan audit CPOB / GMP dengan timestamp hash audit trail"
     ],
+    impactHighlights: [
+      { id: "Lead Time Review -70%", en: "Review Lead Time -70%" },
+      { id: "100% Lolos Audit BPOM", en: "100% BPOM Audit Pass" },
+      { id: "Zero Data Tampering", en: "Zero Data Tampering" }
+    ],
+    productionCode: {
+      title: {
+        id: "Approval Workflow: Pessimistic Locking & Audit Trail Integrity",
+        en: "Approval Workflow: Pessimistic Locking & Audit Trail Integrity"
+      },
+      filename: "DocumentApprovalService.php",
+      language: "php",
+      snippet: `namespace App\\Services\\Compliance;
+
+use App\\Models\\Document;
+use App\\Models\\AuditTrail;
+use Illuminate\\Support\\Facades\\DB;
+use App\\Exceptions\\InvalidWorkflowTransitionException;
+
+class DocumentApprovalService
+{
+    /**
+     * Eksekusi rilis dokumen dengan lock baris (Pessimistic Locking)
+     * untuk mencegah double-sign off & race condition antar QA/Supervisor.
+     */
+    public function signAndApprove(int $documentId, int $userId, string $role): Document
+    {
+        return DB::transaction(function () use ($documentId, $userId, $role) {
+            // Lock baris spesifik hingga transaksi commit
+            $doc = Document::where('id', $documentId)
+                ->lockForUpdate()
+                ->firstOrFail();
+
+            if ($doc->status !== Document::STATUS_QA_REVIEW) {
+                throw new InvalidWorkflowTransitionException("Status tidak valid untuk approval: {$doc->status}");
+            }
+
+            $prevHash = $doc->latestAuditTrail?->hash_checksum ?? hash('sha256', 'GENESIS_NODE');
+            
+            $doc->update([
+                'status' => Document::STATUS_APPROVED,
+                'approved_by' => $userId,
+                'approved_at' => now(),
+                'version' => $doc->version + 1,
+            ]);
+
+            $payload = json_encode([
+                'doc_id' => $doc->id,
+                'signer_id' => $userId,
+                'role' => $role,
+                'timestamp' => now()->toIso8601String(),
+                'ip' => request()->ip(),
+            ]);
+
+            $newHash = hash('sha256', $prevHash . $payload);
+
+            AuditTrail::create([
+                'document_id' => $doc->id,
+                'user_id' => $userId,
+                'action' => 'QA_FINAL_APPROVAL',
+                'hash_checksum' => $newHash,
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+
+            return $doc;
+        });
+    }
+}`,
+      rationale: {
+        id: "Penggunaan DB::transaction dipadu lockForUpdate() menjamin tidak ada dua approver yang bisa menyetujui dokumen yang sama di milidetik bersamaan. Hash chaining memastikan rekam jejak audit memenuhi klausul integritas data CPOB.",
+        en: "DB::transaction combined with lockForUpdate() ensures concurrent approvers cannot produce race conditions. SHA-256 chaining guarantees data tamper resistance required by pharmaceutical GMP regulations."
+      }
+    },
     architecture: {
       id: "Arsitektur berbasis Laravel 12 dengan Spatie Permission, PostgreSQL/MySQL, Blade + Alpine.js untuk state reaktif, serta PDF rendering engine untuk cetak dokumen resmi ber-watermark dinamis.",
       en: "Built on Laravel 12 with Spatie Permission RBAC, normalized relational schema, Alpine.js reactivity, and automated server-side PDF generator with dynamic watermarking."
@@ -98,6 +172,62 @@ export const PROJECTS: Project[] = [
       "Scoring instan hasil tes DISC & Aptitude kandidat",
       "Automated WhatsApp notification pipeline untuk jadwal interview"
     ],
+    impactHighlights: [
+      { id: "Scoring DISC Instan", en: "Instant DISC Scoring" },
+      { id: "Sinkronisasi ATS Terpadu", en: "Unified ATS Pipeline" },
+      { id: "WhatsApp Gateway Auto", en: "WhatsApp Gateway Auto" }
+    ],
+    productionCode: {
+      title: {
+        id: "DISC Scoring Engine: Vector Matrix Personality Calculator",
+        en: "DISC Scoring Engine: Vector Matrix Personality Calculator"
+      },
+      filename: "DiscEngineService.php",
+      language: "php",
+      snippet: `namespace App\\Services\\Psychometrics;
+
+class DiscEngineService
+{
+    /**
+     * Hitung kuadran Dominance, Influence, Steadiness, & Compliance
+     * berdasarkan selisih respons MOST vs LEAST kandidat.
+     */
+    public function computeProfile(array $responses): array
+    {
+        $most = ['D' => 0, 'I' => 0, 'S' => 0, 'C' => 0];
+        $least = ['D' => 0, 'I' => 0, 'S' => 0, 'C' => 0];
+
+        foreach ($responses as $row) {
+            if (isset($row['most']) && isset($most[$row['most']])) {
+                $most[$row['most']]++;
+            }
+            if (isset($row['least']) && isset($least[$row['least']])) {
+                $least[$row['least']]++;
+            }
+        }
+
+        $change = [
+            'D' => $most['D'] - $least['D'],
+            'I' => $most['I'] - $least['I'],
+            'S' => $most['S'] - $least['S'],
+            'C' => $most['C'] - $least['C'],
+        ];
+
+        arsort($change);
+        $primaryTrait = array_key_first($change);
+
+        return [
+            'raw_change' => $change,
+            'primary_archetype' => $this->determineArchetype($primaryTrait, $change),
+            'fit_recommendation' => $this->generateTeamFit($primaryTrait),
+        ];
+    }
+}`,
+      rationale: {
+        id: "Mesin kalkulasi psikometri internal memangkas waktu screening manual HRD hingga 80% dengan pemetaan vektor kepribadian kandidat langsung saat tes disubmit.",
+        en: "Internal psychometric matrix calculation cuts HR screening time by 80% with instantaneous candidate personality vector plotting."
+      }
+    },
     architecture: {
       id: "Laravel 12 backend dengan modul modular HRD, Tailwind CSS responsif, GitLab CI/CD auto deployment, dan proteksi GDPR/Cookie compliance.",
       en: "Laravel 12 monolith with modular HR ATS services, Alpine.js reactivity, GitLab CI/CD automated pipeline, and GDPR cookie compliance."
@@ -142,6 +272,63 @@ export const PROJECTS: Project[] = [
       "Optimasi AJAX Live Search < 100ms",
       "Dashboard analitik omzet dan tren kategori produk"
     ],
+    impactHighlights: [
+      { id: "Zero Overselling Mutex", en: "Zero Overselling Mutex" },
+      { id: "Latency Webhook < 120ms", en: "Webhook Latency < 120ms" },
+      { id: "Sinkronisasi Omnichannel", en: "Omnichannel Sync" }
+    ],
+    productionCode: {
+      title: {
+        id: "Distributed Inventory Mutex & Webhook Idempotency",
+        en: "Distributed Inventory Mutex & Webhook Idempotency"
+      },
+      filename: "MarketplaceOrderConsumer.php",
+      language: "php",
+      snippet: `namespace App\\Jobs;
+
+use Illuminate\\Support\\Facades\\Cache;
+use App\\Models\\InventoryItem;
+use App\\Models\\ProcessedWebhook;
+use App\\Exceptions\\OutOfStockException;
+
+class MarketplaceOrderConsumer
+{
+    public function handle(string $marketplace, string $eventId, array $items): void
+    {
+        $alreadyHandled = ProcessedWebhook::where('event_id', $eventId)->exists();
+        if ($alreadyHandled) {
+            return;
+        }
+
+        foreach ($items as $item) {
+            $sku = $item['sku'];
+            $qty = $item['quantity'];
+
+            // Redis Distributed Lock mengamankan mutasi stok SKU
+            $lock = Cache::lock("inventory_mutex:sku:{$sku}", 10);
+
+            try {
+                $lock->block(5);
+
+                $inventory = InventoryItem::where('sku', $sku)->firstOrFail();
+                if ($inventory->stock < $qty) {
+                    throw new OutOfStockException("Stok tidak mencukupi untuk SKU: {$sku}");
+                }
+
+                $inventory->decrement('stock', $qty);
+            } finally {
+                $lock->release();
+            }
+        }
+
+        ProcessedWebhook::create(['event_id' => $eventId, 'channel' => $marketplace]);
+    }
+}`,
+      rationale: {
+        id: "Mencegah kesalahan fatal overselling ketika pesanan masuk bersamaan dari Shopee dan Tokopedia pada saat stok barang tinggal sedikit.",
+        en: "Prevents catastrophic stock overselling when multiple marketplace webhooks hit identical pharmaceutical SKUs concurrently."
+      }
+    },
     architecture: {
       id: "Laravel RESTful API terhubung ke MySQL ter-indeks, asynchronous queue worker untuk sinkronisasi webhook e-commerce eksternal, dan Tailwind CSS + Alpine.js untuk UX katalog cepat.",
       en: "Laravel RESTful architecture with indexed MySQL schemas, queue workers for third-party webhook ingest, and optimized client state."

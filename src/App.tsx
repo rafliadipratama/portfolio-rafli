@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
-import { TelemetryBar } from './components/TelemetryBar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { WorkflowSimulator } from './components/WorkflowSimulator';
 import { DiscCalculator } from './components/DiscCalculator';
 import { ApiPlayground } from './components/ApiPlayground';
 import { ProjectsGrid } from './components/ProjectsGrid';
+import { ArchitectureDecisions } from './components/ArchitectureDecisions';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { SkillsMatrix } from './components/SkillsMatrix';
@@ -53,13 +53,7 @@ export const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#070a12] text-slate-200 selection:bg-sky-500 selection:text-slate-950 font-sans">
-      {/* Real-time Telemetry Bar */}
-      <TelemetryBar
-        onOpenTerminal={() => setTerminalOpen(true)}
-        onOpenPalette={() => setPaletteOpen(true)}
-      />
-
-      {/* Main Navigation */}
+      {/* Main Single-Layer Navigation */}
       <Navbar
         onOpenPalette={() => setPaletteOpen(true)}
         onOpenTerminal={() => setTerminalOpen(true)}
@@ -72,6 +66,7 @@ export const AppContent: React.FC = () => {
         <DiscCalculator />
         <ApiPlayground />
         <ProjectsGrid onSelectProject={setSelectedProject} />
+        <ArchitectureDecisions />
         <ExperienceTimeline />
         <SkillsMatrix />
         <GithubTelemetry />

@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
 import { Project } from '../types';
 import { useLanguage } from '../context/LanguageContext';
-import { X, ExternalLink, Layers, Cpu, CheckCircle2, Database } from 'lucide-react';
+import {
+  X,
+  ExternalLink,
+  Layers,
+  Cpu,
+  CheckCircle2,
+  Database,
+  FileCode2,
+  Copy,
+  Check,
+  Sparkles,
+  ShieldCheck
+} from 'lucide-react';
 import { GithubIcon, GitlabIcon } from './SocialIcons';
 import { DatabaseSchemaViewer } from './DatabaseSchemaViewer';
 
@@ -12,9 +24,18 @@ interface ProjectDetailModalProps {
 
 export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project, onClose }) => {
   const { language } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'features' | 'schema'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'features' | 'code' | 'schema'>('overview');
+  const [copied, setCopied] = useState(false);
 
   if (!project) return null;
+
+  const handleCopyCode = () => {
+    if (project.productionCode) {
+      navigator.clipboard.writeText(project.productionCode.snippet);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
@@ -49,12 +70,12 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="flex border-b border-slate-800 bg-[#090d16] px-5 text-xs font-mono">
+        <div className="flex border-b border-slate-800 bg-[#090d16] px-5 text-xs font-mono overflow-x-auto">
           <button
             onClick={() => setActiveTab('overview')}
-            className={`py-3 px-4 border-b-2 font-medium transition-colors ${
+            className={`py-3 px-4 border-b-2 font-medium transition-colors whitespace-nowrap ${
               activeTab === 'overview'
-                ? 'border-sky-400 text-sky-300'
+                ? 'border-sky-400 text-sky-300 font-semibold'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -62,19 +83,32 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           </button>
           <button
             onClick={() => setActiveTab('architecture')}
-            className={`py-3 px-4 border-b-2 font-medium transition-colors ${
+            className={`py-3 px-4 border-b-2 font-medium transition-colors whitespace-nowrap ${
               activeTab === 'architecture'
-                ? 'border-sky-400 text-sky-300'
+                ? 'border-sky-400 text-sky-300 font-semibold'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
             {language === 'id' ? 'Arsitektur Sistem' : 'System Architecture'}
           </button>
+          {project.productionCode && (
+            <button
+              onClick={() => setActiveTab('code')}
+              className={`py-3 px-4 border-b-2 font-medium transition-colors whitespace-nowrap flex items-center gap-1.5 ${
+                activeTab === 'code'
+                  ? 'border-amber-400 text-amber-300 font-semibold'
+                  : 'border-transparent text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <FileCode2 className="w-3.5 h-3.5 text-amber-400" />
+              <span>{language === 'id' ? 'Kode Produksi' : 'Production Code'}</span>
+            </button>
+          )}
           <button
             onClick={() => setActiveTab('features')}
-            className={`py-3 px-4 border-b-2 font-medium transition-colors ${
+            className={`py-3 px-4 border-b-2 font-medium transition-colors whitespace-nowrap ${
               activeTab === 'features'
-                ? 'border-sky-400 text-sky-300'
+                ? 'border-sky-400 text-sky-300 font-semibold'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -82,9 +116,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           </button>
           <button
             onClick={() => setActiveTab('schema')}
-            className={`py-3 px-4 border-b-2 font-medium transition-colors flex items-center gap-1.5 ${
+            className={`py-3 px-4 border-b-2 font-medium transition-colors whitespace-nowrap flex items-center gap-1.5 ${
               activeTab === 'schema'
-                ? 'border-cyan-400 text-cyan-300'
+                ? 'border-cyan-400 text-cyan-300 font-semibold'
                 : 'border-transparent text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -105,6 +139,28 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                   {project.description[language]}
                 </p>
               </div>
+
+              {project.impactHighlights && project.impactHighlights.length > 0 && (
+                <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-950/40 to-slate-900 border border-emerald-600/30">
+                  <h4 className="text-xs font-mono uppercase text-emerald-400 mb-3 flex items-center gap-1.5 font-bold">
+                    <ShieldCheck className="w-4 h-4" />
+                    <span>{language === 'id' ? 'Sorotan Metrik Kinerja Nyata' : 'Verified Production Impact'}</span>
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    {project.impactHighlights.map((impact, idx) => (
+                      <div
+                        key={idx}
+                        className="px-3 py-2 rounded-lg bg-slate-950/70 border border-slate-800 flex items-center gap-2"
+                      >
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+                        <span className="text-xs font-mono font-semibold text-slate-200">
+                          {impact[language]}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {project.metrics && project.metrics.length > 0 && (
                 <div className="p-4 rounded-xl bg-slate-900/70 border border-slate-800">
@@ -164,6 +220,55 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
                 <div>├─ Service & Domain: Business Logic, State Machine Transitions</div>
                 <div>├─ Data Persistence: Relational Schemas, Indexed Foreign Keys</div>
                 <div>└─ External Integrations: Webhook Listeners, PDF Render Engines</div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'code' && project.productionCode && (
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-amber-950/20 border border-amber-600/30 rounded-xl">
+                <div>
+                  <h4 className="text-xs font-mono font-bold text-amber-300">
+                    {project.productionCode.title[language]}
+                  </h4>
+                  <p className="text-[11px] text-slate-400 font-mono mt-0.5">
+                    File: <span className="text-slate-200">{project.productionCode.filename}</span>
+                  </p>
+                </div>
+                <button
+                  onClick={handleCopyCode}
+                  className="self-start sm:self-auto flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono transition-colors"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-emerald-400">Tersalin</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Salin Kode</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <div className="rounded-xl bg-[#080d18] border border-slate-800 overflow-hidden">
+                <div className="p-4 overflow-x-auto max-h-[380px] overflow-y-auto">
+                  <pre className="font-mono text-xs text-sky-200/90 leading-relaxed">
+                    <code>{project.productionCode.snippet}</code>
+                  </pre>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs">
+                <div className="font-mono font-bold text-sky-400 mb-1 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{language === 'id' ? 'Mengapa Pendekatan Ini Dipilih' : 'Architectural Rationale'}</span>
+                </div>
+                <p className="text-slate-300 leading-relaxed">
+                  {project.productionCode.rationale[language]}
+                </p>
               </div>
             </div>
           )}
