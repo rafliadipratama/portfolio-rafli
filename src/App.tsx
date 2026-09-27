@@ -60,7 +60,10 @@ export const AppContent: React.FC = () => {
       />
 
       {/* Main Navigation */}
-      <Navbar />
+      <Navbar
+        onOpenPalette={() => setPaletteOpen(true)}
+        onOpenTerminal={() => setTerminalOpen(true)}
+      />
 
       {/* Main Content Flow */}
       <main>

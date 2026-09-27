@@ -61,6 +61,10 @@ npm run preview
 
 ```
 portfolio-rafli/
+├── docs/
+│   └── screenshots/        # Pratinjau antarmuka & dokumentasi visual
+│       ├── full-page/      # Tangkapan layar halaman penuh
+│       └── sections/       # Pratinjau komponen & fitur interaktif
 ├── assets/                 # Aset asli (gambar, foto tanpa latar, PDF resume & sertifikat)
 ├── public/
 │   └── assets/             # Aset statis terdistribusi untuk Vite

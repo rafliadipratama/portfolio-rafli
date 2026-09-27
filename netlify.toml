@@ -9,3 +9,19 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/images/favicon*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/images/apple-touch-icon*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
