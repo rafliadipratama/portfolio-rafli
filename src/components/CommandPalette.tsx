@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { PROJECTS } from '../data/portfolioData';
-import { Search, X, Layers, Briefcase, Cpu, FileDown, Terminal, Globe, ChevronRight, BrainCircuit } from 'lucide-react';
+import { Search, X, Layers, Briefcase, Cpu, FileDown, Terminal, Globe, ChevronRight, BrainCircuit, Gamepad2 } from 'lucide-react';
 
 interface CommandPaletteProps {
   isOpen: boolean;
@@ -116,6 +116,21 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
                   <span>{language === 'id' ? 'Buka Interactive CLI Terminal' : 'Launch Interactive CLI Terminal'}</span>
                 </div>
                 <span className="text-[10px] text-slate-500">~</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  if (onNavigate) onNavigate('labs');
+                  window.location.hash = '#dino-runner';
+                  onClose();
+                }}
+                className="w-full flex items-center justify-between p-2.5 rounded-lg text-slate-300 hover:bg-slate-800/80 hover:text-white transition-colors"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Gamepad2 className="w-4 h-4 text-cyan-400" />
+                  <span>{language === 'id' ? 'Mainkan 2D Pixel Dino Runner (T-Rex Jump)' : 'Play 2D Pixel Dino Runner (T-Rex Jump)'}</span>
+                </div>
+                <span className="text-[10px] text-cyan-400 font-mono">DINO</span>
               </button>
 
               <button

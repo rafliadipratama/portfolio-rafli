@@ -3,12 +3,13 @@ import { useLanguage } from '../context/LanguageContext';
 import { StreamingLab } from './StreamingLab';
 import { MarketplaceInventoryLab } from './MarketplaceInventoryLab';
 import { DiscCalculator } from './DiscCalculator';
-import { Play, ShoppingBag, Sliders, FlaskConical } from 'lucide-react';
+import { PixelDinoRunner } from './PixelDinoRunner';
+import { Play, ShoppingBag, Sliders, FlaskConical, Gamepad2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const InteractiveEngineeringLabs: React.FC = () => {
   const { language } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'streaming' | 'inventory' | 'disc'>('streaming');
+  const [activeTab, setActiveTab] = useState<'streaming' | 'inventory' | 'disc' | 'dino'>('streaming');
 
   // Sync with URL hash if user clicked direct anchors
   useEffect(() => {
@@ -20,6 +21,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
         setActiveTab('inventory');
       } else if (hash === '#disc-assessment') {
         setActiveTab('disc');
+      } else if (hash === '#dino-runner' || hash === '#cyber-dino' || hash === '#trex') {
+        setActiveTab('dino');
       }
     };
 
@@ -76,6 +79,22 @@ export const InteractiveEngineeringLabs: React.FC = () => {
       },
       accentColor: 'from-[#ffe600] to-amber-500',
       activeBorder: 'border-[#ffe600] text-[#ffe600] shadow-lg shadow-[#ffe600]/20 bg-[#261e06]'
+    },
+    {
+      id: 'dino' as const,
+      hash: '#dino-runner',
+      icon: Gamepad2,
+      badge: 'OFFLINE RETRO 2D ARCADE',
+      title: {
+        id: '4. Cyber Dino 2D Pixel Runner',
+        en: '4. Cyber Dino 2D Pixel Runner'
+      },
+      desc: {
+        id: 'Game piksel offline klasik seperti di Google Chrome. Lompat rintangan kaktus & raih skor tertinggi!',
+        en: 'Classic offline 2D pixel endless runner like Chrome. Jump cacti, duck birds, and beat high score!'
+      },
+      accentColor: 'from-[#00ff9d] to-emerald-500',
+      activeBorder: 'border-[#00ff9d] text-[#00ff9d] shadow-lg shadow-[#00ff9d]/20 bg-[#06241a]'
     }
   ];
 
@@ -115,8 +134,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
           </p>
         </div>
 
-        {/* Arcade Workbench Tab Switcher */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-10">
+        {/* Arcade Workbench Tab Switcher (4 Columns) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -178,6 +197,7 @@ export const InteractiveEngineeringLabs: React.FC = () => {
           {activeTab === 'streaming' && <StreamingLab />}
           {activeTab === 'inventory' && <MarketplaceInventoryLab />}
           {activeTab === 'disc' && <DiscCalculator />}
+          {activeTab === 'dino' && <PixelDinoRunner />}
         </motion.div>
 
       </div>

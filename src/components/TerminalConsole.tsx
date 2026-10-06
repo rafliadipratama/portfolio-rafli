@@ -85,6 +85,7 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
             <div>• <span className="text-[#00ff9d] font-mono">projects</span> - List deployed systems & streaming engines</div>
             <div>• <span className="text-[#00ff9d] font-mono">exp</span> - Display industrial work history</div>
             <div>• <span className="text-[#00ff9d] font-mono">contact</span> - Output direct communication channels</div>
+            <div>• <span className="text-[#00ff9d] font-mono">dino / game</span> - Play Cyber Dino 2D Pixel Endless Runner</div>
             <div>• <span className="text-[#00ff9d] font-mono">sudo hire</span> - Authorize recruitment pipeline (Easter Egg)</div>
             <div>• <span className="text-[#00ff9d] font-mono">clear</span> - Clear terminal session output</div>
             <div>• <span className="text-[#00ff9d] font-mono">exit</span> - Close terminal drawer</div>
@@ -207,6 +208,20 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
 
       case 'exit':
       case 'quit':
+        onClose();
+        setInputVal('');
+        return;
+
+      case 'dino':
+      case 'trex':
+      case 'game':
+      case 'play':
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.5 }
+        });
+        window.location.hash = '#dino-runner';
         onClose();
         setInputVal('');
         return;
