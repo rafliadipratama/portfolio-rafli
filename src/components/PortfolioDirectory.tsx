@@ -1,15 +1,30 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Layers, Briefcase, FlaskConical, Cpu, ArrowDownRight, Compass } from 'lucide-react';
+import { Layers, Briefcase, FlaskConical, Cpu, ArrowRight, Compass } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export const PortfolioDirectory: React.FC = () => {
+type DirectoryTarget = 'projects' | 'experience' | 'labs' | 'skills';
+
+interface PortfolioDirectoryProps {
+  onNavigate?: (pageId: DirectoryTarget) => void;
+}
+
+export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
 
-  const directories = [
+  const directories: {
+    id: string;
+    targetPage: DirectoryTarget;
+    badge: string;
+    badgeColor: string;
+    title: { id: string; en: string };
+    desc: { id: string; en: string };
+    icon: React.ComponentType<{ className?: string }>;
+    highlight: string;
+  }[] = [
     {
       id: 'projects',
-      href: '#projects',
+      targetPage: 'projects',
       badge: '01 // SYSTEMS',
       badgeColor: 'border-[#00f0ff]/50 text-[#00f0ff] bg-cyan-950/40',
       title: {
@@ -25,7 +40,7 @@ export const PortfolioDirectory: React.FC = () => {
     },
     {
       id: 'experience',
-      href: '#experience',
+      targetPage: 'experience',
       badge: '02 // CAREER',
       badgeColor: 'border-[#00ff9d]/50 text-[#00ff9d] bg-emerald-950/40',
       title: {
@@ -40,8 +55,8 @@ export const PortfolioDirectory: React.FC = () => {
       highlight: 'PT Padepokan 79 • PT Solas • PT Pindad'
     },
     {
-      id: 'engineering-labs',
-      href: '#engineering-labs',
+      id: 'labs',
+      targetPage: 'labs',
       badge: '03 // LIVE LABS',
       badgeColor: 'border-[#ffe600]/50 text-[#ffe600] bg-amber-950/40',
       title: {
@@ -57,7 +72,7 @@ export const PortfolioDirectory: React.FC = () => {
     },
     {
       id: 'skills',
-      href: '#skills',
+      targetPage: 'skills',
       badge: '04 // TECH & AI',
       badgeColor: 'border-[#ff007f]/50 text-[#ff007f] bg-pink-950/40',
       title: {
@@ -87,11 +102,11 @@ export const PortfolioDirectory: React.FC = () => {
             <h2 className="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight font-orbitron">
               {language === 'id' ? (
                 <>
-                  Peta Navigasi Portofolio: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">Apa Saja Yang Ada di Sini?</span>
+                  Peta Navigasi Portofolio: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">Pilih Halaman Yang Ingin Anda Buka</span>
                 </>
               ) : (
                 <>
-                  Portfolio Roadmap: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">What You'll Find On This Site</span>
+                  Portfolio Roadmap: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">Select A Page To Explore</span>
                 </>
               )}
             </h2>
@@ -99,8 +114,8 @@ export const PortfolioDirectory: React.FC = () => {
           
           <p className="text-xs sm:text-sm text-slate-400 font-mono max-w-md">
             {language === 'id'
-              ? 'Panduan terstruktur agar Anda dapat menjelajahi portofolio ini sesuai kebutuhan Anda secara efisien.'
-              : 'Structured roadmap ensuring recruiters and engineers navigate core deliverables effortlessly.'}
+              ? 'Klik salah satu pilar di bawah untuk langsung membuka halaman khusus tanpa perlu scroll panjang.'
+              : 'Click any pillar below to navigate directly to its dedicated page without tedious scrolling.'}
           </p>
         </div>
 
@@ -110,15 +125,15 @@ export const PortfolioDirectory: React.FC = () => {
             const Icon = dir.icon;
 
             return (
-              <motion.a
+              <motion.button
                 key={dir.id}
-                href={dir.href}
+                onClick={() => onNavigate?.(dir.targetPage)}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: idx * 0.08 }}
                 whileHover={{ y: -4, scale: 1.01 }}
-                className="group p-5 rounded-2xl bg-[#080d24] border border-[#1c2452] hover:border-[#00f0ff]/60 transition-all flex flex-col justify-between shadow-lg hover:shadow-xl hover:shadow-[#00f0ff]/10 relative overflow-hidden"
+                className="group p-5 rounded-2xl bg-[#080d24] border border-[#1c2452] hover:border-[#00f0ff]/60 transition-all flex flex-col justify-between shadow-lg hover:shadow-xl hover:shadow-[#00f0ff]/10 relative overflow-hidden text-left cursor-pointer"
               >
                 {/* Subtle top glow highlight */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f0ff]/30 to-transparent group-hover:via-[#00f0ff] transition-all" />
@@ -135,7 +150,7 @@ export const PortfolioDirectory: React.FC = () => {
 
                   <h3 className="text-sm font-bold text-slate-100 group-hover:text-[#00f0ff] transition-colors font-orbitron mb-1.5 flex items-center gap-1.5">
                     <span>{dir.title[language]}</span>
-                    <ArrowDownRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#00f0ff]" />
+                    <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#00f0ff]" />
                   </h3>
 
                   <p className="text-xs text-slate-400 leading-relaxed font-sans line-clamp-3">
@@ -143,11 +158,14 @@ export const PortfolioDirectory: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#1c2452] flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <div className="mt-4 pt-3 border-t border-[#1c2452] flex items-center justify-between text-[11px] font-mono text-slate-400 w-full">
                   <span className="text-[10px] text-cyan-300 font-semibold">{dir.highlight}</span>
-                  <span className="text-slate-500 group-hover:text-[#00f0ff] transition-colors">Lihat &rarr;</span>
+                  <span className="text-slate-500 group-hover:text-[#00f0ff] transition-colors flex items-center gap-1 font-bold">
+                    <span>{language === 'id' ? 'Buka Halaman' : 'Open Page'}</span>
+                    <span>&rarr;</span>
+                  </span>
                 </div>
-              </motion.a>
+              </motion.button>
             );
           })}
         </div>

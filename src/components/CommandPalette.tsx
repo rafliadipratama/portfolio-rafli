@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { PROJECTS } from '../data/portfolioData';
-import { Search, X, Layers, Briefcase, Cpu, FileDown, Terminal, Globe, ChevronRight, BrainCircuit, GitBranch } from 'lucide-react';
+import { Search, X, Layers, Briefcase, Cpu, FileDown, Terminal, Globe, ChevronRight, BrainCircuit } from 'lucide-react';
 
 interface CommandPaletteProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenTerminal: () => void;
   onSelectProjectById: (id: string) => void;
+  onNavigate?: (pageId: 'home' | 'projects' | 'experience' | 'labs' | 'skills' | 'contact') => void;
 }
 
 export const CommandPalette: React.FC<CommandPaletteProps> = ({
@@ -15,6 +16,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
   onClose,
   onOpenTerminal,
   onSelectProjectById,
+  onNavigate,
 }) => {
   const { language, toggleLanguage } = useLanguage();
   const [search, setSearch] = useState('');
@@ -47,15 +49,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   if (!isOpen) return null;
 
-  const quickNav = [
-    { label: language === 'id' ? 'Simulasi CPOB / GMP' : 'GMP State Machine Simulator', href: '#workflow-simulator', icon: <Cpu className="w-4 h-4 text-emerald-400" /> },
-    { label: language === 'id' ? 'Kalkulator Psikometri DISC' : 'Interactive DISC Engine', href: '#disc-assessment', icon: <BrainCircuit className="w-4 h-4 text-rose-400" /> },
-    { label: language === 'id' ? 'Live Mock REST API Playground' : 'Mock REST API Playground', href: '#api-playground', icon: <Terminal className="w-4 h-4 text-cyan-400" /> },
-    { label: language === 'id' ? 'Semua Proyek Rekayasa' : 'All Engineering Projects', href: '#projects', icon: <Layers className="w-4 h-4 text-sky-400" /> },
-    { label: language === 'id' ? 'GitHub Telemetri & Aktivitas' : 'GitHub Activity Telemetry', href: '#github-telemetry', icon: <GitBranch className="w-4 h-4 text-emerald-400" /> },
-    { label: language === 'id' ? 'Pengalaman Kerja Industri' : 'Professional Work Experience', href: '#experience', icon: <Briefcase className="w-4 h-4 text-amber-400" /> },
-    { label: language === 'id' ? 'Matriks Kompetensi & Stack' : 'Skills & Tech Matrix', href: '#skills', icon: <Cpu className="w-4 h-4 text-indigo-400" /> },
-    { label: language === 'id' ? 'Pendidikan & Lisensi BNSP' : 'Education & BNSP Credentials', href: '#education-certs', icon: <FileDown className="w-4 h-4 text-purple-400" /> },
+  const quickNav: {
+    label: string;
+    page: 'home' | 'projects' | 'experience' | 'labs' | 'skills' | 'contact';
+    icon: React.ReactNode;
+  }[] = [
+    { label: language === 'id' ? 'Semua Proyek Rekayasa' : 'All Engineering Projects', page: 'projects', icon: <Layers className="w-4 h-4 text-sky-400" /> },
+    { label: language === 'id' ? 'Pengalaman Kerja Industri' : 'Professional Work Experience', page: 'experience', icon: <Briefcase className="w-4 h-4 text-amber-400" /> },
+    { label: language === 'id' ? 'Laboratorium Interaktif (CPOB/DISC/API)' : 'Interactive Labs Workbench', page: 'labs', icon: <Cpu className="w-4 h-4 text-emerald-400" /> },
+    { label: language === 'id' ? 'Matriks Kompetensi & Stack' : 'Skills & Tech Matrix', page: 'skills', icon: <Cpu className="w-4 h-4 text-indigo-400" /> },
+    { label: language === 'id' ? 'Pendidikan & Lisensi BNSP' : 'Education & BNSP Credentials', page: 'experience', icon: <FileDown className="w-4 h-4 text-purple-400" /> },
+    { label: language === 'id' ? 'Kirim Pesan / Kontak' : 'Contact Directly', page: 'contact', icon: <BrainCircuit className="w-4 h-4 text-rose-400" /> },
   ];
 
   const filteredProjects = PROJECTS.filter(p =>
@@ -137,18 +141,24 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
             </div>
             <div className="space-y-1">
               {quickNav.map((item, idx) => (
-                <a
+                <button
                   key={idx}
-                  href={item.href}
-                  onClick={onClose}
-                  className="flex items-center justify-between p-2.5 rounded-lg text-slate-300 hover:bg-slate-800/80 hover:text-white transition-colors"
+                  onClick={() => {
+                    onClose();
+                    if (onNavigate) {
+                      onNavigate(item.page);
+                    } else {
+                      window.location.hash = `#/${item.page}`;
+                    }
+                  }}
+                  className="w-full flex items-center justify-between p-2.5 rounded-lg text-slate-300 hover:bg-slate-800/80 hover:text-white transition-colors cursor-pointer text-left"
                 >
                   <div className="flex items-center gap-2.5">
                     {item.icon}
                     <span>{item.label}</span>
                   </div>
                   <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
-                </a>
+                </button>
               ))}
             </div>
           </div>

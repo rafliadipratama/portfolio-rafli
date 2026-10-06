@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Menu,
   X,
@@ -11,112 +11,44 @@ import {
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
 
+export type PageId = 'home' | 'projects' | 'experience' | 'labs' | 'skills' | 'contact';
+
 interface NavbarProps {
+  activePage: PageId;
+  onNavigate: (page: PageId) => void;
   onOpenPalette?: () => void;
   onOpenTerminal?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  activePage,
+  onNavigate,
+  onOpenTerminal,
+}) => {
   const { language, toggleLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState<string>('overview');
 
-  // Track scroll progress & scrolled state
-  useEffect(() => {
-    const handleScroll = () => {
-      const winScroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-      setScrollProgress(scrolled);
-      setIsScrolled(winScroll > 15);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Track active section for ScrollSpy
-  useEffect(() => {
-    const sections = [
-      'overview',
-      'projects',
-      'experience',
-      'engineering-labs',
-      'skills',
-      'contact'
-    ];
-
-    const handleScrollSpy = () => {
-      const scrollPos = window.scrollY + 140;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && scrollPos >= el.offsetTop) {
-          setActiveSection(sections[i]);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScrollSpy, { passive: true });
-    handleScrollSpy();
-    return () => window.removeEventListener('scroll', handleScrollSpy);
-  }, []);
-
-  // Close mobile menu on escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setMobileMenuOpen(false);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const navLinks = [
-    {
-      id: 'projects',
-      href: '#projects',
-      label: { id: 'Proyek', en: 'Projects' }
-    },
-    {
-      id: 'experience',
-      href: '#experience',
-      label: { id: 'Karier', en: 'Career' }
-    },
-    {
-      id: 'engineering-labs',
-      href: '#engineering-labs',
-      label: { id: 'Labs', en: 'Labs' }
-    },
-    {
-      id: 'skills',
-      href: '#skills',
-      label: { id: 'Keahlian', en: 'Skills' }
-    },
-    {
-      id: 'contact',
-      href: '#contact',
-      label: { id: 'Kontak', en: 'Contact' }
-    }
+  const navLinks: { id: PageId; label: { id: string; en: string }; badge?: string }[] = [
+    { id: 'home', label: { id: 'Beranda', en: 'Home' } },
+    { id: 'projects', label: { id: 'Proyek', en: 'Projects' } },
+    { id: 'experience', label: { id: 'Karier', en: 'Career' }, badge: 'ACTIVE' },
+    { id: 'labs', label: { id: 'Labs', en: 'Labs' }, badge: 'LIVE' },
+    { id: 'skills', label: { id: 'Keahlian', en: 'Skills' } },
+    { id: 'contact', label: { id: 'Kontak', en: 'Contact' } },
   ];
 
+  const handleLinkClick = (pageId: PageId) => {
+    onNavigate(pageId);
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#050713]/95 backdrop-blur-xl border-b border-[#1c2452] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]'
-          : 'bg-[#050713]/85 backdrop-blur-md border-b border-[#1c2452]/70'
-      }`}
-    >
+    <header className="sticky top-0 z-40 w-full bg-[#050713]/95 backdrop-blur-xl border-b border-[#1c2452] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Brand / Logo */}
-        <a
-          href="#overview"
-          className="flex items-center gap-2.5 group shrink-0"
+        <button
+          onClick={() => handleLinkClick('home')}
+          className="flex items-center gap-2.5 group shrink-0 text-left cursor-pointer"
           aria-label="Rafli Portfolio Home"
         >
           <div className="relative shrink-0">
@@ -140,24 +72,33 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
               Fullstack & AI Engineer
             </div>
           </div>
-        </a>
+        </button>
 
-        {/* Clean Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+        {/* Clean Page Navigation Links (Desktop) */}
+        <nav className="hidden md:flex items-center gap-1 lg:gap-1.5">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
+            const isActive = activePage === link.id;
             return (
-              <a
+              <button
                 key={link.id}
-                href={link.href}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap ${
+                onClick={() => handleLinkClick(link.id)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
                   isActive
-                    ? 'text-[#00f0ff] bg-cyan-950/40 border border-[#00f0ff]/40 shadow-sm shadow-[#00f0ff]/20 font-semibold'
+                    ? 'text-[#00f0ff] bg-cyan-950/60 border border-[#00f0ff]/50 shadow-sm shadow-[#00f0ff]/20 font-semibold font-orbitron'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent'
                 }`}
               >
-                {link.label[language]}
-              </a>
+                <span>{link.label[language]}</span>
+                {link.badge && (
+                  <span className={`text-[8px] font-mono px-1 py-0.2 rounded font-bold ${
+                    link.badge === 'ACTIVE' 
+                      ? 'bg-emerald-950 text-[#00ff9d] border border-[#00ff9d]/40' 
+                      : 'bg-amber-950 text-[#ffe600] border border-[#ffe600]/40'
+                  }`}>
+                    {link.badge}
+                  </span>
+                )}
+              </button>
             );
           })}
         </nav>
@@ -168,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
           {onOpenTerminal && (
             <button
               onClick={onOpenTerminal}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-[#070b22] border border-[#1c2452] hover:border-[#00ff9d]/50 text-slate-300 hover:text-[#00ff9d] text-xs font-mono transition-all shadow-sm group"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-[#070b22] border border-[#1c2452] hover:border-[#00ff9d]/50 text-slate-300 hover:text-[#00ff9d] text-xs font-mono transition-all shadow-sm group cursor-pointer"
               title="Open Cyber Terminal Console (~)"
             >
               <Terminal className="w-3.5 h-3.5 text-[#00ff9d] group-hover:scale-110 transition-transform" />
@@ -179,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
           {/* Language Switcher */}
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-[#1c2452] hover:border-indigo-500/50 text-slate-200 hover:text-white text-xs font-medium transition-all shadow-sm"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-[#1c2452] hover:border-indigo-500/50 text-slate-200 hover:text-white text-xs font-medium transition-all shadow-sm cursor-pointer"
             title={language === 'id' ? 'Switch language to English' : 'Ganti ke Bahasa Indonesia'}
           >
             <Globe className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
@@ -198,18 +139,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
           </a>
 
           {/* Direct Contact Button */}
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#9d4edd] hover:opacity-90 text-slate-950 font-bold text-xs transition-all shadow-sm hover:shadow-[#00f0ff]/30 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap font-orbitron"
+          <button
+            onClick={() => handleLinkClick('contact')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#9d4edd] hover:opacity-90 text-slate-950 font-bold text-xs transition-all shadow-sm hover:shadow-[#00f0ff]/30 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap font-orbitron cursor-pointer"
           >
             <Send className="w-3.5 h-3.5 shrink-0" />
             <span>{language === 'id' ? 'Hubungi' : 'Contact'}</span>
-          </a>
+          </button>
 
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition-all focus:outline-none"
+            className="md:hidden p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition-all focus:outline-none cursor-pointer"
             aria-label="Toggle Navigation Menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -218,34 +159,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTerminal }) => {
         </div>
       </div>
 
-      {/* Reading Progress Bar */}
-      <div className="w-full h-[2px] bg-slate-800/40 overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-[#00f0ff] via-[#9d4edd] to-[#00ff9d] transition-all duration-150 ease-out"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden px-4 pt-3 pb-6 bg-[#080d1a]/98 backdrop-blur-2xl border-b border-slate-800 shadow-2xl animate-in slide-in-from-top-3 duration-200">
           <nav className="flex flex-col gap-1.5 mb-4">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = activePage === link.id;
               return (
-                <a
+                <button
                   key={link.id}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-between ${
+                  onClick={() => handleLinkClick(link.id)}
+                  className={`w-full px-3 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-between cursor-pointer ${
                     isActive
-                      ? 'bg-cyan-950/40 text-[#00f0ff] border border-[#00f0ff]/40 font-semibold'
+                      ? 'bg-cyan-950/60 text-[#00f0ff] border border-[#00f0ff]/50 font-semibold font-orbitron'
                       : 'bg-slate-900/60 text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
-                  <span>{link.label[language]}</span>
+                  <span className="flex items-center gap-2">
+                    <span>{link.label[language]}</span>
+                    {link.badge && (
+                      <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-400">
+                        {link.badge}
+                      </span>
+                    )}
+                  </span>
                   {isActive && <span className="w-2 h-2 rounded-full bg-[#00f0ff]"></span>}
-                </a>
+                </button>
               );
             })}
           </nav>

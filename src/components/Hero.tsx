@@ -6,9 +6,10 @@ import { motion } from 'framer-motion';
 
 interface HeroProps {
   onOpenTerminal: () => void;
+  onNavigate?: (pageId: 'projects' | 'labs') => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onNavigate }) => {
   const { language } = useLanguage();
 
   const titles = [
@@ -155,24 +156,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
               transition={{ duration: 0.6, delay: 0.35 }}
               className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <motion.a
+              <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                href="#projects"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#00c8ff] hover:brightness-110 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-[#00f0ff]/25 font-orbitron tracking-wider"
+                onClick={() => onNavigate ? onNavigate('projects') : (window.location.hash = '#/projects')}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#00c8ff] hover:brightness-110 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-[#00f0ff]/25 font-orbitron tracking-wider cursor-pointer"
               >
                 <span>{language === 'id' ? 'Jelajahi Proyek' : 'Explore Systems'}</span>
                 <ArrowRight className="w-4 h-4 text-slate-950" />
-              </motion.a>
+              </motion.button>
 
-              <motion.a
+              <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                href="#workflow-simulator"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[#ff007f]/50 bg-[#140b24] hover:bg-[#1f1038] text-pink-300 font-semibold text-sm transition-all shadow-sm shadow-[#ff007f]/20 font-orbitron"
+                onClick={() => onNavigate ? onNavigate('labs') : (window.location.hash = '#/labs')}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[#ff007f]/50 bg-[#140b24] hover:bg-[#1f1038] text-pink-300 font-semibold text-sm transition-all shadow-sm shadow-[#ff007f]/20 font-orbitron cursor-pointer"
               >
                 <span>{language === 'id' ? 'Uji Simulator CPOB' : 'Test GMP Simulator'}</span>
-              </motion.a>
+              </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.03 }}
