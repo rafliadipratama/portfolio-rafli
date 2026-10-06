@@ -84,14 +84,14 @@ export const InteractiveEngineeringLabs: React.FC = () => {
       id: 'dino' as const,
       hash: '#dino-runner',
       icon: Gamepad2,
-      badge: 'OFFLINE RETRO 2D ARCADE',
+      badge: 'CYBER 2D PIXEL ARCADE',
       title: {
         id: '4. Cyber Dino 2D Pixel Runner',
         en: '4. Cyber Dino 2D Pixel Runner'
       },
       desc: {
-        id: 'Game piksel offline klasik seperti di Google Chrome. Lompat rintangan kaktus & raih skor tertinggi!',
-        en: 'Classic offline 2D pixel endless runner like Chrome. Jump cacti, duck birds, and beat high score!'
+        id: 'Game piksel 2D legendaris Chrome T-Rex Jump. Lompat rintangan kaktus & raih skor tertinggi!',
+        en: 'Legendary 2D pixel Chrome T-Rex endless runner. Jump cacti, duck birds, and beat high score!'
       },
       accentColor: 'from-[#00ff9d] to-emerald-500',
       activeBorder: 'border-[#00ff9d] text-[#00ff9d] shadow-lg shadow-[#00ff9d]/20 bg-[#06241a]'
@@ -145,7 +145,6 @@ export const InteractiveEngineeringLabs: React.FC = () => {
                 key={tab.id}
                 onClick={() => {
                   setActiveTab(tab.id);
-                  window.location.hash = tab.hash;
                 }}
                 className={`p-4 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col justify-between cursor-pointer ${
                   isActive

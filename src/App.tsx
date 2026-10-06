@@ -91,9 +91,23 @@ export const AppContent: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const getPageFromHash = (): PageId => {
-    const hash = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
+    const raw = window.location.hash.replace(/^#\/?/, '').trim().toLowerCase();
+    const hash = raw.split('/')[0];
     const validPages: PageId[] = ['home', 'projects', 'experience', 'labs', 'skills', 'contact'];
-    if (hash === 'engineering-labs' || hash === 'workflow-simulator' || hash === 'disc-assessment' || hash === 'api-playground') {
+    if (
+      hash === 'labs' ||
+      hash === 'engineering-labs' ||
+      hash === 'workflow-simulator' ||
+      hash === 'disc-assessment' ||
+      hash === 'api-playground' ||
+      hash === 'streaming-lab' ||
+      hash === 'marketplace-lab' ||
+      hash === 'dino-runner' ||
+      hash === 'cyber-dino' ||
+      hash === 'dino' ||
+      hash === 'trex' ||
+      raw.includes('dino')
+    ) {
       return 'labs';
     }
     if (hash === 'architecture-decisions' || hash === 'github-telemetry') {
@@ -110,8 +124,14 @@ export const AppContent: React.FC = () => {
   // Sync hash on mount and when hash changes
   useEffect(() => {
     const handleHashChange = () => {
-      setActivePage(getPageFromHash());
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const target = getPageFromHash();
+      setActivePage(prev => {
+        if (prev !== target) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return target;
+        }
+        return prev;
+      });
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -398,6 +418,7 @@ export const AppContent: React.FC = () => {
         <TerminalConsole
           isOpen={terminalOpen}
           onClose={() => setTerminalOpen(false)}
+          onNavigate={navigateTo}
         />
 
         <CommandPalette

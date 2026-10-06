@@ -7,6 +7,7 @@ import confetti from 'canvas-confetti';
 interface TerminalConsoleProps {
   isOpen: boolean;
   onClose: () => void;
+  onNavigate?: (page: 'home' | 'projects' | 'experience' | 'labs' | 'skills' | 'contact') => void;
 }
 
 interface CommandOutput {
@@ -14,7 +15,7 @@ interface CommandOutput {
   output: React.ReactNode;
 }
 
-export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClose }) => {
+export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClose, onNavigate }) => {
   const { language } = useLanguage();
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState<CommandOutput[]>([
@@ -221,6 +222,9 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
           spread: 70,
           origin: { y: 0.5 }
         });
+        if (onNavigate) {
+          onNavigate('labs');
+        }
         window.location.hash = '#dino-runner';
         onClose();
         setInputVal('');

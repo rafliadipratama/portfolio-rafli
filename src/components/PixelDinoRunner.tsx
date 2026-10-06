@@ -425,35 +425,6 @@ export const PixelDinoRunner: React.FC = () => {
     audio.enabled = soundEnabled;
   }, [soundEnabled]);
 
-  // Jump Action
-  const handleJump = useCallback(() => {
-    if (gameStateRef.current === 'IDLE' || gameStateRef.current === 'GAME_OVER') {
-      startGame();
-      return;
-    }
-
-    if (!isJumpingRef.current && dinoYRef.current >= groundY - 50) {
-      isJumpingRef.current = true;
-      dinoVyRef.current = -11.5;
-      audio.playJump();
-    }
-  }, []);
-
-  // Duck Action
-  const handleDuckStart = useCallback(() => {
-    if (gameStateRef.current === 'PLAYING') {
-      isDuckingRef.current = true;
-      // Fast drop if in air
-      if (isJumpingRef.current) {
-        dinoVyRef.current += 5;
-      }
-    }
-  }, []);
-
-  const handleDuckEnd = useCallback(() => {
-    isDuckingRef.current = false;
-  }, []);
-
   // Start / Restart Game
   const startGame = useCallback(() => {
     dinoYRef.current = groundY - 48;
@@ -469,6 +440,35 @@ export const PixelDinoRunner: React.FC = () => {
     setGameState('PLAYING');
     gameStateRef.current = 'PLAYING';
     audio.playJump();
+  }, []);
+
+  // Jump Action
+  const handleJump = useCallback(() => {
+    if (gameStateRef.current === 'IDLE' || gameStateRef.current === 'GAME_OVER') {
+      startGame();
+      return;
+    }
+
+    if (!isJumpingRef.current && dinoYRef.current >= groundY - 50) {
+      isJumpingRef.current = true;
+      dinoVyRef.current = -11.5;
+      audio.playJump();
+    }
+  }, [startGame]);
+
+  // Duck Action
+  const handleDuckStart = useCallback(() => {
+    if (gameStateRef.current === 'PLAYING') {
+      isDuckingRef.current = true;
+      // Fast drop if in air
+      if (isJumpingRef.current) {
+        dinoVyRef.current += 5;
+      }
+    }
+  }, []);
+
+  const handleDuckEnd = useCallback(() => {
+    isDuckingRef.current = false;
   }, []);
 
   // Keyboard Event Listeners
@@ -837,7 +837,7 @@ export const PixelDinoRunner: React.FC = () => {
             <h3 className="text-base font-bold text-slate-100 font-orbitron flex items-center gap-2">
               <span>Cyber Dino 2D Pixel Runner</span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">
-                Offline Chrome Mode
+                Chrome T-Rex Edition
               </span>
             </h3>
             <p className="text-xs text-slate-400 font-sans">
