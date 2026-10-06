@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
-import { TelemetryBar } from './components/TelemetryBar';
 import { Navbar, PageId } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PortfolioDirectory } from './components/PortfolioDirectory';
@@ -146,13 +145,7 @@ export const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#050713] text-slate-200 selection:bg-[#00f0ff] selection:text-slate-950 font-sans arcade-scanlines flex flex-col justify-between">
       <div>
-        {/* Top Arcade Telemetry & HUD Bar */}
-        <TelemetryBar
-          onOpenTerminal={() => setTerminalOpen(true)}
-          onOpenPalette={() => setPaletteOpen(true)}
-        />
-
-        {/* Main Single-Layer Navigation */}
+        {/* Clean Single-Layer Navigation */}
         <Navbar
           activePage={activePage}
           onNavigate={navigateTo}
