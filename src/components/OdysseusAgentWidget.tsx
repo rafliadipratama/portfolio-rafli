@@ -134,7 +134,7 @@ Core Architectural Features:
     if (q.includes('padepokan') || q.includes('magang') || q.includes('intern') || q.includes('pekerjaan') || q.includes('sekarang')) {
       if (language === 'id') {
         return `🏢 **PT Padepokan 79 (MagangHub / MSIB)**:
-Rafli saat ini aktif sebagai **Software Engineer Intern** di PT Padepokan 79 (Feb 2026 - Sekarang).
+Rafli saat ini aktif sebagai **Software Engineer Intern** di PT Padepokan 79 (Sep 2026 - Sekarang).
 
 Fokus dan Praktik Rekayasa:
 • **Clean Architecture & SOLID Principles**: Menerapkan arsitektur perangkat lunak yang modular, maintainable, dan berstandar industri.
@@ -142,7 +142,7 @@ Fokus dan Praktik Rekayasa:
 • **Agile Team Collaboration**: Berkolaborasi dalam sprint pengembangan, pull request code review, dan continuous delivery.`;
       } else {
         return `🏢 **PT Padepokan 79 (MagangHub Certified Internship)**:
-Rafli is currently active as a **Software Engineer Intern** at PT Padepokan 79 (Feb 2026 - Present).
+Rafli is currently active as a **Software Engineer Intern** at PT Padepokan 79 (Sep 2026 - Present).
 
 Engineering Focus:
 • **Clean Architecture & SOLID Principles**: Architecting maintainable, scalable web applications to high industrial standards.

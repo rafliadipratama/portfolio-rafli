@@ -654,7 +654,7 @@ export const EXPERIENCES: Experience[] = [
       id: "Software Engineer Intern (MagangHub)",
       en: "Software Engineer Intern (MagangHub)"
     },
-    period: "Feb 2026 - Sekarang",
+    period: "Sep 2026 - Sekarang",
     type: {
       id: "Magang Bersertifikat (MagangHub)",
       en: "Certified Internship (MagangHub)"
@@ -691,7 +691,7 @@ export const EXPERIENCES: Experience[] = [
       id: "Fullstack Web Developer",
       en: "Fullstack Web Developer"
     },
-    period: "Agu 2025 - Jan 2026",
+    period: "Agu 2025 - Jul 2026",
     type: {
       id: "Penuh Waktu (Full-time)",
       en: "Full-time"
