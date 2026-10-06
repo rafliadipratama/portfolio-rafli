@@ -313,8 +313,8 @@ export const AppContent: React.FC = () => {
                   tag="PAGE 04 // LIVE ENGINEERING LABS"
                   title={language === 'id' ? 'Laboratorium Rekayasa & Simulasi Interaktif' : 'Interactive Engineering Simulator Workbench'}
                   desc={language === 'id'
-                    ? 'Workbench interaktif terintegrasi: Uji langsung simulator rilis batch CPOB farmasi, kalkulator tes psikometri DISC, dan Mock REST API playground.'
-                    : 'Interactive hands-on workbench: Test pharmaceutical batch release state machine, DISC psychometric radar, and live Mock REST API.'}
+                    ? 'Workbench interaktif: Uji coba langsung video streaming adaptif (LiveEuy), sistem anti-rebutan stok flash sale (Marketplace), dan kuis gaya kerja tim (DISC).'
+                    : 'Interactive hands-on workbench: Test smart adaptive streaming (LiveEuy), flash sale anti-overselling lock, and workplace DISC talent quiz.'}
                 />
                 <InteractiveEngineeringLabs />
                 <PagePagination

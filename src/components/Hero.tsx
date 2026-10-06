@@ -172,7 +172,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onNavigate }) => {
                 onClick={() => onNavigate ? onNavigate('labs') : (window.location.hash = '#/labs')}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[#ff007f]/50 bg-[#140b24] hover:bg-[#1f1038] text-pink-300 font-semibold text-sm transition-all shadow-sm shadow-[#ff007f]/20 font-orbitron cursor-pointer"
               >
-                <span>{language === 'id' ? 'Uji Simulator CPOB' : 'Test GMP Simulator'}</span>
+                <span>{language === 'id' ? 'Uji Coba Labs Interaktif' : 'Test Interactive Labs'}</span>
               </motion.button>
 
               <motion.button

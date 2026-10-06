@@ -64,11 +64,11 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
         en: 'Interactive Engineering Labs'
       },
       desc: {
-        id: 'Tiga simulasi interaktif yang bisa langsung Anda uji coba: Simulator Alur CPOB Farmasi, Kalkulator Tes DISC, dan Mock REST API Tester.',
-        en: 'Three hands-on interactive engineering simulators: GMP Pharma Batch Release, DISC Psychometrics, and Mock REST API Playground.'
+        id: 'Tiga simulasi interaktif yang mudah dipahami siapa saja: Video Streaming Cerdas (LiveEuy), Anti-Rebutan Stok Flash Sale, dan Kuis Gaya Kerja Tim (DISC).',
+        en: 'Three intuitive real-world simulators: Smart Video Streaming (LiveEuy), Flash Sale Anti-Overselling, and Workplace DISC Talent Quiz.'
       },
       icon: FlaskConical,
-      highlight: 'CPOB Sim • DISC Engine • REST API'
+      highlight: 'LiveEuy Stream • Flash Sale Mutex • Kuis DISC'
     },
     {
       id: 'skills',
