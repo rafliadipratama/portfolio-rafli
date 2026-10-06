@@ -9,13 +9,13 @@
   </defs>
 
   <!-- Gradient Border Container (rounded-xl) -->
-  <rect x="24" y="24" width="440" height="440" rx="110" ry="110" fill="url(#navBrandGrad)" />
+  <rect x="32" y="32" width="448" height="448" rx="112" ry="112" fill="url(#navBrandGrad)" />
 
   <!-- Inner Dark Background (#070a1e) -->
-  <rect x="42" y="42" width="404" height="404" rx="95" ry="95" fill="#070a1e" />
+  <rect x="52" y="52" width="408" height="408" rx="94" ry="94" fill="#070a1e" />
 
   <!-- Lucide Code2 Icon (<Code2 className="text-[#00f0ff]" />) -->
-  <g transform="translate(112, 112) scale(11)" 
+  <g transform="translate(112, 112) scale(12)" 
      stroke="#00f0ff" 
      stroke-width="2.3" 
      stroke-linecap="round" 
@@ -25,9 +25,4 @@
     <path d="m6 8-4 4 4 4" />
     <path d="m14.5 4-5 16" />
   </g>
-
-  <!-- Bottom-Right Status Indicator Dot (#00ff9d with #050713 border) -->
-  <circle cx="436" cy="436" r="54" fill="#050713" />
-  <circle cx="436" cy="436" r="48" fill="#00ff9d" opacity="0.35" />
-  <circle cx="436" cy="436" r="38" fill="#00ff9d" />
 </svg>

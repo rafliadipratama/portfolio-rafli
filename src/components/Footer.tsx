@@ -1,7 +1,7 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
-import { Cpu, ArrowUp } from 'lucide-react';
+import { Code2, ArrowUp } from 'lucide-react';
 import { GithubIcon, GitlabIcon, LinkedinIcon } from './SocialIcons';
 
 export const Footer: React.FC = () => {
@@ -19,11 +19,13 @@ export const Footer: React.FC = () => {
           {/* Brand info */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-400">
-                <Cpu className="w-3.5 h-3.5" />
+              <div className="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#00f0ff] via-[#9d4edd] to-[#ff007f] p-[1px] shadow-sm">
+                <div className="w-full h-full rounded-[7px] bg-[#070a1e] flex items-center justify-center text-[#00f0ff]">
+                  <Code2 className="w-3.5 h-3.5" />
+                </div>
               </div>
               <span className="font-bold text-slate-100 font-mono text-sm">
-                Rafli<span className="text-sky-400">.dev</span>
+                Rafli<span className="text-cyan-400">.dev</span>
               </span>
               <span className="text-xs text-slate-600 font-mono">/ v2.4.0</span>
             </div>
@@ -31,8 +33,8 @@ export const Footer: React.FC = () => {
             <p className="text-xs text-slate-500 mt-2 font-mono">
               &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. All systems verified.
             </p>
-            <p className="text-[11px] text-slate-600 font-mono mt-0.5">
-              Engineered with React, TypeScript, Tailwind CSS & Vite (Zero AI Slop Architecture)
+            <p className="text-[11px] text-slate-500 font-mono mt-0.5">
+              Engineered with React, TypeScript, Tailwind CSS & Vite
             </p>
           </div>
 

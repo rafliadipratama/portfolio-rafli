@@ -51,16 +51,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="flex items-center gap-2.5 group shrink-0 text-left cursor-pointer"
           aria-label="Rafli Portfolio Home"
         >
-          <div className="relative shrink-0">
+          <div className="shrink-0">
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[#00f0ff] via-[#9d4edd] to-[#ff007f] p-[1.5px] shadow-sm shadow-[#00f0ff]/30 group-hover:shadow-[#00f0ff]/60 transition-all duration-300">
               <div className="w-full h-full rounded-[9.5px] sm:rounded-[10.5px] bg-[#070a1e] flex items-center justify-center text-[#00f0ff] group-hover:text-white transition-colors">
                 <Code2 className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </div>
-            <span className="absolute -bottom-0.5 -right-0.5 flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff9d] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00ff9d] border border-[#050713]"></span>
-            </span>
           </div>
 
           <div className="flex flex-col">
