@@ -19,21 +19,21 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState<CommandOutput[]>([
     {
-      command: 'system --init --arcade',
+      command: 'system --info',
       output: (
         <div className="space-y-1.5 text-slate-300 font-mono">
-          <div className="text-[#00f0ff] font-orbitron font-bold">
-            🕹️ RAF-CYBERPUNK TERMINAL v3.0 [ARCADE // ANTIGRAVITY ENGINE]
+          <div className="text-cyan-400 font-bold">
+            💻 RAFLI ADIPRATAMA - DEVELOPER TERMINAL v3.0
           </div>
-          <div className="p-2 rounded bg-[#060a1e] border border-[#00f0ff]/30 text-xs">
-            <span className="text-[#00f0ff] font-semibold">🌐 3P: <span className="text-[#00ff9d]">100.0%</span></span>
+          <div className="p-2 rounded bg-slate-900 border border-slate-800 text-xs">
+            <span className="text-cyan-400 font-semibold">ROLE: <span className="text-emerald-400">Software Engineer Intern</span></span>
             <span className="text-slate-600 mx-2">│</span>
-            <span className="text-[#ffe600] font-semibold">🧠 0% ctx</span>
+            <span className="text-slate-300">PT. Padepokan 79 (MagangHub)</span>
             <span className="text-slate-600 mx-2">│</span>
-            <span className="text-[#ff007f] font-semibold">STAGE: PT PADEPOKAN 79 (MAGANGHUB)</span>
+            <span className="text-emerald-400">Sep 2026 - Sekarang</span>
           </div>
           <div className="text-slate-400 text-xs">
-            Type <span className="text-[#00f0ff] font-bold">help</span> to view available system commands. Try <span className="text-[#00ff9d] font-bold">status</span> or <span className="text-[#ff007f] font-bold">liveeuy</span>!
+            Type <span className="text-cyan-400 font-bold">help</span> to view available system commands. Try <span className="text-emerald-400 font-bold">status</span>, <span className="text-cyan-400 font-bold">projects</span>, or <span className="text-indigo-400 font-bold">liveeuy</span>!
           </div>
         </div>
       )
@@ -268,16 +268,16 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-150">
       <div
-        className={`w-full bg-[#050716] border border-[#00f0ff]/50 rounded-2xl shadow-2xl shadow-[#00f0ff]/20 flex flex-col overflow-hidden transition-all duration-300 ${
+        className={`w-full bg-slate-950 border border-slate-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300 ${
           isMaximized ? 'h-[95vh] max-w-[95vw]' : 'h-[600px] max-w-3xl'
         }`}
       >
         {/* Terminal Title Bar */}
-        <div className="px-4 py-3 bg-[#080d26] border-b border-[#1c2452] flex items-center justify-between select-none">
+        <div className="px-4 py-3 bg-slate-900 border-b border-slate-800 flex items-center justify-between select-none">
           <div className="flex items-center gap-2">
-            <TerminalIcon className="w-4 h-4 text-[#00f0ff]" />
-            <span className="text-xs font-mono font-bold text-[#00f0ff] font-orbitron">
-              rafli@cyber-arcade:~ [ANTIGRAVITY_CLI]
+            <TerminalIcon className="w-4 h-4 text-cyan-400" />
+            <span className="text-xs font-mono font-semibold text-slate-200">
+              rafli@workstation:~ [developer-console]
             </span>
           </div>
 
@@ -300,22 +300,22 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
         </div>
 
         {/* Terminal Body */}
-        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-4 text-slate-200 select-text bg-[#050716]">
+        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-4 text-slate-200 select-text bg-slate-950">
           {history.map((item, idx) => (
             <div key={idx} className="space-y-1.5">
-              <div className="flex items-center gap-2 text-[#00f0ff]">
-                <span className="text-[#00ff9d] font-bold">rafli@cyber-arcade:~$</span>
+              <div className="flex items-center gap-2 text-cyan-400">
+                <span className="text-emerald-400 font-bold">rafli@workstation:~$</span>
                 <span className="text-slate-100">{item.command}</span>
               </div>
-              <div className="pl-4 border-l border-[#1c2452] py-0.5">{item.output}</div>
+              <div className="pl-4 border-l border-slate-800 py-0.5">{item.output}</div>
             </div>
           ))}
           <div ref={bottomRef} />
         </div>
 
         {/* Terminal Input Line */}
-        <form onSubmit={handleCommand} className="p-3 bg-[#080d26] border-t border-[#1c2452] flex items-center gap-2">
-          <span className="text-[#00ff9d] font-mono text-xs font-bold pl-1 font-orbitron">rafli@cyber-arcade:~$</span>
+        <form onSubmit={handleCommand} className="p-3 bg-slate-900 border-t border-slate-800 flex items-center gap-2">
+          <span className="text-emerald-400 font-mono text-xs font-bold pl-1">rafli@workstation:~$</span>
           <input
             ref={inputRef}
             type="text"
@@ -325,7 +325,7 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
             placeholder="Type 'help' or any command..."
             className="flex-1 bg-transparent text-xs font-mono text-slate-100 focus:outline-none placeholder-slate-500"
           />
-          <button type="submit" className="p-1 text-[#00f0ff] hover:text-white">
+          <button type="submit" className="p-1 text-cyan-400 hover:text-white">
             <CornerDownLeft className="w-3.5 h-3.5" />
           </button>
         </form>

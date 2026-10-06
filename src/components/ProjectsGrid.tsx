@@ -13,15 +13,15 @@ interface ProjectsGridProps {
 const getCategoryBadgeStyle = (category: string) => {
   switch (category) {
     case 'laravel':
-      return 'bg-gradient-to-r from-rose-950/90 to-red-950/90 text-rose-300 border-[#ff007f]/50 shadow-sm shadow-[#ff007f]/20';
+      return 'bg-rose-950/80 text-rose-300 border-rose-800/40';
     case 'react':
-      return 'bg-gradient-to-r from-cyan-950/90 to-blue-950/90 text-[#00f0ff] border-[#00f0ff]/50 shadow-sm shadow-[#00f0ff]/20';
+      return 'bg-cyan-950/80 text-cyan-300 border-cyan-800/40';
     case 'fullstack':
-      return 'bg-gradient-to-r from-purple-950/90 to-indigo-950/90 text-purple-300 border-[#9d4edd]/50 shadow-sm shadow-[#9d4edd]/20';
+      return 'bg-purple-950/80 text-purple-300 border-purple-800/40';
     case 'javascript':
-      return 'bg-gradient-to-r from-amber-950/90 to-yellow-950/90 text-amber-300 border-[#ffe600]/50 shadow-sm shadow-[#ffe600]/20';
+      return 'bg-amber-950/80 text-amber-300 border-amber-800/40';
     default:
-      return 'bg-slate-950/90 text-sky-400 border-slate-700/80';
+      return 'bg-slate-900 text-slate-300 border-slate-700/80';
   }
 };
 
@@ -55,22 +55,22 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#090e28] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs mb-3 shadow-sm">
-              <Layers className="w-3.5 h-3.5 text-[#00f0ff]" />
-              <span className="font-orbitron tracking-wider">[SYSTEM VAULT // 10+ DEPLOYMENTS]</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs mb-3 shadow-sm">
+              <Layers className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="font-medium tracking-wide">{language === 'id' ? 'Proyek & Implementasi' : 'Projects & Systems'}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight">
               {language === 'id' ? (
                 <>
                   Koleksi Rekayasa Sistem &{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
                     Aplikasi Produksi
                   </span>
                 </>
               ) : (
                 <>
                   Engineering Portfolio &{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
                     Production Systems
                   </span>
                 </>
@@ -83,17 +83,17 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
             </p>
           </div>
 
-          {/* Filter Pills with Motion Tap */}
-          <div className="flex flex-wrap gap-1.5 p-1.5 bg-[#090e28] border border-[#1c2452] rounded-xl self-start md:self-auto shadow-inner">
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap gap-1.5 p-1.5 bg-slate-900 border border-slate-800 rounded-xl self-start md:self-auto shadow-inner">
             {filterTabs.map(tab => (
               <motion.button
                 key={tab.id}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => setFilter(tab.id as any)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   filter === tab.id
-                    ? 'bg-gradient-to-r from-[#00f0ff] to-[#00b4d8] text-slate-950 font-bold shadow-md shadow-[#00f0ff]/25 font-orbitron'
-                    : 'text-slate-400 hover:text-slate-100 hover:bg-[#121c4e]'
+                    ? 'bg-cyan-500 text-slate-950 font-semibold shadow-sm'
+                    : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800'
                 }`}
               >
                 {tab.label[language]}

@@ -9,109 +9,64 @@
   
   html {
     scroll-behavior: smooth;
-    background-color: #050713;
+    background-color: #070a14;
     color: #e2e8f0;
   }
 
   body {
-    background-color: #050713;
+    background-color: #070a14;
     overflow-x: hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
-  /* Custom cyberpunk scrollbar */
+  /* Refined, modern dark scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #050713;
+    background: #070a14;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1c2452;
-    border-radius: 2px;
-    box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    background: #1e293b;
+    border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #00f0ff;
+    background: #38bdf8;
   }
 }
 
-/* Cyberpunk & Retro Arcade Grid Background */
+/* Subtle modern mesh & grid */
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 0, 127, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 .bg-dot-pattern {
-  background-size: 20px 20px;
-  background-image: radial-gradient(rgba(0, 240, 255, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
 }
 
-/* Subtle CRT Arcade Scanline Effect */
-.arcade-scanlines {
+/* Tasteful ambient glow accents */
+.ambient-glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.2);
+}
+
+.ambient-glow-indigo {
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.2);
+}
+
+/* Modern Card Surface */
+.modern-card {
   position: relative;
+  background: #0b0f19;
+  border: 1px solid rgba(30, 41, 59, 0.8);
+  border-radius: 1rem;
+  transition: all 0.25s ease-out;
 }
-.arcade-scanlines::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-  background-size: 100% 4px;
-  z-index: 20;
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-/* Cyberpunk Neon Glow Utilities */
-.neon-glow-cyan {
-  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
-}
-
-.neon-glow-pink {
-  text-shadow: 0 0 10px rgba(255, 0, 127, 0.7), 0 0 20px rgba(255, 0, 127, 0.4);
-}
-
-.neon-glow-yellow {
-  text-shadow: 0 0 10px rgba(255, 230, 0, 0.7), 0 0 20px rgba(255, 230, 0, 0.4);
-}
-
-.border-neon-cyan {
-  border-color: rgba(0, 240, 255, 0.5);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25), inset 0 0 10px rgba(0, 240, 255, 0.08);
-}
-
-.border-neon-pink {
-  border-color: rgba(255, 0, 127, 0.5);
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.25), inset 0 0 10px rgba(255, 0, 127, 0.08);
-}
-
-/* Cyberpunk Corner Angle Accents */
-.cyber-card {
-  position: relative;
-  background: #090d24;
-  border: 1px solid rgba(31, 41, 92, 0.9);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.cyber-card:hover {
-  border-color: rgba(0, 240, 255, 0.6);
-  box-shadow: 0 0 25px -4px rgba(0, 240, 255, 0.25);
+.modern-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
   transform: translateY(-2px);
-}
-
-.card-hover-border {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.card-hover-border:hover {
-  border-color: rgba(0, 240, 255, 0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 240, 255, 0.2);
-}
-
-/* Terminal scanline subtle effect */
-.terminal-glow {
-  box-shadow: 0 0 35px -5px rgba(0, 240, 255, 0.25), 0 0 15px -3px rgba(255, 0, 127, 0.15);
 }

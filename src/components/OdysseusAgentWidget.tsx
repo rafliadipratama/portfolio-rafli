@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Bot, Send, X, Minimize2, Maximize2, Sparkles, Terminal, Cpu, RefreshCw, ChevronRight } from 'lucide-react';
+import { Bot, Send, X, Minimize2, Maximize2, Sparkles, Cpu, RefreshCw, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Message {
@@ -25,8 +25,8 @@ export const OdysseusAgentWidget: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const initialGreeting = language === 'id'
-    ? 'Salam cybernetic! Saya Odysseus AI Agent yang menggerakkan kecerdasan portofolio Rafli. Dikonfigurasi dengan model bawaan Llama-3.2-1B-Instruct (Q4_K_M GGUF). Tanyakan apa saja tentang proyek LiveEuy, magang di PT Padepokan 79, atau arsitektur sistem enterprise!'
-    : 'Greetings! I am the Odysseus AI Agent driving Rafli\'s portfolio intelligence, configured with Llama-3.2-1B-Instruct (Q4_K_M GGUF). Ask me anything regarding the LiveEuy streaming engine, PT Padepokan 79 internship, or enterprise architectures!';
+    ? 'Halo! Saya Odysseus, asisten interaktif di portofolio Rafli. Silakan tanyakan seputar pengalaman proyek LiveEuy, magang di PT Padepokan 79, keahlian teknis, atau eksplorasi fitur di website ini!'
+    : 'Hello! I am Odysseus, Rafli\'s portfolio interactive assistant. Feel free to ask about the LiveEuy streaming project, his internship at PT Padepokan 79, technical expertise, or explore any features here!';
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -298,57 +298,56 @@ Feel free to choose a quick query above or type a specific technical question!`;
             setIsOpen(true);
             setIsMinimized(false);
           }}
-          className="relative group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#070b22] border border-[#00f0ff]/60 text-slate-100 shadow-2xl shadow-[#00f0ff]/25 hover:border-[#00f0ff] transition-all"
-          title="Buka Odysseus AI Agent"
+          className="relative group flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/95 border border-cyan-500/40 text-slate-100 shadow-xl shadow-cyan-950/40 hover:border-cyan-400 transition-all cursor-pointer"
+          title="Tanya Odysseus (Asisten Portofolio)"
         >
-          {/* Pulsing neon ping dot */}
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00f0ff] opacity-80"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00ff9d]"></span>
+          {/* Subtle status dot */}
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400"></span>
           </span>
 
-          <div className="flex items-center gap-1.5 font-orbitron font-bold text-xs tracking-wider">
-            <Bot className="w-4 h-4 text-[#00f0ff] group-hover:rotate-12 transition-transform" />
-            <span className="text-[#00f0ff]">ODYSSEUS</span>
-            <span className="text-[#ff007f] hidden sm:inline-block">AI</span>
+          <div className="flex items-center gap-1.5 font-medium text-xs">
+            <Bot className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+            <span className="text-cyan-200">Tanya Odysseus</span>
           </div>
 
-          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#0b1538] border border-[#00f0ff]/40 text-[#00ff9d] font-semibold hidden md:inline-block">
-            {selectedModel === 'llama-3.2-1b' ? '1B-GGUF' : '1.5B-GGUF'}
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-medium hidden md:inline-block">
+            {selectedModel === 'llama-3.2-1b' ? 'Llama 3.2' : 'Qwen 2.5'}
           </span>
         </motion.button>
       </div>
 
-      {/* Odysseus Cyberpunk Chat Modal / Drawer */}
+      {/* Odysseus Clean Modern Assistant Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 30 }}
-            transition={{ duration: 0.25 }}
-            className={`fixed bottom-20 right-4 sm:right-6 z-50 w-[94vw] sm:w-[460px] bg-[#050818]/95 backdrop-blur-2xl border border-[#00f0ff]/50 rounded-2xl shadow-2xl shadow-[#00f0ff]/20 flex flex-col overflow-hidden ${
-              isMinimized ? 'h-14' : 'h-[580px] max-h-[82vh]'
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.2 }}
+            className={`fixed bottom-20 right-4 sm:right-6 z-50 w-[94vw] sm:w-[460px] bg-slate-950/95 backdrop-blur-2xl border border-slate-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden ${
+              isMinimized ? 'h-14' : 'h-[560px] max-h-[80vh]'
             }`}
           >
-            {/* Header / HUD Telemetry */}
-            <div className="px-4 py-3 bg-[#080d2a] border-b border-[#1c2452] flex items-center justify-between select-none shrink-0">
+            {/* Header */}
+            <div className="px-4 py-3 bg-slate-900 border-b border-slate-800 flex items-center justify-between select-none shrink-0">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-cyan-950/90 border border-[#00f0ff]/60 flex items-center justify-center text-[#00f0ff] shadow-sm shadow-[#00f0ff]/20">
+                <div className="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
                   <Bot className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5">
-                    <h3 className="text-xs font-bold font-orbitron text-slate-100 tracking-wide">
-                      ODYSSEUS AI AGENT
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xs font-semibold text-slate-100">
+                      Odysseus Assistant
                     </h3>
-                    <span className="text-[9px] font-mono px-1 py-0.2 rounded bg-[#06241a] text-[#00ff9d] border border-[#00ff9d]/50 font-bold">
-                      {connectionStatus === 'connected' ? 'LIVE HOST' : 'STANDALONE'}
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 font-semibold">
+                      {connectionStatus === 'connected' ? 'Live Host' : 'Online'}
                     </span>
                   </div>
-                  <p className="text-[10px] font-mono text-[#00f0ff]/80 flex items-center gap-1">
-                    <Cpu className="w-3 h-3 text-[#ffe600]" />
-                    <span>{selectedModel === 'llama-3.2-1b' ? 'Llama-3.2-1B-Instruct.gguf' : 'qwen2.5-1.5b-instruct.gguf'}</span>
+                  <p className="text-[10px] text-slate-400 flex items-center gap-1">
+                    <Cpu className="w-3 h-3 text-cyan-400" />
+                    <span>{selectedModel === 'llama-3.2-1b' ? 'Llama 3.2 (1B)' : 'Qwen 2.5 (1.5B)'}</span>
                   </p>
                 </div>
               </div>
@@ -386,14 +385,14 @@ Feel free to choose a quick query above or type a specific technical question!`;
             {/* Chat Body & Messages */}
             {!isMinimized && (
               <>
-                <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs font-sans select-text bg-[#050716]/80">
-                  {/* Status telemetry chip */}
-                  <div className="p-2 rounded-lg bg-[#070b24] border border-[#1c2452] text-[11px] font-mono text-slate-400 flex items-center justify-between gap-2 shadow-inner">
+                <div className="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs font-sans select-text bg-slate-950/80">
+                  {/* Status chip */}
+                  <div className="p-2 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] text-slate-400 flex items-center justify-between gap-2 shadow-inner">
                     <span className="flex items-center gap-1.5 text-cyan-300">
-                      <Terminal className="w-3 h-3 text-[#00f0ff]" />
-                      <span>OFFLINE LOCAL ENGINE READY</span>
+                      <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                      <span>Asisten Interaktif Portofolio</span>
                     </span>
-                    <span className="text-[#ffe600]">RAM: ~1.2GB ALLOC</span>
+                    <span className="text-slate-400">Siap Menjawab</span>
                   </div>
 
                   {/* Messages list */}
@@ -405,14 +404,14 @@ Feel free to choose a quick query above or type a specific technical question!`;
                       <div
                         className={`max-w-[88%] p-3 rounded-2xl leading-relaxed ${
                           msg.sender === 'user'
-                            ? 'bg-gradient-to-r from-[#00f0ff]/20 to-[#00b4d8]/30 border border-[#00f0ff]/60 text-slate-100 rounded-br-none shadow-md shadow-[#00f0ff]/10'
-                            : 'bg-[#090e2c] border border-[#1c2452] text-slate-200 rounded-bl-none shadow-md'
+                            ? 'bg-cyan-600/20 border border-cyan-500/40 text-slate-100 rounded-br-none shadow-md shadow-cyan-950/30'
+                            : 'bg-slate-900 border border-slate-800 text-slate-200 rounded-bl-none shadow-md'
                         }`}
                       >
                         {/* Agent model attribution tag */}
                         {msg.sender === 'agent' && msg.modelUsed && (
-                          <div className="text-[9px] font-mono text-[#00f0ff] font-bold mb-1 flex items-center gap-1">
-                            <Sparkles className="w-2.5 h-2.5 text-[#ffe600]" />
+                          <div className="text-[9px] font-mono text-cyan-400 font-semibold mb-1 flex items-center gap-1">
+                            <Sparkles className="w-2.5 h-2.5 text-cyan-400" />
                             <span>{msg.modelUsed}</span>
                           </div>
                         )}
@@ -429,11 +428,13 @@ Feel free to choose a quick query above or type a specific technical question!`;
 
                   {/* Typing Indicator */}
                   {isTyping && (
-                    <div className="flex items-center gap-1.5 p-3 rounded-2xl rounded-bl-none bg-[#090e2c] border border-[#1c2452] w-fit">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff007f] animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] animate-bounce" style={{ animationDelay: '300ms' }} />
-                      <span className="text-[10px] font-mono text-slate-400 ml-1">Inferencing GGUF tokens...</span>
+                    <div className="flex items-center gap-1.5 p-3 rounded-2xl rounded-bl-none bg-slate-900 border border-slate-800 w-fit">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <span className="text-[10px] text-slate-400 ml-1">
+                        {language === 'id' ? 'Menyusun respons...' : 'Composing response...'}
+                      </span>
                     </div>
                   )}
 

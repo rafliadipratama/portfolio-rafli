@@ -13,23 +13,23 @@ export const ExperienceTimeline: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#090e28] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs mb-3 shadow-sm">
-            <Briefcase className="w-3.5 h-3.5 text-[#00f0ff]" />
-            <span className="font-orbitron tracking-wider">[CAREER QUEST // INDUSTRIAL LOG]</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs mb-3 shadow-sm">
+            <Briefcase className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="font-medium tracking-wide">{language === 'id' ? 'Pengalaman Profesional' : 'Work Experience'}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight">
             {language === 'id' ? (
               <>
                 Pengalaman Kerja &{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
                   Rekam Jejak Industri
                 </span>
               </>
             ) : (
               <>
                 Professional Track Record &{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
-                  Industry Quests
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
+                  Engineering Experience
                 </span>
               </>
             )}
@@ -42,7 +42,7 @@ export const ExperienceTimeline: React.FC = () => {
         </div>
 
         {/* Timeline Container */}
-        <div className="relative border-l border-[#1c2452] ml-4 sm:ml-8 space-y-12">
+        <div className="relative border-l border-slate-800 ml-4 sm:ml-8 space-y-12">
           {EXPERIENCES.map((exp, idx) => (
             <motion.div
               key={exp.id}
@@ -57,38 +57,38 @@ export const ExperienceTimeline: React.FC = () => {
               <div
                 className={`absolute -left-3.5 top-1.5 w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all ${
                   exp.current
-                    ? 'bg-[#06241a] border-[#00ff9d] text-[#00ff9d] shadow-lg shadow-[#00ff9d]/30'
-                    : 'bg-[#090d26] border-[#1c2452] text-slate-400 group-hover:border-[#00f0ff] group-hover:text-[#00f0ff]'
+                    ? 'bg-emerald-950/80 border-emerald-500 text-emerald-400 shadow-md shadow-emerald-950/50'
+                    : 'bg-slate-900 border-slate-800 text-slate-400 group-hover:border-cyan-500 group-hover:text-cyan-400'
                 }`}
               >
                 <Building2 className="w-3.5 h-3.5" />
               </div>
 
               {/* Experience Card */}
-              <div className={`p-6 rounded-2xl bg-[#080d24] border transition-all shadow-lg ${
+              <div className={`p-6 rounded-2xl bg-slate-900/60 border transition-all shadow-lg ${
                 exp.current 
-                  ? 'border-[#00ff9d]/50 shadow-[#00ff9d]/10' 
-                  : 'border-[#1c2452] hover:border-[#00f0ff]/40'
+                  ? 'border-emerald-500/40 shadow-emerald-950/20' 
+                  : 'border-slate-800/80 hover:border-slate-700'
               }`}>
                 
                 {/* Header Info */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-lg font-bold text-slate-100 group-hover:text-[#00f0ff] transition-colors font-orbitron">
+                      <h3 className="text-lg font-bold text-slate-100 group-hover:text-cyan-400 transition-colors">
                         {exp.company}
                       </h3>
                       {exp.current && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#06241a] text-[#00ff9d] border border-[#00ff9d]/60 font-orbitron">
-                          {language === 'id' ? 'QUEST AKTIF' : 'ACTIVE QUEST'}
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">
+                          {language === 'id' ? 'POSISI AKTIF' : 'CURRENT ROLE'}
                         </span>
                       )}
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 text-slate-400 border border-slate-800">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-400 border border-slate-700">
                         {exp.type[language]}
                       </span>
                     </div>
 
-                    <p className="text-sm font-semibold text-[#00f0ff] mt-0.5 font-mono">
+                    <p className="text-sm font-semibold text-cyan-400 mt-0.5 font-mono">
                       {exp.position[language]}
                     </p>
                   </div>

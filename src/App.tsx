@@ -143,7 +143,7 @@ export const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050713] text-slate-200 selection:bg-[#00f0ff] selection:text-slate-950 font-sans arcade-scanlines flex flex-col justify-between">
+    <div className="min-h-screen bg-[#070a14] text-slate-200 selection:bg-cyan-500 selection:text-slate-950 font-sans flex flex-col justify-between">
       <div>
         {/* Clean Single-Layer Navigation */}
         <Navbar
@@ -174,32 +174,32 @@ export const AppContent: React.FC = () => {
                 <PortfolioDirectory onNavigate={navigateTo} />
 
                 {/* 3. Featured Showcase Snapshot */}
-                <section className="py-10 bg-[#050713]">
+                <section className="py-10 bg-[#070a14]">
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       
                       {/* LiveEuy Featured Card */}
-                      <div className="p-6 rounded-2xl bg-[#080d24] border border-[#00f0ff]/40 shadow-xl relative overflow-hidden flex flex-col justify-between">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00f0ff]/10 rounded-full blur-2xl pointer-events-none" />
+                      <div className="p-6 rounded-2xl bg-[#0b0f19] border border-slate-800 hover:border-cyan-500/40 transition-all shadow-xl relative overflow-hidden flex flex-col justify-between">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
                         <div>
                           <div className="flex items-center justify-between gap-2 mb-3">
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-[#00f0ff] border border-[#00f0ff]/50 font-orbitron">
-                              FEATURED // STREAMING
+                            <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-cyan-950/70 text-cyan-300 border border-cyan-800/50">
+                              {language === 'id' ? 'Proyek Unggulan' : 'Featured Project'}
                             </span>
-                            <span className="text-xs font-mono text-[#00ff9d]">HLS + Dynamic Glow</span>
+                            <span className="text-xs font-mono text-emerald-400">HLS Streaming & Ambient Glow</span>
                           </div>
-                          <h3 className="text-lg font-bold text-slate-100 font-orbitron mb-2">
-                            LiveEuy Cinema Streaming Platform
+                          <h3 className="text-lg font-bold text-slate-100 mb-2">
+                            LiveEuy — Cinema Streaming Platform
                           </h3>
-                          <p className="text-xs text-slate-300 font-sans leading-relaxed mb-4">
+                          <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed mb-4">
                             {language === 'id'
-                              ? 'Platform streaming video modern dengan pemutar video ber-ambient lighting real-time, adaptive bitrate HLS, serta CMS studio admin.'
-                              : 'Modern cinematic streaming platform featuring real-time ambient player illumination, adaptive bitrate HLS streaming, and admin studio CMS.'}
+                              ? 'Platform streaming video dengan pemutar video ber-ambient lighting real-time, adaptive bitrate HLS tanpa buffering, serta studio admin CMS.'
+                              : 'Modern cinematic streaming platform featuring real-time ambient illumination, buffer-free adaptive HLS streaming, and admin studio CMS.'}
                           </p>
                         </div>
                         <button
                           onClick={() => navigateTo('projects')}
-                          className="inline-flex items-center justify-between w-full p-3 rounded-xl bg-cyan-950/60 hover:bg-cyan-900/60 border border-[#00f0ff]/50 text-[#00f0ff] hover:text-white text-xs font-mono transition-colors cursor-pointer"
+                          className="inline-flex items-center justify-between w-full p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 text-cyan-400 hover:text-cyan-300 text-xs font-medium transition-colors cursor-pointer"
                         >
                           <span>{language === 'id' ? 'Buka Detail Sistem & Kode' : 'Inspect Systems & Code'}</span>
                           <ArrowRight className="w-4 h-4" />
@@ -207,29 +207,29 @@ export const AppContent: React.FC = () => {
                       </div>
 
                       {/* PT Padepokan 79 Active Quest Card */}
-                      <div className="p-6 rounded-2xl bg-[#080d24] border border-[#00ff9d]/40 shadow-xl relative overflow-hidden flex flex-col justify-between">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00ff9d]/10 rounded-full blur-2xl pointer-events-none" />
+                      <div className="p-6 rounded-2xl bg-[#0b0f19] border border-slate-800 hover:border-emerald-500/40 transition-all shadow-xl relative overflow-hidden flex flex-col justify-between">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none" />
                         <div>
                           <div className="flex items-center justify-between gap-2 mb-3">
-                            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-[#00ff9d] border border-[#00ff9d]/50 font-orbitron">
-                              ACTIVE QUEST // INTERNSHIP
+                            <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-emerald-950/70 text-emerald-300 border border-emerald-800/50">
+                              {language === 'id' ? 'Posisi Terkini' : 'Current Role'}
                             </span>
                             <span className="text-xs font-mono text-emerald-400">Sep 2026 - Sekarang</span>
                           </div>
-                          <h3 className="text-lg font-bold text-slate-100 font-orbitron mb-2">
+                          <h3 className="text-lg font-bold text-slate-100 mb-2">
                             Software Engineer Intern @ PT. Padepokan 79
                           </h3>
-                          <p className="text-xs text-slate-300 font-sans leading-relaxed mb-4">
+                          <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed mb-4">
                             {language === 'id'
-                              ? 'Magang bersertifikat MagangHub berfokus pada arsitektur sistem enterprise, Clean Architecture (Uncle Bob), dan agile software delivery.'
-                              : 'Certified MagangHub internship focused on enterprise architecture standards, Uncle Bob Clean Architecture, and agile teamwork.'}
+                              ? 'Magang bersertifikat MagangHub berfokus pada arsitektur sistem enterprise, standar Clean Architecture, dan pengembangan tim agile.'
+                              : 'Certified MagangHub internship focused on enterprise architecture standards, Clean Architecture, and agile teamwork.'}
                           </p>
                         </div>
                         <button
                           onClick={() => navigateTo('experience')}
-                          className="inline-flex items-center justify-between w-full p-3 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/60 border border-[#00ff9d]/50 text-[#00ff9d] hover:text-white text-xs font-mono transition-colors cursor-pointer"
+                          className="inline-flex items-center justify-between w-full p-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/40 text-emerald-400 hover:text-emerald-300 text-xs font-medium transition-colors cursor-pointer"
                         >
-                          <span>{language === 'id' ? 'Lihat Rekam Jejak Karier' : 'View Career Timeline'}</span>
+                          <span>{language === 'id' ? 'Lihat Riwayat Karier' : 'View Career Timeline'}</span>
                           <ArrowRight className="w-4 h-4" />
                         </button>
                       </div>
@@ -254,11 +254,11 @@ export const AppContent: React.FC = () => {
                 transition={{ duration: 0.25 }}
               >
                 <PageHeaderBanner
-                  tag="PAGE 02 // SYSTEMS & APPS"
-                  title={language === 'id' ? 'Sistem & Aplikasi Rekayasa Produksi' : 'Production Systems & Engineering Applications'}
+                  tag={language === 'id' ? 'Halaman 02 • Proyek' : 'Page 02 • Projects'}
+                  title={language === 'id' ? 'Sistem & Aplikasi Rekayasa Produksi' : 'Production Systems & Applications'}
                   desc={language === 'id'
-                    ? 'Katalog lengkap aplikasi web, platform streaming LiveEuy, dan sistem tata kelola mutu farmasi yang dibangun dengan standar Clean Code.'
-                    : 'Comprehensive gallery of production systems, LiveEuy streaming engines, and pharmaceutical regulatory architectures.'}
+                    ? 'Katalog aplikasi web, platform streaming LiveEuy, dan sistem tata kelola mutu farmasi yang dibangun dengan standar Clean Code.'
+                    : 'Portfolio of production web applications, LiveEuy streaming platform, and compliance architectures.'}
                 />
                 <ProjectsGrid onSelectProject={setSelectedProject} />
                 <PagePagination
@@ -278,11 +278,11 @@ export const AppContent: React.FC = () => {
                 transition={{ duration: 0.25 }}
               >
                 <PageHeaderBanner
-                  tag="PAGE 03 // CAREER TRACK RECORD"
-                  title={language === 'id' ? 'Perjalanan Karier & Pengalaman Kerja' : 'Industrial Career & Professional Track Record'}
+                  tag={language === 'id' ? 'Halaman 03 • Karier' : 'Page 03 • Career'}
+                  title={language === 'id' ? 'Perjalanan Karier & Rekam Jejak Industri' : 'Industrial Career & Professional Track Record'}
                   desc={language === 'id'
-                    ? 'Rekam jejak teknis langsung dalam rekayasa perangkat lunak enterprise di PT Padepokan 79, manufaktur farmasi PT Solas, dan manufaktur pertahanan PT Pindad.'
-                    : 'Direct engineering track record spanning enterprise systems at PT Padepokan 79, pharma manufacturing at PT Solas, and defense at PT Pindad.'}
+                    ? 'Pengalaman rekayasa perangkat lunak di PT Padepokan 79, manufaktur farmasi PT Solas, dan manufaktur pertahanan PT Pindad.'
+                    : 'Direct software engineering track record at PT Padepokan 79, pharmaceutical manufacturing at PT Solas, and defense at PT Pindad.'}
                 />
                 <ExperienceTimeline />
                 <EducationCertificates />
@@ -303,11 +303,11 @@ export const AppContent: React.FC = () => {
                 transition={{ duration: 0.25 }}
               >
                 <PageHeaderBanner
-                  tag="PAGE 04 // LIVE ENGINEERING LABS"
-                  title={language === 'id' ? 'Laboratorium Rekayasa & Simulasi Interaktif' : 'Interactive Engineering Simulator Workbench'}
+                  tag={language === 'id' ? 'Halaman 04 • Laboratorium' : 'Page 04 • Labs'}
+                  title={language === 'id' ? 'Laboratorium & Simulasi Sistem Interaktif' : 'Interactive Systems Simulator Workbench'}
                   desc={language === 'id'
-                    ? 'Workbench interaktif: Uji coba langsung video streaming adaptif (LiveEuy), sistem anti-rebutan stok flash sale (Marketplace), dan kuis gaya kerja tim (DISC).'
-                    : 'Interactive hands-on workbench: Test smart adaptive streaming (LiveEuy), flash sale anti-overselling lock, and workplace DISC talent quiz.'}
+                    ? 'Uji coba interaktif: adaptasi video streaming (LiveEuy), sistem anti-rebutan stok flash sale (Marketplace), dan kuis gaya kerja tim (DISC).'
+                    : 'Interactive hands-on workbench: test adaptive video streaming (LiveEuy), flash sale anti-overselling lock, and workplace DISC talent quiz.'}
                 />
                 <InteractiveEngineeringLabs />
                 <PagePagination
@@ -327,11 +327,11 @@ export const AppContent: React.FC = () => {
                 transition={{ duration: 0.25 }}
               >
                 <PageHeaderBanner
-                  tag="PAGE 05 // SKILLS & ARCHITECTURE SPECS"
+                  tag={language === 'id' ? 'Halaman 05 • Keahlian' : 'Page 05 • Skills'}
                   title={language === 'id' ? 'Matriks Keahlian & Spesifikasi Rekayasa' : 'Technical Competencies & Architecture Standards'}
                   desc={language === 'id'
-                    ? 'Penguasaan stack modern, orkestrasi AI Agent & CLI tooling, keputusan arsitektur (ADR), dan aktivitas GitHub telemetri.'
-                    : 'Fullstack competencies, AI Agent CLI orchestrations, Architecture Decision Records (ADR), and verified GitHub telemetry.'}
+                    ? 'Penguasaan stack web modern, toolings otomatisasi CLI, keputusan arsitektur (ADR), dan aktivitas GitHub terverifikasi.'
+                    : 'Fullstack web competencies, CLI toolings, Architecture Decision Records (ADR), and verified GitHub activity.'}
                 />
                 <SkillsMatrix />
                 <ArchitectureDecisions />
@@ -353,11 +353,11 @@ export const AppContent: React.FC = () => {
                 transition={{ duration: 0.25 }}
               >
                 <PageHeaderBanner
-                  tag="PAGE 06 // TRANSMISSION & DIRECT CONTACT"
-                  title={language === 'id' ? 'Saluran Kontak & Komunikasi' : 'Transmission Channel & Direct Contact'}
+                  tag={language === 'id' ? 'Halaman 06 • Kontak' : 'Page 06 • Contact'}
+                  title={language === 'id' ? 'Hubungi Saya & Saluran Komunikasi' : 'Direct Contact & Communication'}
                   desc={language === 'id'
-                    ? 'Mari berdiskusi tentang peluang rekayasa perangkat lunak, kolaborasi proyek skala produksi, atau eksplorasi arsitektur AI modern.'
-                    : 'Connect directly regarding software engineering opportunities, enterprise projects, or modern AI agent architectures.'}
+                    ? 'Mari berdiskusi tentang peluang kerja sama, rekayasa perangkat lunak skala produksi, atau tanya jawab teknis.'
+                    : 'Connect directly regarding software engineering opportunities, production web projects, or technical inquiries.'}
                 />
                 <ContactSection />
                 <PagePagination

@@ -59,9 +59,9 @@ export const SkillsMatrix: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-950/80 to-purple-950/80 border border-cyan-500/40 text-cyan-300 font-mono text-xs mb-3 shadow-sm">
-            <Terminal className="w-3.5 h-3.5 text-[#00f0ff]" />
-            <span className="font-orbitron tracking-wider">[SKILL TREE // TECH MATRIX]</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-xs mb-3 shadow-sm">
+            <Terminal className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="font-medium tracking-wide">{language === 'id' ? 'Keahlian & Penguasaan Stack' : 'Core Capabilities'}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight">
             {language === 'id' ? (

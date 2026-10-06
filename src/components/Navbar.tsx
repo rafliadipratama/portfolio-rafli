@@ -64,9 +64,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="flex flex-col">
-            <div className="flex items-center gap-1 font-bold tracking-tight text-slate-100 group-hover:text-[#00f0ff] transition-colors leading-tight font-orbitron">
+            <div className="flex items-center gap-1 font-bold tracking-tight text-slate-100 group-hover:text-cyan-400 transition-colors leading-tight">
               <span className="text-base font-extrabold tracking-tight">RAFLI</span>
-              <span className="text-[#00f0ff] font-mono text-sm font-semibold">.DEV</span>
+              <span className="text-cyan-400 font-mono text-sm font-semibold">.DEV</span>
             </div>
             <div className="text-[10px] text-slate-400 font-mono leading-none">
               Fullstack & AI Engineer
@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleLinkClick(link.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
                   isActive
-                    ? 'text-[#00f0ff] bg-cyan-950/60 border border-[#00f0ff]/50 shadow-sm shadow-[#00f0ff]/20 font-semibold font-orbitron'
+                    ? 'text-cyan-300 bg-slate-900 border border-slate-700/80 shadow-sm font-semibold'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent'
                 }`}
               >
@@ -92,8 +92,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {link.badge && (
                   <span className={`text-[8px] font-mono px-1 py-0.2 rounded font-bold ${
                     link.badge === 'ACTIVE' 
-                      ? 'bg-emerald-950 text-[#00ff9d] border border-[#00ff9d]/40' 
-                      : 'bg-amber-950 text-[#ffe600] border border-[#ffe600]/40'
+                      ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/40' 
+                      : 'bg-amber-950 text-amber-300 border border-amber-500/40'
                   }`}>
                     {link.badge}
                   </span>
@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Direct Contact Button */}
           <button
             onClick={() => handleLinkClick('contact')}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#00f0ff] to-[#9d4edd] hover:opacity-90 text-slate-950 font-bold text-xs transition-all shadow-sm hover:shadow-[#00f0ff]/30 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap font-orbitron cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition-colors shadow-sm whitespace-nowrap cursor-pointer"
           >
             <Send className="w-3.5 h-3.5 shrink-0" />
             <span>{language === 'id' ? 'Hubungi' : 'Contact'}</span>
@@ -171,7 +171,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => handleLinkClick(link.id)}
                   className={`w-full px-3 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-between cursor-pointer ${
                     isActive
-                      ? 'bg-cyan-950/60 text-[#00f0ff] border border-[#00f0ff]/50 font-semibold font-orbitron'
+                      ? 'bg-slate-900 text-cyan-300 border border-slate-700/80 font-semibold'
                       : 'bg-slate-900/60 text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
