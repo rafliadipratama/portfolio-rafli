@@ -25,7 +25,7 @@ export const PERSONAL_INFO = {
   linkedin: "https://linkedin.com/in/rafliadipratama",
   avatar: "/assets/images/Photo362201041.jpg",
   avatarNoBg: "/assets/images/rafli-nobg.png",
-  resumePdf: "/assets/files/CV_Mohamad Rafli Adipratama.pdf",
+  resumePdf: "/assets/files/cv-mohamad-rafli-adipratama.pdf",
   stats: [
     { label: { id: "Tahun Pengalaman", en: "Years Experience" }, value: "4+" },
     { label: { id: "Sistem & Proyek Deployed", en: "Systems Deployed" }, value: "10+" },
@@ -1100,7 +1100,7 @@ export const CERTIFICATES: Certificate[] = [
     title: "Sertifikasi Profesi Digital Marketing",
     issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
     period: "2024 - 2027",
-    credentialUrl: "/assets/files/Sertifikat BNSP Digital Marketing.pdf",
+    credentialUrl: "/assets/files/sertifikat-bnsp-digital-marketing.pdf",
     isPdf: true,
     category: "Professional Government Certification"
   },

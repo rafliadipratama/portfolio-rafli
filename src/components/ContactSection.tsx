@@ -162,7 +162,7 @@ export const ContactSection: React.FC = () => {
               </p>
               <div className="flex gap-2">
                 <a
-                  href="/assets/files/CV_Mohamad Rafli Adipratama.pdf"
+                  href={PERSONAL_INFO.resumePdf}
                   target="_blank"
                   className="px-3.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono transition-colors"
                 >

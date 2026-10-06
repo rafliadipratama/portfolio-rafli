@@ -1,25 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { Navbar, PageId } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PortfolioDirectory } from './components/PortfolioDirectory';
-import { ProjectsGrid } from './components/ProjectsGrid';
-import { ExperienceTimeline } from './components/ExperienceTimeline';
-import { InteractiveEngineeringLabs } from './components/InteractiveEngineeringLabs';
-import { ArchitectureDecisions } from './components/ArchitectureDecisions';
-import { SkillsMatrix } from './components/SkillsMatrix';
-import { GithubTelemetry } from './components/GithubTelemetry';
-import { EducationCertificates } from './components/EducationCertificates';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { TerminalConsole } from './components/TerminalConsole';
-import { CommandPalette } from './components/CommandPalette';
-import { ProjectDetailModal } from './components/ProjectDetailModal';
-import { OdysseusAgentWidget } from './components/OdysseusAgentWidget';
 import { Project } from './types';
 import { PROJECTS } from './data/portfolioData';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+// Code-splitting dynamic page modules & modal widgets
+const ProjectsGrid = lazy(() => import('./components/ProjectsGrid').then(m => ({ default: m.ProjectsGrid })));
+const ExperienceTimeline = lazy(() => import('./components/ExperienceTimeline').then(m => ({ default: m.ExperienceTimeline })));
+const EducationCertificates = lazy(() => import('./components/EducationCertificates').then(m => ({ default: m.EducationCertificates })));
+const InteractiveEngineeringLabs = lazy(() => import('./components/InteractiveEngineeringLabs').then(m => ({ default: m.InteractiveEngineeringLabs })));
+const SkillsMatrix = lazy(() => import('./components/SkillsMatrix').then(m => ({ default: m.SkillsMatrix })));
+const ArchitectureDecisions = lazy(() => import('./components/ArchitectureDecisions').then(m => ({ default: m.ArchitectureDecisions })));
+const GithubTelemetry = lazy(() => import('./components/GithubTelemetry').then(m => ({ default: m.GithubTelemetry })));
+const ContactSection = lazy(() => import('./components/ContactSection').then(m => ({ default: m.ContactSection })));
+const TerminalConsole = lazy(() => import('./components/TerminalConsole').then(m => ({ default: m.TerminalConsole })));
+const CommandPalette = lazy(() => import('./components/CommandPalette').then(m => ({ default: m.CommandPalette })));
+const ProjectDetailModal = lazy(() => import('./components/ProjectDetailModal').then(m => ({ default: m.ProjectDetailModal })));
+const OdysseusAgentWidget = lazy(() => import('./components/OdysseusAgentWidget').then(m => ({ default: m.OdysseusAgentWidget })));
+
+const ModuleLoadingFallback: React.FC = () => (
+  <div className="min-h-[40vh] flex flex-col items-center justify-center py-16">
+    <div className="w-8 h-8 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin mb-3"></div>
+    <span className="text-xs font-mono text-slate-400">Memuat modul halaman...</span>
+  </div>
+);
 
 const PagePagination: React.FC<{
   prev?: { id: PageId; label: string };
@@ -260,7 +269,9 @@ export const AppContent: React.FC = () => {
                     ? 'Katalog aplikasi web, platform streaming LiveEuy, dan sistem tata kelola mutu farmasi yang dibangun dengan standar Clean Code.'
                     : 'Portfolio of production web applications, LiveEuy streaming platform, and compliance architectures.'}
                 />
-                <ProjectsGrid onSelectProject={setSelectedProject} />
+                <Suspense fallback={<ModuleLoadingFallback />}>
+                  <ProjectsGrid onSelectProject={setSelectedProject} />
+                </Suspense>
                 <PagePagination
                   prev={{ id: 'home', label: language === 'id' ? 'Beranda' : 'Home' }}
                   next={{ id: 'experience', label: language === 'id' ? 'Karier & Pengalaman' : 'Career Experience' }}
@@ -284,8 +295,10 @@ export const AppContent: React.FC = () => {
                     ? 'Pengalaman rekayasa perangkat lunak di PT Padepokan 79, manufaktur farmasi PT Solas, dan manufaktur pertahanan PT Pindad.'
                     : 'Direct software engineering track record at PT Padepokan 79, pharmaceutical manufacturing at PT Solas, and defense at PT Pindad.'}
                 />
-                <ExperienceTimeline />
-                <EducationCertificates />
+                <Suspense fallback={<ModuleLoadingFallback />}>
+                  <ExperienceTimeline />
+                  <EducationCertificates />
+                </Suspense>
                 <PagePagination
                   prev={{ id: 'projects', label: language === 'id' ? 'Proyek' : 'Projects' }}
                   next={{ id: 'labs', label: language === 'id' ? 'Laboratorium Interaktif' : 'Interactive Labs' }}
@@ -309,7 +322,9 @@ export const AppContent: React.FC = () => {
                     ? 'Uji coba interaktif: adaptasi video streaming (LiveEuy), sistem anti-rebutan stok flash sale (Marketplace), dan kuis gaya kerja tim (DISC).'
                     : 'Interactive hands-on workbench: test adaptive video streaming (LiveEuy), flash sale anti-overselling lock, and workplace DISC talent quiz.'}
                 />
-                <InteractiveEngineeringLabs />
+                <Suspense fallback={<ModuleLoadingFallback />}>
+                  <InteractiveEngineeringLabs />
+                </Suspense>
                 <PagePagination
                   prev={{ id: 'experience', label: language === 'id' ? 'Karier' : 'Career' }}
                   next={{ id: 'skills', label: language === 'id' ? 'Keahlian & Arsitektur' : 'Skills & Architecture' }}
@@ -333,9 +348,11 @@ export const AppContent: React.FC = () => {
                     ? 'Penguasaan stack web modern, toolings otomatisasi CLI, keputusan arsitektur (ADR), dan aktivitas GitHub terverifikasi.'
                     : 'Fullstack web competencies, CLI toolings, Architecture Decision Records (ADR), and verified GitHub activity.'}
                 />
-                <SkillsMatrix />
-                <ArchitectureDecisions />
-                <GithubTelemetry />
+                <Suspense fallback={<ModuleLoadingFallback />}>
+                  <SkillsMatrix />
+                  <ArchitectureDecisions />
+                  <GithubTelemetry />
+                </Suspense>
                 <PagePagination
                   prev={{ id: 'labs', label: language === 'id' ? 'Laboratorium Labs' : 'Interactive Labs' }}
                   next={{ id: 'contact', label: language === 'id' ? 'Kontak & Hubungi' : 'Contact Directly' }}
@@ -359,7 +376,9 @@ export const AppContent: React.FC = () => {
                     ? 'Mari berdiskusi tentang peluang kerja sama, rekayasa perangkat lunak skala produksi, atau tanya jawab teknis.'
                     : 'Connect directly regarding software engineering opportunities, production web projects, or technical inquiries.'}
                 />
-                <ContactSection />
+                <Suspense fallback={<ModuleLoadingFallback />}>
+                  <ContactSection />
+                </Suspense>
                 <PagePagination
                   prev={{ id: 'skills', label: language === 'id' ? 'Keahlian' : 'Skills' }}
                   next={{ id: 'home', label: language === 'id' ? 'Kembali ke Beranda' : 'Back to Home' }}
@@ -374,29 +393,28 @@ export const AppContent: React.FC = () => {
       {/* Footer */}
       <Footer onNavigate={navigateTo} onOpenTerminal={() => setTerminalOpen(true)} />
 
-      {/* Interactive Terminal Drawer */}
-      <TerminalConsole
-        isOpen={terminalOpen}
-        onClose={() => setTerminalOpen(false)}
-      />
+      {/* Interactive Terminal Drawer, Command Palette, Project Modal & Floating Widget */}
+      <Suspense fallback={null}>
+        <TerminalConsole
+          isOpen={terminalOpen}
+          onClose={() => setTerminalOpen(false)}
+        />
 
-      {/* Fast Command Palette (Ctrl+K) */}
-      <CommandPalette
-        isOpen={paletteOpen}
-        onClose={() => setPaletteOpen(false)}
-        onOpenTerminal={() => setTerminalOpen(true)}
-        onSelectProjectById={handleSelectProjectById}
-        onNavigate={navigateTo}
-      />
+        <CommandPalette
+          isOpen={paletteOpen}
+          onClose={() => setPaletteOpen(false)}
+          onOpenTerminal={() => setTerminalOpen(true)}
+          onSelectProjectById={handleSelectProjectById}
+          onNavigate={navigateTo}
+        />
 
-      {/* Deep Dive Project Architecture Modal */}
-      <ProjectDetailModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
+        <ProjectDetailModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
 
-      {/* Odysseus AI Cyber Agent Floating Widget */}
-      <OdysseusAgentWidget />
+        <OdysseusAgentWidget />
+      </Suspense>
     </div>
   );
 };
