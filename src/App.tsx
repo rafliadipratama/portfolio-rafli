@@ -372,7 +372,7 @@ export const AppContent: React.FC = () => {
       </div>
 
       {/* Footer */}
-      <Footer />
+      <Footer onNavigate={navigateTo} onOpenTerminal={() => setTerminalOpen(true)} />
 
       {/* Interactive Terminal Drawer */}
       <TerminalConsole
