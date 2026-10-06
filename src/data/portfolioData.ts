@@ -4,16 +4,16 @@ export const PERSONAL_INFO = {
   name: "Mohamad Rafli Adipratama",
   shortName: "Rafli Adipratama",
   roleTitle: {
-    id: "Fullstack Web Engineer",
-    en: "Fullstack Web Engineer"
+    id: "Fullstack Web Engineer & AI Agent Developer",
+    en: "Fullstack Web Engineer & AI Agent Developer"
   },
   headline: {
-    id: "Spesialis arsitektur sistem berbasis Laravel, React, dan ekosistem modern. Berpengalaman membangun aplikasi enterprise berstandar industri dengan kontrol akses ketat, workflow approval, dan integrasi API.",
-    en: "Specializing in Laravel, React, and modern full-stack architectures. Experienced in building industrial enterprise web systems with rigorous RBAC, approval workflows, and multi-platform API integrations."
+    id: "Software Engineer Intern di PT Padepokan 79 (MagangHub) & Fullstack Developer. Berpengalaman membangun platform streaming video sinematik (LiveEuy), sistem regulasi industri farmasi CPOB/GMP, serta orkestrasi AI Agent & CLI kustom.",
+    en: "Software Engineer Intern at PT Padepokan 79 (MagangHub) & Fullstack Engineer. Experienced in building cinematic streaming architectures (LiveEuy), pharmaceutical GMP compliance systems, and AI Agentic CLI workflows."
   },
   bio: {
-    id: "Lulusan S1 Teknik Informatika (IPK 3.41) dengan rekam jejak langsung dalam pengembangan software enterprise di industri farmasi dan manufaktur. Terbiasa merancang sistem dari data schema, backend RESTful, hingga UI responsif yang intuitif. Memiliki pemahaman kuat mengenai tata kelola SOP, CPOB/GMP compliance, Spatie RBAC, dan integrasi omnichannel e-commerce.",
-    en: "Informatics Engineering graduate (GPA 3.41 / 4.00) with hands-on track record delivering production-grade enterprise software for pharmaceutical manufacturing. Experienced in full lifecycle development from database modeling and RESTful API architecture to responsive interfaces. Strong command of RBAC security policies, audit trails, and omnichannel API synchronization."
+    id: "Lulusan S1 Teknik Informatika (IPK 3.41) yang saat ini aktif sebagai Software Engineer Intern di PT Padepokan 79 (MagangHub). Berpengalaman langsung merancang sistem enterprise di industri manufaktur farmasi, platform streaming media HLS modern, hingga automasi AI multi-agent dan kustomisasi CLI. Memiliki pemahaman mendalam tentang Clean Architecture, Spatie RBAC, dan integrasi API skala produksi.",
+    en: "Informatics Engineering graduate (GPA 3.41 / 4.00), currently Software Engineer Intern at PT Padepokan 79 (MagangHub). Proven track record delivering enterprise pharmaceutical manufacturing systems, modern cinematic HLS streaming platforms, and multi-agent AI CLI automation. Strong mastery of Clean Architecture, Spatie RBAC, and production-grade API integrations."
   },
   location: "Bandung, Indonesia",
   timezone: "Asia/Jakarta (UTC+7)",
@@ -28,13 +28,119 @@ export const PERSONAL_INFO = {
   resumePdf: "/assets/files/CV_Mohamad Rafli Adipratama.pdf",
   stats: [
     { label: { id: "Tahun Pengalaman", en: "Years Experience" }, value: "4+" },
-    { label: { id: "Sistem & Proyek Selesai", en: "Systems Delivered" }, value: "9+" },
+    { label: { id: "Sistem & Proyek Deployed", en: "Systems Deployed" }, value: "10+" },
     { label: { id: "Level RBAC Enterprise", en: "Enterprise RBAC Levels" }, value: "6" },
     { label: { id: "IPK Kelulusan S1", en: "Academic GPA" }, value: "3.41" }
   ]
 };
 
 export const PROJECTS: Project[] = [
+  {
+    id: "liveeuy-streaming",
+    title: "LiveEuy — Cinematic Streaming & VOD Platform",
+    category: "react",
+    featured: true,
+    badge: "Cinema & VOD Engine",
+    role: "Lead Frontend & Streaming Engineer",
+    tagline: {
+      id: "Platform streaming video on-demand (VOD) dan sinema online modern dengan HLS adaptive playback & ambient theater glow.",
+      en: "Modern cinematic video-on-demand (VOD) streaming platform with HLS adaptive playback & ambient theater lighting."
+    },
+    description: {
+      id: "Platform streaming sinematik generasi baru yang menghadirkan pemutar video HLS.js adaptif, ambient lighting glow dinamis di sekitar layar, scrubbing timeline instan dengan preview gambar, personalisasi Continue Watching, serta 9 modul Admin Studio CMS dengan proteksi RBAC.",
+      en: "Next-gen cinematic web streaming platform delivering HLS.js adaptive bitrate player, real-time ambient lighting glow, timeline preview scrubbing, dynamic catalog recommendations, and 9-module modular Admin Studio CMS."
+    },
+    metrics: [
+      "HLS.js Adaptive Bitrate & Multi-Resolution (4K UHD, 1080p, 720p)",
+      "Dynamic Ambient Lighting Glow effect real-time ala bioskop",
+      "9 Modul Modular Admin Studio CMS (Protected by RBAC)"
+    ],
+    impactHighlights: [
+      { id: "Zero Latency Video Scrubbing", en: "Zero Latency Video Scrubbing" },
+      { id: "Ambient Cinema Glow", en: "Ambient Cinema Glow" },
+      { id: "9 Modul Admin Studio CMS", en: "9-Module Admin Studio CMS" }
+    ],
+    productionCode: {
+      title: {
+        id: "Adaptive HLS Video Engine: Event Listeners & Buffer Synchronization",
+        en: "Adaptive HLS Video Engine: Event Listeners & Buffer Synchronization"
+      },
+      filename: "CinemaPlayerEngine.tsx",
+      language: "typescript",
+      snippet: `import Hls from 'hls.js';
+import React, { useEffect, useRef } from 'react';
+
+interface StreamingPlayerProps {
+  sourceUrl: string;
+  onQualityLevelChange?: (level: number) => void;
+}
+
+export const CinemaPlayerEngine: React.FC<StreamingPlayerProps> = ({ sourceUrl, onQualityLevelChange }) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (Hls.isSupported()) {
+      const hls = new Hls({
+        capLevelToPlayerSize: true,
+        autoStartLoad: true,
+        maxBufferLength: 30,
+      });
+
+      hls.loadSource(sourceUrl);
+      hls.attachMedia(video);
+
+      hls.on(Hls.Events.MANIFEST_PARSED, (_, data) => {
+        // Auto-negotiate optimum starting bitrate
+        console.log(\`[LiveEuy Engine] Stream Manifest ready, levels: \${data.levels.length}\`);
+      });
+
+      hls.on(Hls.Events.LEVEL_SWITCHED, (_, data) => {
+        onQualityLevelChange?.(data.level);
+      });
+
+      return () => {
+        hls.destroy();
+      };
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      // Native Apple HLS Safari fallback
+      video.src = sourceUrl;
+    }
+  }, [sourceUrl, onQualityLevelChange]);
+
+  return <video ref={videoRef} className="w-full h-full object-cover rounded-xl shadow-2xl" playsInline />;
+};`,
+      rationale: {
+        id: "Mengintegrasikan HLS.js dengan penyesuaian otomatis terhadap ukuran frame pemutar dan buffering cerdas, mencegah frame drop pada koneksi fluktuatif.",
+        en: "Seamlessly binds HLS.js with dynamic player-size level capping and intelligent buffering, eliminating frame drops across fluctuating network throughput."
+      }
+    },
+    architecture: {
+      id: "Arsitektur frontend modular React 18 + TypeScript + Vite, Tailwind CSS, hls.js untuk adaptive video stream, Context API untuk watch states & local persistence, serta Route Guard RBAC untuk perlindungan rute admin.",
+      en: "Modular React 18 architecture with Vite, Tailwind CSS, hls.js streaming core, reactive WatchContext state persistence, and RBAC-guarded admin studio routing."
+    },
+    keyFeatures: {
+      id: [
+        "Advanced Cinema Video Player dengan Dynamic Ambient Glow & Scrubbing Preview",
+        "Dukungan Adaptive Bitrate HLS (.m3u8) dan MP4 Native Stream",
+        "Hero Showcase dengan rotasi otomatis trailer & Ken Burns effect",
+        "Lanjutkan Menonton (Continue Watching) berbasis LocalStorage WatchContext",
+        "Admin Studio CMS 9-Modul dengan proteksi Role-Based Access Control (RBAC)"
+      ],
+      en: [
+        "Advanced Cinema Video Player with Dynamic Ambient Glow & Scrubbing Preview",
+        "Adaptive Bitrate HLS (.m3u8) & native MP4 stream support",
+        "Hero Showcase with auto-rotating video teaser & Ken Burns effect",
+        "Continue Watching watch history tracking with LocalStorage synchronization",
+        "9-Module Admin Studio CMS secured by Role-Based Access Control (RBAC)"
+      ]
+    },
+    technologies: ["React 18", "TypeScript", "Tailwind CSS", "HLS.js", "Vite", "Lucide React", "Framer Motion"],
+    image: "/assets/images/liveeuy-showcase.jpg",
+    githubUrl: "https://github.com/rafliadipratama/LiveEuy"
+  },
   {
     id: "e-document-system",
     title: "e-Document Management System",
@@ -542,19 +648,56 @@ class MarketplaceOrderConsumer
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: "exp-padepokan79",
+    company: "PT. Padepokan 79",
+    position: {
+      id: "Software Engineer Intern (MagangHub)",
+      en: "Software Engineer Intern (MagangHub)"
+    },
+    period: "Feb 2026 - Sekarang",
+    type: {
+      id: "Magang Bersertifikat (MagangHub)",
+      en: "Certified Internship (MagangHub)"
+    },
+    location: "Bandung, Indonesia",
+    current: true,
+    summary: {
+      id: "Mengikuti program internship intensif MagangHub di PT Padepokan 79 yang berfokus pada pengembangan sistem enterprise terstandarisasi industri, Clean Architecture, agile software development, dan kolaborasi tim rekayasa perangkat lunak modern.",
+      en: "Participating in the intensive MagangHub certified software engineering internship program at PT Padepokan 79, specializing in industry-standard enterprise systems, Clean Architecture, and modern agile team delivery."
+    },
+    projects: [
+      {
+        name: "Enterprise Software Engineering & Modern Fullstack Practice",
+        highlights: {
+          id: [
+            "Menerapkan standar Clean Code, prinsip SOLID, dan arsitektur modular pada pengembangan aplikasi web modern skala enterprise.",
+            "Berkolaborasi dalam tim rekayasa perangkat lunak mengimplementasikan sprint agile, code reviews, dan integrasi API RESTful.",
+            "Eksplorasi dan adopsi alat bantu modern (termasuk CLI automasi & AI toolings) untuk akselerasi siklus pengembangan perangkat lunak."
+          ],
+          en: [
+            "Applying Clean Code standards, SOLID design principles, and modular architecture across modern enterprise web stacks.",
+            "Collaborating within software engineering teams across agile sprints, pull request code reviews, and robust RESTful API pipelines.",
+            "Exploring and adopting modern tooling (including CLI automation & agent workflows) to accelerate software delivery cycles."
+          ]
+        }
+      }
+    ],
+    stack: ["TypeScript", "React", "Node.js", "Clean Architecture", "RESTful APIs", "Git", "Agile/Scrum"]
+  },
+  {
     id: "exp-solas",
     company: "PT. Solas Langgeng Sejahtera",
     position: {
       id: "Fullstack Web Developer",
       en: "Fullstack Web Developer"
     },
-    period: "Agu 2025 - Sekarang",
+    period: "Agu 2025 - Jan 2026",
     type: {
       id: "Penuh Waktu (Full-time)",
       en: "Full-time"
     },
     location: "Bandung, Indonesia",
-    current: true,
+    current: false,
     summary: {
       id: "Memimpin perancangan dan implementasi infrastruktur sistem web enterprise untuk manufaktur farmasi, meliputi kepatuhan mutu (e-Document CPOB), portal HR ATS, serta e-commerce terintegrasi marketplace.",
       en: "Directing the architecture and implementation of enterprise web systems for pharmaceutical manufacturing, including quality regulatory compliance (e-Document GMP), HR ATS infrastructure, and omnichannel e-commerce."
@@ -893,6 +1036,58 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         description: {
           id: "Penerjemahan pixel-perfect desain UI/UX menjadi komponen web responsif dan interaktif.",
           en: "Pixel-perfect translation of design specifications into accessible, high-performance responsive components."
+        }
+      }
+    ]
+  },
+  {
+    category: {
+      id: "AI Engineering & CLI Tooling",
+      en: "AI Engineering & CLI Tooling"
+    },
+    skills: [
+      {
+        name: "Antigravity CLI & Statuslines",
+        level: "Tingkat Lanjut",
+        experienceYears: "2026",
+        icon: "terminal",
+        color: "#00f0ff",
+        description: {
+          id: "Kustomisasi CLI statusline HUD real-time (agy-statusline), pemantauan kuota model 3P/Gemini, context window tracking, dan hook scripting.",
+          en: "Real-time CLI statusline HUD customization (agy-statusline), 3P/Gemini quota monitoring, context window telemetry, and shell hooks."
+        }
+      },
+      {
+        name: "Autonomous Agent Orchestration",
+        level: "Mahir",
+        experienceYears: "2026",
+        icon: "cpu",
+        color: "#ff007f",
+        description: {
+          id: "Multi-agent task delegation, prompt engineering, automated task execution, and autonomous problem diagnosis.",
+          en: "Multi-agent task delegation, prompt engineering, automated task execution, and autonomous problem diagnosis."
+        }
+      },
+      {
+        name: "Codebase Knowledge Graphs (Graphify)",
+        level: "Mahir",
+        experienceYears: "2026",
+        icon: "network",
+        color: "#ffe600",
+        description: {
+          id: "Analisis AST kode, visualisasi arsitektur sistem, shortest path dependency tracing, dan dokumentasi otomatis berbasis graf.",
+          en: "Code AST analysis, system architecture mapping, shortest path dependency tracing, and automated graph-based documentation."
+        }
+      },
+      {
+        name: "Clean Code & AI Refactoring",
+        level: "Tingkat Lanjut",
+        experienceYears: "2026",
+        icon: "code",
+        color: "#00ff9d",
+        description: {
+          id: "Penerapan clean-code-javascript, composability, immutability, refaktorisasi aman (safe-refactor), dan eliminasi AI slop.",
+          en: "Adherence to clean-code principles, composability, immutability, behavior-preserving refactoring, and concise human writing."
         }
       }
     ]

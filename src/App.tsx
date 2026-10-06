@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
+import { TelemetryBar } from './components/TelemetryBar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { WorkflowSimulator } from './components/WorkflowSimulator';
-import { DiscCalculator } from './components/DiscCalculator';
-import { ApiPlayground } from './components/ApiPlayground';
+import { PortfolioDirectory } from './components/PortfolioDirectory';
 import { ProjectsGrid } from './components/ProjectsGrid';
-import { ArchitectureDecisions } from './components/ArchitectureDecisions';
-import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
+import { InteractiveEngineeringLabs } from './components/InteractiveEngineeringLabs';
+import { ArchitectureDecisions } from './components/ArchitectureDecisions';
 import { SkillsMatrix } from './components/SkillsMatrix';
 import { GithubTelemetry } from './components/GithubTelemetry';
 import { EducationCertificates } from './components/EducationCertificates';
@@ -16,6 +15,8 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { TerminalConsole } from './components/TerminalConsole';
 import { CommandPalette } from './components/CommandPalette';
+import { ProjectDetailModal } from './components/ProjectDetailModal';
+import { OdysseusAgentWidget } from './components/OdysseusAgentWidget';
 import { Project } from './types';
 import { PROJECTS } from './data/portfolioData';
 
@@ -52,25 +53,47 @@ export const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#070a12] text-slate-200 selection:bg-sky-500 selection:text-slate-950 font-sans">
+    <div className="min-h-screen bg-[#050713] text-slate-200 selection:bg-[#00f0ff] selection:text-slate-950 font-sans arcade-scanlines">
+      {/* Top Arcade Telemetry & HUD Bar */}
+      <TelemetryBar
+        onOpenTerminal={() => setTerminalOpen(true)}
+        onOpenPalette={() => setPaletteOpen(true)}
+      />
+
       {/* Main Single-Layer Navigation */}
       <Navbar
         onOpenPalette={() => setPaletteOpen(true)}
         onOpenTerminal={() => setTerminalOpen(true)}
       />
 
-      {/* Main Content Flow */}
+      {/* Main Content Flow - Clean Architecture & User Centric Order */}
       <main>
+        {/* 1. Hero Overview */}
         <Hero onOpenTerminal={() => setTerminalOpen(true)} />
-        <WorkflowSimulator />
-        <DiscCalculator />
-        <ApiPlayground />
+
+        {/* 2. Visual System Directory & Roadmap (Eliminates visitor confusion) */}
+        <PortfolioDirectory />
+
+        {/* 3. Featured Production Systems (LiveEuy, e-Doc CPOB, Solas ATS) */}
         <ProjectsGrid onSelectProject={setSelectedProject} />
-        <ArchitectureDecisions />
+
+        {/* 4. Career Quests & Industrial Track Record (PT Padepokan 79, PT Solas, PT Pindad) */}
         <ExperienceTimeline />
+
+        {/* 5. Unified Interactive Engineering Labs Suite (CPOB Sim, DISC Calculator, Mock REST API) */}
+        <InteractiveEngineeringLabs />
+
+        {/* 6. Technical Competencies & AI Agent CLI Matrix */}
         <SkillsMatrix />
+
+        {/* 7. Architecture Decisions & Technical Rationale */}
+        <ArchitectureDecisions />
+
+        {/* 8. Telemetry & Credentials */}
         <GithubTelemetry />
         <EducationCertificates />
+
+        {/* 9. Contact */}
         <ContactSection />
       </main>
 
@@ -96,6 +119,9 @@ export const AppContent: React.FC = () => {
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
+
+      {/* Odysseus AI Cyber Agent Floating Widget */}
+      <OdysseusAgentWidget />
     </div>
   );
 };

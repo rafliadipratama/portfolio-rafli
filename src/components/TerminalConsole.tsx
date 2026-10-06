@@ -19,11 +19,22 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState<CommandOutput[]>([
     {
-      command: 'system --init',
+      command: 'system --init --arcade',
       output: (
-        <div className="text-slate-300">
-          <div>🚀 <span className="text-emerald-400 font-bold">RafliDev CLI v2.4.0</span> (x86_64-node-react-ts)</div>
-          <div className="text-slate-400 mt-1">Type <span className="text-sky-400 font-bold">help</span> to view available system commands.</div>
+        <div className="space-y-1.5 text-slate-300 font-mono">
+          <div className="text-[#00f0ff] font-orbitron font-bold">
+            🕹️ RAF-CYBERPUNK TERMINAL v3.0 [ARCADE // ANTIGRAVITY ENGINE]
+          </div>
+          <div className="p-2 rounded bg-[#060a1e] border border-[#00f0ff]/30 text-xs">
+            <span className="text-[#00f0ff] font-semibold">🌐 3P: <span className="text-[#00ff9d]">100.0%</span></span>
+            <span className="text-slate-600 mx-2">│</span>
+            <span className="text-[#ffe600] font-semibold">🧠 0% ctx</span>
+            <span className="text-slate-600 mx-2">│</span>
+            <span className="text-[#ff007f] font-semibold">STAGE: PT PADEPOKAN 79 (MAGANGHUB)</span>
+          </div>
+          <div className="text-slate-400 text-xs">
+            Type <span className="text-[#00f0ff] font-bold">help</span> to view available system commands. Try <span className="text-[#00ff9d] font-bold">status</span> or <span className="text-[#ff007f] font-bold">liveeuy</span>!
+          </div>
         </div>
       )
     }
@@ -64,16 +75,58 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
     switch (cmd) {
       case 'help':
         resultNode = (
-          <div className="space-y-1 text-slate-300">
-            <div className="text-sky-400 font-bold">Available Commands:</div>
-            <div>• <span className="text-emerald-400 font-mono">bio</span> - Overview of Rafli's professional profile</div>
-            <div>• <span className="text-emerald-400 font-mono">skills</span> - Display technical skill matrix</div>
-            <div>• <span className="text-emerald-400 font-mono">projects</span> - List enterprise & web software systems</div>
-            <div>• <span className="text-emerald-400 font-mono">exp</span> - Display industrial work history</div>
-            <div>• <span className="text-emerald-400 font-mono">contact</span> - Output direct contact channels</div>
-            <div>• <span className="text-emerald-400 font-mono">sudo hire</span> - Authorize hiring pipeline (Easter Egg)</div>
-            <div>• <span className="text-emerald-400 font-mono">clear</span> - Clear terminal session output</div>
-            <div>• <span className="text-emerald-400 font-mono">exit</span> - Close terminal drawer</div>
+          <div className="space-y-1 text-slate-300 font-mono">
+            <div className="text-[#00f0ff] font-bold font-orbitron">Available System Commands:</div>
+            <div>• <span className="text-[#00ff9d] font-mono">status</span> - Inspect real-time Antigravity 3P quota & context HUD</div>
+            <div>• <span className="text-[#00ff9d] font-mono">liveeuy</span> - Inspect LiveEuy cinematic streaming architecture</div>
+            <div>• <span className="text-[#00ff9d] font-mono">padepokan</span> - View PT Padepokan 79 internship profile</div>
+            <div>• <span className="text-[#00ff9d] font-mono">bio</span> - Overview of Rafli's professional profile</div>
+            <div>• <span className="text-[#00ff9d] font-mono">skills</span> - Display tech stack & AI agentic skills matrix</div>
+            <div>• <span className="text-[#00ff9d] font-mono">projects</span> - List deployed systems & streaming engines</div>
+            <div>• <span className="text-[#00ff9d] font-mono">exp</span> - Display industrial work history</div>
+            <div>• <span className="text-[#00ff9d] font-mono">contact</span> - Output direct communication channels</div>
+            <div>• <span className="text-[#00ff9d] font-mono">sudo hire</span> - Authorize recruitment pipeline (Easter Egg)</div>
+            <div>• <span className="text-[#00ff9d] font-mono">clear</span> - Clear terminal session output</div>
+            <div>• <span className="text-[#00ff9d] font-mono">exit</span> - Close terminal drawer</div>
+          </div>
+        );
+        break;
+
+      case 'status':
+      case 'quota':
+        resultNode = (
+          <div className="p-3 rounded bg-[#070b22] border border-[#00f0ff]/40 text-slate-200 font-mono space-y-1.5">
+            <div className="text-[#00f0ff] font-bold font-orbitron">🚀 ANTIGRAVITY TELEMETRY STATUSLINE</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+              <div>⚡ <span className="text-slate-400">3P Quota (Claude/GPT):</span> <span className="text-[#00ff9d] font-bold">100.0%</span></div>
+              <div>⚡ <span className="text-slate-400">Gemini Rolling Quota:</span> <span className="text-[#00ff9d] font-bold">100.0%</span></div>
+              <div>🧠 <span className="text-slate-400">Context Window Used:</span> <span className="text-[#ffe600] font-bold">0% ctx</span></div>
+              <div>🕹️ <span className="text-slate-400">Active Quest:</span> <span className="text-[#ff007f] font-bold">PT Padepokan 79</span></div>
+            </div>
+            <div className="text-[11px] text-slate-400 border-t border-slate-800 pt-1 mt-1">
+              Powered by custom `agy-statusline` and Antigravity Agentic Tooling.
+            </div>
+          </div>
+        );
+        break;
+
+      case 'liveeuy':
+        resultNode = (
+          <div className="p-3 rounded bg-[#090d28] border border-[#ff007f]/40 text-slate-200 font-mono space-y-1 text-xs">
+            <div className="text-[#ff007f] font-bold font-orbitron">🎬 LIVEEUY STREAMING PLATFORM</div>
+            <div>Stack: React 18, TypeScript, Tailwind CSS, HLS.js, Lucide Icons</div>
+            <div>Key Tech: Real-time Ambient Lighting Glow, Adaptive HLS Bitrate, 9-module Admin CMS</div>
+            <div>Repo: <a href="https://github.com/rafliadipratama/LiveEuy" target="_blank" className="text-[#00f0ff] underline">github.com/rafliadipratama/LiveEuy</a></div>
+          </div>
+        );
+        break;
+
+      case 'padepokan':
+        resultNode = (
+          <div className="p-3 rounded bg-[#070b22] border border-[#ffe600]/40 text-slate-200 font-mono space-y-1 text-xs">
+            <div className="text-[#ffe600] font-bold font-orbitron">🏢 PT PADEPOKAN 79 (MAGANGHUB)</div>
+            <div>Role: Software Engineer Intern (MagangHub / MSIB)</div>
+            <div>Focus: Clean Architecture, Enterprise Web Development, Agile Engineering, and System Scalability.</div>
           </div>
         );
         break;
@@ -81,7 +134,7 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'bio':
         resultNode = (
           <div className="space-y-2 text-slate-300">
-            <div className="font-bold text-sky-400">{PERSONAL_INFO.name} ({PERSONAL_INFO.roleTitle[language]})</div>
+            <div className="font-bold text-[#00f0ff] font-orbitron">{PERSONAL_INFO.name} ({PERSONAL_INFO.roleTitle[language]})</div>
             <div className="text-slate-300 leading-relaxed">{PERSONAL_INFO.bio[language]}</div>
             <div className="text-slate-400 text-xs">Based in {PERSONAL_INFO.location} • {PERSONAL_INFO.timezone}</div>
           </div>
@@ -93,8 +146,8 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
           <div className="space-y-3">
             {SKILL_CATEGORIES.map((c, idx) => (
               <div key={idx} className="space-y-1">
-                <div className="text-amber-400 font-bold font-mono"># {c.category[language]}</div>
-                <div className="text-slate-300">
+                <div className="text-[#ffe600] font-bold font-mono"># {c.category[language]}</div>
+                <div className="text-slate-300 text-xs">
                   {c.skills.map(s => `${s.name} (${s.experienceYears})`).join(', ')}
                 </div>
               </div>
@@ -106,10 +159,10 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'projects':
         resultNode = (
           <div className="space-y-2">
-            <div className="text-sky-400 font-bold">Deployed Enterprise Systems & Apps:</div>
+            <div className="text-[#00f0ff] font-bold font-orbitron">Deployed Systems & Streaming Engines:</div>
             {PROJECTS.map(p => (
               <div key={p.id} className="text-xs">
-                <span className="text-emerald-400 font-mono font-bold">[{p.category.toUpperCase()}]</span>{' '}
+                <span className="text-[#00ff9d] font-mono font-bold">[{p.category.toUpperCase()}]</span>{' '}
                 <span className="text-slate-100 font-bold">{p.title}</span> -{' '}
                 <span className="text-slate-400">{p.tagline[language]}</span>
               </div>
@@ -122,9 +175,12 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
         resultNode = (
           <div className="space-y-2 text-xs">
             {EXPERIENCES.map(e => (
-              <div key={e.id} className="p-2 rounded bg-slate-900/60 border border-slate-800">
-                <div className="font-bold text-slate-100">{e.company}</div>
-                <div className="text-sky-400">{e.position[language]} | {e.period}</div>
+              <div key={e.id} className="p-2.5 rounded bg-[#090d26] border border-[#1c2452]">
+                <div className="font-bold text-slate-100 flex items-center justify-between">
+                  <span>{e.company}</span>
+                  {e.current && <span className="text-[10px] text-[#00ff9d] font-mono border border-[#00ff9d]/40 px-1.5 py-0.2 rounded">CURRENT</span>}
+                </div>
+                <div className="text-[#00f0ff]">{e.position[language]} | {e.period}</div>
                 <div className="text-slate-400 mt-1">{e.summary[language]}</div>
               </div>
             ))}
@@ -135,11 +191,11 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'contact':
         resultNode = (
           <div className="space-y-1 text-slate-300 font-mono text-xs">
-            <div>Email: <a href={`mailto:${PERSONAL_INFO.email}`} className="text-sky-400 underline">{PERSONAL_INFO.email}</a></div>
-            <div>WhatsApp: <a href={PERSONAL_INFO.whatsappUrl} target="_blank" className="text-emerald-400 underline">{PERSONAL_INFO.phone}</a></div>
-            <div>GitHub: <a href={PERSONAL_INFO.github} target="_blank" className="text-sky-400 underline">{PERSONAL_INFO.github}</a></div>
-            <div>GitLab: <a href={PERSONAL_INFO.gitlab} target="_blank" className="text-orange-400 underline">{PERSONAL_INFO.gitlab}</a></div>
-            <div>LinkedIn: <a href={PERSONAL_INFO.linkedin} target="_blank" className="text-sky-400 underline">{PERSONAL_INFO.linkedin}</a></div>
+            <div>Email: <a href={`mailto:${PERSONAL_INFO.email}`} className="text-[#00f0ff] underline">{PERSONAL_INFO.email}</a></div>
+            <div>WhatsApp: <a href={PERSONAL_INFO.whatsappUrl} target="_blank" className="text-[#00ff9d] underline">{PERSONAL_INFO.phone}</a></div>
+            <div>GitHub: <a href={PERSONAL_INFO.github} target="_blank" className="text-[#00f0ff] underline">{PERSONAL_INFO.github}</a></div>
+            <div>GitLab: <a href={PERSONAL_INFO.gitlab} target="_blank" className="text-[#ff5400] underline">{PERSONAL_INFO.gitlab}</a></div>
+            <div>LinkedIn: <a href={PERSONAL_INFO.linkedin} target="_blank" className="text-[#00f0ff] underline">{PERSONAL_INFO.linkedin}</a></div>
           </div>
         );
         break;
@@ -158,15 +214,15 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'sudo':
         if (args[0] === 'hire') {
           confetti({
-            particleCount: 100,
-            spread: 90,
+            particleCount: 120,
+            spread: 100,
             origin: { y: 0.5 }
           });
           resultNode = (
-            <div className="text-emerald-400 font-bold space-y-1">
-              <div>🎉 [SUCCESS] Candidate unlocked! Excellent decision.</div>
+            <div className="text-[#00ff9d] font-bold space-y-1">
+              <div>🎉 [LEVEL UP // SUCCESS] Candidate unlocked! Outstanding choice.</div>
               <div className="text-slate-300 font-normal">
-                Direct route: Send message via <a href={PERSONAL_INFO.whatsappUrl} target="_blank" className="text-sky-400 underline">WhatsApp</a> or email <a href={`mailto:${PERSONAL_INFO.email}`} className="text-sky-400 underline">{PERSONAL_INFO.email}</a>!
+                Direct channel: Reach out via <a href={PERSONAL_INFO.whatsappUrl} target="_blank" className="text-[#00f0ff] underline">WhatsApp</a> or email <a href={`mailto:${PERSONAL_INFO.email}`} className="text-[#00f0ff] underline">{PERSONAL_INFO.email}</a>!
               </div>
             </div>
           );
@@ -178,7 +234,7 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       default:
         resultNode = (
           <div className="text-rose-400 font-mono">
-            command not found: '{cmd}'. Type <span className="text-sky-400 underline cursor-pointer" onClick={() => setInputVal('help')}>help</span> for list.
+            command not found: '{cmd}'. Type <span className="text-[#00f0ff] underline cursor-pointer" onClick={() => setInputVal('help')}>help</span> for list.
           </div>
         );
     }
@@ -210,18 +266,18 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/75 backdrop-blur-sm animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-150">
       <div
-        className={`w-full bg-[#070b14] border border-slate-700 rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300 ${
+        className={`w-full bg-[#050716] border border-[#00f0ff]/50 rounded-2xl shadow-2xl shadow-[#00f0ff]/20 flex flex-col overflow-hidden transition-all duration-300 ${
           isMaximized ? 'h-[95vh] max-w-[95vw]' : 'h-[600px] max-w-3xl'
         }`}
       >
         {/* Terminal Title Bar */}
-        <div className="px-4 py-3 bg-slate-900 border-b border-slate-800 flex items-center justify-between select-none">
+        <div className="px-4 py-3 bg-[#080d26] border-b border-[#1c2452] flex items-center justify-between select-none">
           <div className="flex items-center gap-2">
-            <TerminalIcon className="w-4 h-4 text-emerald-400" />
-            <span className="text-xs font-mono font-bold text-slate-200">
-              rafli@enterprise-gateway:~ (bash)
+            <TerminalIcon className="w-4 h-4 text-[#00f0ff]" />
+            <span className="text-xs font-mono font-bold text-[#00f0ff] font-orbitron">
+              rafli@cyber-arcade:~ [ANTIGRAVITY_CLI]
             </span>
           </div>
 
@@ -244,22 +300,22 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
         </div>
 
         {/* Terminal Body */}
-        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-4 text-slate-200 select-text">
+        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-4 text-slate-200 select-text bg-[#050716]">
           {history.map((item, idx) => (
             <div key={idx} className="space-y-1.5">
-              <div className="flex items-center gap-2 text-sky-400">
-                <span className="text-emerald-400 font-bold">rafli@solas-sys:~$</span>
+              <div className="flex items-center gap-2 text-[#00f0ff]">
+                <span className="text-[#00ff9d] font-bold">rafli@cyber-arcade:~$</span>
                 <span className="text-slate-100">{item.command}</span>
               </div>
-              <div className="pl-4 border-l border-slate-800 py-0.5">{item.output}</div>
+              <div className="pl-4 border-l border-[#1c2452] py-0.5">{item.output}</div>
             </div>
           ))}
           <div ref={bottomRef} />
         </div>
 
         {/* Terminal Input Line */}
-        <form onSubmit={handleCommand} className="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
-          <span className="text-emerald-400 font-mono text-xs font-bold pl-1">rafli@solas-sys:~$</span>
+        <form onSubmit={handleCommand} className="p-3 bg-[#080d26] border-t border-[#1c2452] flex items-center gap-2">
+          <span className="text-[#00ff9d] font-mono text-xs font-bold pl-1 font-orbitron">rafli@cyber-arcade:~$</span>
           <input
             ref={inputRef}
             type="text"
@@ -267,9 +323,9 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
             onChange={e => setInputVal(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Type 'help' or any command..."
-            className="flex-1 bg-transparent text-xs font-mono text-slate-100 focus:outline-none placeholder-slate-600"
+            className="flex-1 bg-transparent text-xs font-mono text-slate-100 focus:outline-none placeholder-slate-500"
           />
-          <button type="submit" className="p-1 text-slate-400 hover:text-sky-400">
+          <button type="submit" className="p-1 text-[#00f0ff] hover:text-white">
             <CornerDownLeft className="w-3.5 h-3.5" />
           </button>
         </form>

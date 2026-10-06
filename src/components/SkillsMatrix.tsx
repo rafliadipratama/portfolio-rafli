@@ -30,6 +30,13 @@ export const SkillsMatrix: React.FC = () => {
           borderColor: 'border-purple-500/20',
           hoverBorder: 'hover:border-purple-500/40 hover:shadow-purple-500/10'
         };
+      case 3:
+        return {
+          icon: <Cpu className="w-4 h-4 text-[#00f0ff]" />,
+          titleColor: 'text-[#00f0ff]',
+          borderColor: 'border-[#00f0ff]/30',
+          hoverBorder: 'hover:border-[#00f0ff]/60 hover:shadow-[#00f0ff]/20'
+        };
       default:
         return {
           icon: <Cpu className="w-4 h-4 text-indigo-400" />,
@@ -41,7 +48,7 @@ export const SkillsMatrix: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 bg-[#070a12] border-b border-slate-800/80 relative">
+    <section id="skills" className="py-20 bg-[#050713] border-b border-[#1c2452] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -52,9 +59,9 @@ export const SkillsMatrix: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-indigo-950/80 to-purple-950/80 border border-indigo-700/50 text-indigo-300 font-mono text-xs mb-3 shadow-sm">
-            <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Technical Capabilities</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-950/80 to-purple-950/80 border border-cyan-500/40 text-cyan-300 font-mono text-xs mb-3 shadow-sm">
+            <Terminal className="w-3.5 h-3.5 text-[#00f0ff]" />
+            <span className="font-orbitron tracking-wider">[SKILL TREE // TECH MATRIX]</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight">
             {language === 'id' ? (

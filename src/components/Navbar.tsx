@@ -73,13 +73,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPalette, onOpenTerminal })
   useEffect(() => {
     const sections = [
       'overview',
+      'projects',
+      'experience',
+      'engineering-labs',
       'workflow-simulator',
       'disc-assessment',
       'api-playground',
-      'projects',
-      'architecture-decisions',
-      'experience',
       'skills',
+      'architecture-decisions',
       'github-telemetry',
       'contact'
     ];
@@ -124,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPalette, onOpenTerminal })
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const isLabActive = ['workflow-simulator', 'disc-assessment', 'api-playground'].includes(activeSection);
+  const isLabActive = ['engineering-labs', 'workflow-simulator', 'disc-assessment', 'api-playground'].includes(activeSection);
 
   const labTools = [
     {
@@ -172,8 +173,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPalette, onOpenTerminal })
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#070a12]/95 backdrop-blur-xl border-b border-slate-800 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]'
-          : 'bg-[#070a12]/85 backdrop-blur-md border-b border-slate-800/70'
+          ? 'bg-[#050713]/95 backdrop-blur-xl border-b border-[#1c2452] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)]'
+          : 'bg-[#050713]/85 backdrop-blur-md border-b border-[#1c2452]/70'
       }`}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
@@ -184,27 +185,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPalette, onOpenTerminal })
           aria-label="Mohamad Rafli Adipratama Portfolio Home"
         >
           <div className="relative shrink-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-600 to-cyan-400 p-[1.5px] shadow-sm shadow-sky-500/20 group-hover:shadow-sky-500/40 transition-all duration-300">
-              <div className="w-full h-full rounded-[9.5px] sm:rounded-[10.5px] bg-[#090e1a] flex items-center justify-center text-sky-400 group-hover:text-white transition-colors">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-[#00f0ff] via-[#9d4edd] to-[#ff007f] p-[1.5px] shadow-sm shadow-[#00f0ff]/30 group-hover:shadow-[#00f0ff]/60 transition-all duration-300">
+              <div className="w-full h-full rounded-[9.5px] sm:rounded-[10.5px] bg-[#070a1e] flex items-center justify-center text-[#00f0ff] group-hover:text-white transition-colors">
                 <Code2 className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </div>
             {/* Live Indicator Dot */}
             <span className="absolute -bottom-0.5 -right-0.5 flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 border border-[#070a12]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00ff9d] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00ff9d] border border-[#050713]"></span>
             </span>
           </div>
 
           <div className="flex flex-col">
-            <div className="flex items-center gap-1 font-bold tracking-tight text-slate-100 group-hover:text-sky-400 transition-colors leading-tight">
-              <span className="text-sm sm:text-base font-extrabold tracking-tight">Rafli</span>
-              <span className="text-sky-400 font-mono text-xs sm:text-sm font-semibold">.dev</span>
+            <div className="flex items-center gap-1 font-bold tracking-tight text-slate-100 group-hover:text-[#00f0ff] transition-colors leading-tight font-orbitron">
+              <span className="text-sm sm:text-base font-extrabold tracking-tight">RAFLI</span>
+              <span className="text-[#00f0ff] font-mono text-xs sm:text-sm font-semibold">.DEV</span>
             </div>
             <div className="hidden xs:flex items-center gap-1.5 text-[9px] sm:text-[10px] text-slate-400 font-mono leading-none mt-0.5">
-              <span>Fullstack Systems</span>
+              <span className="text-cyan-300">Fullstack & AI</span>
               <span className="text-slate-600">•</span>
-              <span className="text-emerald-400 font-medium">Ready</span>
+              <span className="text-[#00ff9d] font-medium font-orbitron">[ARCADE ON]</span>
             </div>
           </div>
         </a>

@@ -13,13 +13,13 @@ interface ProjectsGridProps {
 const getCategoryBadgeStyle = (category: string) => {
   switch (category) {
     case 'laravel':
-      return 'bg-gradient-to-r from-rose-950/90 to-red-950/90 text-rose-300 border-rose-500/50 shadow-sm shadow-rose-500/10';
+      return 'bg-gradient-to-r from-rose-950/90 to-red-950/90 text-rose-300 border-[#ff007f]/50 shadow-sm shadow-[#ff007f]/20';
     case 'react':
-      return 'bg-gradient-to-r from-cyan-950/90 to-sky-950/90 text-cyan-300 border-cyan-500/50 shadow-sm shadow-cyan-500/10';
+      return 'bg-gradient-to-r from-cyan-950/90 to-blue-950/90 text-[#00f0ff] border-[#00f0ff]/50 shadow-sm shadow-[#00f0ff]/20';
     case 'fullstack':
-      return 'bg-gradient-to-r from-purple-950/90 to-indigo-950/90 text-purple-300 border-purple-500/50 shadow-sm shadow-purple-500/10';
+      return 'bg-gradient-to-r from-purple-950/90 to-indigo-950/90 text-purple-300 border-[#9d4edd]/50 shadow-sm shadow-[#9d4edd]/20';
     case 'javascript':
-      return 'bg-gradient-to-r from-amber-950/90 to-yellow-950/90 text-amber-300 border-amber-500/50 shadow-sm shadow-amber-500/10';
+      return 'bg-gradient-to-r from-amber-950/90 to-yellow-950/90 text-amber-300 border-[#ffe600]/50 shadow-sm shadow-[#ffe600]/20';
     default:
       return 'bg-slate-950/90 text-sky-400 border-slate-700/80';
   }
@@ -30,10 +30,10 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   const [filter, setFilter] = useState<'all' | 'laravel' | 'react' | 'fullstack' | 'javascript'>('all');
 
   const filterTabs = [
-    { id: 'all', label: { id: 'Semua Proyek', en: 'All Projects' } },
+    { id: 'all', label: { id: 'Semua Proyek', en: 'All Systems' } },
+    { id: 'react', label: { id: 'React & Streaming', en: 'React & Streaming' } },
     { id: 'laravel', label: { id: 'Laravel & Enterprise', en: 'Laravel & Enterprise' } },
-    { id: 'react', label: { id: 'React & TypeScript', en: 'React & TypeScript' } },
-    { id: 'fullstack', label: { id: 'Fullstack & Omnichannel', en: 'Fullstack & Omnichannel' } },
+    { id: 'fullstack', label: { id: 'Fullstack & ATS', en: 'Fullstack & ATS' } },
     { id: 'javascript', label: { id: 'JavaScript Native', en: 'JavaScript Native' } }
   ];
 
@@ -43,7 +43,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
   });
 
   return (
-    <section id="projects" className="py-20 bg-[#070a12] border-b border-slate-800/80">
+    <section id="projects" className="py-20 bg-[#050713] border-b border-[#1c2452]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading with Scroll Animation */}
@@ -55,22 +55,36 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
           className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-950/60 border border-sky-800/60 text-sky-400 font-mono text-xs mb-3">
-              <Layers className="w-3.5 h-3.5" />
-              <span>Production Code & Systems</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#090e28] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs mb-3 shadow-sm">
+              <Layers className="w-3.5 h-3.5 text-[#00f0ff]" />
+              <span className="font-orbitron tracking-wider">[SYSTEM VAULT // 10+ DEPLOYMENTS]</span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight">
-              {language === 'id' ? 'Koleksi Rekayasa Sistem & Aplikasi' : 'Engineering Portfolio & Production Systems'}
+              {language === 'id' ? (
+                <>
+                  Koleksi Rekayasa Sistem &{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
+                    Aplikasi Produksi
+                  </span>
+                </>
+              ) : (
+                <>
+                  Engineering Portfolio &{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
+                    Production Systems
+                  </span>
+                </>
+              )}
             </h2>
             <p className="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
               {language === 'id'
-                ? 'Sistem nyata yang diterapkan di industri farmasi, e-commerce omnichannel, dan aplikasi web performa tinggi dengan arsitektur teruji.'
-                : 'Real production systems deployed across pharmaceutical manufacturing, omnichannel e-commerce, and high-performance web tooling.'}
+                ? 'Platform streaming video LiveEuy, tata kelola kepatuhan farmasi CPOB, e-commerce omnichannel, dan aplikasi web performa tinggi berstandar industri.'
+                : 'From the LiveEuy cinema streaming platform and pharmaceutical GMP compliance to omnichannel ecommerce and enterprise web architectures.'}
             </p>
           </div>
 
           {/* Filter Pills with Motion Tap */}
-          <div className="flex flex-wrap gap-1.5 p-1 bg-[#0c1220] border border-slate-800 rounded-xl self-start md:self-auto">
+          <div className="flex flex-wrap gap-1.5 p-1.5 bg-[#090e28] border border-[#1c2452] rounded-xl self-start md:self-auto shadow-inner">
             {filterTabs.map(tab => (
               <motion.button
                 key={tab.id}
@@ -78,8 +92,8 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 onClick={() => setFilter(tab.id as any)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all ${
                   filter === tab.id
-                    ? 'bg-gradient-to-r from-sky-400 via-indigo-300 to-cyan-400 text-slate-950 font-bold shadow-md shadow-sky-500/25 ring-1 ring-sky-300'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                    ? 'bg-gradient-to-r from-[#00f0ff] to-[#00b4d8] text-slate-950 font-bold shadow-md shadow-[#00f0ff]/25 font-orbitron'
+                    : 'text-slate-400 hover:text-slate-100 hover:bg-[#121c4e]'
                 }`}
               >
                 {tab.label[language]}
@@ -100,7 +114,7 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
                 whileHover={{ y: -6 }}
-                className="group bg-[#0b101d] rounded-2xl border border-slate-800/90 overflow-hidden flex flex-col transition-all duration-300 hover:border-sky-500/50 hover:shadow-2xl hover:shadow-sky-500/10"
+                className="group bg-[#080d24] rounded-2xl border border-[#1c2452] overflow-hidden flex flex-col transition-all duration-300 hover:border-[#00f0ff]/60 hover:shadow-2xl hover:shadow-[#00f0ff]/15"
               >
                 {/* Image Preview & Badge */}
                 <div className="relative aspect-video w-full overflow-hidden bg-slate-950">
