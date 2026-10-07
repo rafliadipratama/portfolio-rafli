@@ -58,15 +58,15 @@ export const ContactSection: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-950/60 border border-sky-800/60 text-sky-400 font-mono text-xs mb-3">
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>Direct Channels</span>
+            <span>{language === 'id' ? 'Kontak Langsung' : 'Get in Touch'}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight">
-            {language === 'id' ? 'Inisiasi Komunikasi & Rekayasa' : 'Initiate Contact & Engineering Dialogue'}
+            {language === 'id' ? 'Mari Terhubung & Berdiskusi' : "Let's Connect & Work Together"}
           </h2>
           <p className="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
             {language === 'id'
-              ? 'Terbuka untuk peluang Fullstack Engineer, perancangan sistem enterprise kepatuhan tinggi, dan pengembangan web modern.'
-              : 'Available for full-time engineering roles, high-compliance enterprise web systems, and technical consulting.'}
+              ? 'Terbuka untuk peluang Fullstack Engineer (Full-time / Kontrak), perancangan sistem enterprise, dan kolaborasi proyek web modern.'
+              : 'Available for full-time engineering roles, high-reliability enterprise systems, and modern web collaborations.'}
           </p>
         </div>
 
