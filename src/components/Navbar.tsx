@@ -27,11 +27,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   const { language, toggleLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks: { id: PageId; label: { id: string; en: string }; badge?: string }[] = [
+  const navLinks: { id: PageId; label: { id: string; en: string } }[] = [
     { id: 'home', label: { id: 'Beranda', en: 'Home' } },
     { id: 'projects', label: { id: 'Proyek', en: 'Projects' } },
-    { id: 'experience', label: { id: 'Karier', en: 'Career' }, badge: 'ACTIVE' },
-    { id: 'labs', label: { id: 'Labs', en: 'Labs' }, badge: 'LIVE' },
+    { id: 'experience', label: { id: 'Karier', en: 'Career' } },
+    { id: 'labs', label: { id: 'Labs', en: 'Labs' } },
     { id: 'skills', label: { id: 'Keahlian', en: 'Skills' } },
     { id: 'contact', label: { id: 'Kontak', en: 'Contact' } },
   ];
@@ -77,22 +77,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={link.id}
                 onClick={() => handleLinkClick(link.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap flex items-center cursor-pointer ${
                   isActive
                     ? 'text-cyan-300 bg-slate-900 border border-slate-700/80 shadow-sm font-semibold'
                     : 'text-slate-300 hover:text-white hover:bg-slate-800/60 border border-transparent'
                 }`}
               >
                 <span>{link.label[language]}</span>
-                {link.badge && (
-                  <span className={`text-[8px] font-mono px-1 py-0.2 rounded font-bold ${
-                    link.badge === 'ACTIVE' 
-                      ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/40' 
-                      : 'bg-amber-950 text-amber-300 border border-amber-500/40'
-                  }`}>
-                    {link.badge}
-                  </span>
-                )}
               </button>
             );
           })}
@@ -170,14 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : 'bg-slate-900/60 text-slate-300 hover:text-white hover:bg-slate-800'
                   }`}
                 >
-                  <span className="flex items-center gap-2">
-                    <span>{link.label[language]}</span>
-                    {link.badge && (
-                      <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-400">
-                        {link.badge}
-                      </span>
-                    )}
-                  </span>
+                  <span>{link.label[language]}</span>
                   {isActive && <span className="w-2 h-2 rounded-full bg-[#00f0ff]"></span>}
                 </button>
               );
