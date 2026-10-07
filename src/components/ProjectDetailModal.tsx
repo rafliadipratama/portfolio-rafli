@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon, GitlabIcon } from './SocialIcons';
 import { DatabaseSchemaViewer } from './DatabaseSchemaViewer';
+import { InteractiveSystemArchitecture } from './InteractiveSystemArchitecture';
 
 interface ProjectDetailModalProps {
   project: Project | null;
@@ -198,29 +199,25 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
           )}
 
           {activeTab === 'architecture' && (
-            <div className="space-y-5">
+            <div className="space-y-6">
               <div>
                 <h4 className="text-xs font-mono uppercase text-sky-400 mb-2 flex items-center gap-1.5">
                   <Layers className="w-4 h-4" />
-                  {language === 'id' ? 'Pola Rekayasa Perangkat Lunak' : 'Software Design Pattern'}
+                  {language === 'id' ? 'Pola Rekayasa & Alur Sistem' : 'Software Design Pattern & System Flow'}
                 </h4>
-                <p className="text-slate-300 leading-relaxed font-sans">
+                <p className="text-slate-300 leading-relaxed font-sans mb-4">
                   {project.architecture ? project.architecture[language] : (
                     language === 'id'
-                      ? 'Arsitektur modular dengan pemisahan dependensi, middleware keamanan, dan manajemen state terdesentralisasi.'
-                      : 'Modular architecture featuring strict dependency decoupling, security middleware, and reactive state management.'
+                      ? 'Arsitektur modular modern: frontend responsif React 18, microservice Go berkecepatan tinggi, serta integrasi Redis dan relasional database.'
+                      : 'Modern modular architecture: reactive React 18 frontend, high-speed Go microservices, integrated with Redis and relational databases.'
                   )}
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 space-y-2">
-                <div className="text-sky-400">// Architectural Layers</div>
-                <div>├─ Presentation Layer: Responsive Blade / React + Tailwind CSS</div>
-                <div>├─ Authorization: Spatie RBAC Multi-guard with Policy Gates</div>
-                <div>├─ Service & Domain: Business Logic, State Machine Transitions</div>
-                <div>├─ Data Persistence: Relational Schemas, Indexed Foreign Keys</div>
-                <div>└─ External Integrations: Webhook Listeners, PDF Render Engines</div>
-              </div>
+              {/* Interactive System Design Flow Diagram Component */}
+              <InteractiveSystemArchitecture
+                defaultSystemId={project.id === 'liveeuy-streaming' ? 'liveeuy-streaming' : 'marketplace-concurrency'}
+              />
             </div>
           )}
 

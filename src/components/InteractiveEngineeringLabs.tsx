@@ -4,18 +4,21 @@ import { StreamingLab } from './StreamingLab';
 import { MarketplaceInventoryLab } from './MarketplaceInventoryLab';
 import { DiscCalculator } from './DiscCalculator';
 import { PixelDinoRunner } from './PixelDinoRunner';
-import { Play, ShoppingBag, Sliders, FlaskConical, Gamepad2 } from 'lucide-react';
+import { InteractiveSystemArchitecture } from './InteractiveSystemArchitecture';
+import { Play, ShoppingBag, Sliders, FlaskConical, Gamepad2, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const InteractiveEngineeringLabs: React.FC = () => {
   const { language } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'streaming' | 'inventory' | 'disc' | 'dino'>('streaming');
+  const [activeTab, setActiveTab] = useState<'architecture' | 'streaming' | 'inventory' | 'disc' | 'dino'>('architecture');
 
   // Sync with URL hash if user clicked direct anchors
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
-      if (hash === '#streaming-lab' || hash === '#workflow-simulator') {
+      if (hash === '#system-architecture' || hash === '#architecture') {
+        setActiveTab('architecture');
+      } else if (hash === '#streaming-lab' || hash === '#workflow-simulator') {
         setActiveTab('streaming');
       } else if (hash === '#marketplace-lab' || hash === '#api-playground') {
         setActiveTab('inventory');
@@ -33,13 +36,29 @@ export const InteractiveEngineeringLabs: React.FC = () => {
 
   const tabs = [
     {
+      id: 'architecture' as const,
+      hash: '#system-architecture',
+      icon: Cpu,
+      badge: 'SYSTEM DESIGN // REACT & GOLANG',
+      title: {
+        id: '1. Blueprint Arsitektur Sistem (React & Go)',
+        en: '1. System Architecture Blueprint (React & Go)'
+      },
+      desc: {
+        id: 'Diagram interaktif pipeline request dari React 18, Nginx reverse proxy, Go Goroutine microservices, hingga Redis & Database.',
+        en: 'Interactive request pipeline from React 18, Nginx reverse proxy, Go microservices, to Redis & Database layer.'
+      },
+      accentColor: 'bg-indigo-400',
+      activeBorder: 'border-indigo-500/80 text-indigo-300 bg-slate-900 shadow-md'
+    },
+    {
       id: 'streaming' as const,
       hash: '#streaming-lab',
       icon: Play,
       badge: 'LIVEEUY CINEMA STREAMING',
       title: {
-        id: '1. Streaming Video Cerdas & Ambient Glow',
-        en: '1. Smart Streaming & Ambient Glow'
+        id: '2. Streaming Video Cerdas & Ambient Glow',
+        en: '2. Smart Streaming & Ambient Glow'
       },
       desc: {
         id: 'Uji bagaimana video otomatis menyesuaikan resolusi saat sinyal naik-turun agar zero-buffering.',
@@ -54,8 +73,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
       icon: ShoppingBag,
       badge: 'E-COMMERCE & DISTRIBUTED LOCK',
       title: {
-        id: '2. Anti-Rebutan Stok Flash Sale',
-        en: '2. Flash Sale Anti-Overselling Lock'
+        id: '3. Anti-Rebutan Stok Flash Sale',
+        en: '3. Flash Sale Anti-Overselling Lock'
       },
       desc: {
         id: 'Uji bagaimana sistem mencegah barang habis dibeli 2 orang bersamaan di Shopee & Tokopedia.',
@@ -70,8 +89,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
       icon: Sliders,
       badge: 'TALENT FIT & PSIKOMETRI HR',
       title: {
-        id: '3. Radar Gaya Kerja & Kepribadian (DISC)',
-        en: '3. Workplace Style & DISC Radar'
+        id: '4. Radar Gaya Kerja & Kepribadian (DISC)',
+        en: '4. Workplace Style & DISC Radar'
       },
       desc: {
         id: 'Kuis interaktif pemetaan gaya komunikasi dan kecocokan peran di dalam tim kerja.',
@@ -86,8 +105,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
       icon: Gamepad2,
       badge: 'CYBER 2D PIXEL ARCADE',
       title: {
-        id: '4. Cyber Dino 2D Pixel Runner',
-        en: '4. Cyber Dino 2D Pixel Runner'
+        id: '5. Cyber Dino 2D Pixel Runner',
+        en: '5. Cyber Dino 2D Pixel Runner'
       },
       desc: {
         id: 'Game piksel 2D legendaris Chrome T-Rex Jump. Lompat rintangan kaktus & raih skor tertinggi!',
@@ -134,8 +153,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
           </p>
         </div>
 
-        {/* Arcade Workbench Tab Switcher (4 Columns) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+        {/* Arcade Workbench Tab Switcher (5 Columns on Large Displays) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 mb-10">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -193,6 +212,7 @@ export const InteractiveEngineeringLabs: React.FC = () => {
           transition={{ duration: 0.25 }}
           className="rounded-3xl bg-[#06091e] border-2 border-[#1c2452] p-5 sm:p-8 shadow-2xl relative overflow-hidden"
         >
+          {activeTab === 'architecture' && <InteractiveSystemArchitecture />}
           {activeTab === 'streaming' && <StreamingLab />}
           {activeTab === 'inventory' && <MarketplaceInventoryLab />}
           {activeTab === 'disc' && <DiscCalculator />}

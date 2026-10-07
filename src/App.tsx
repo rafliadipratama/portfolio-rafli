@@ -104,6 +104,9 @@ export const AppContent: React.FC = () => {
       hash === 'cyber-dino' ||
       hash === 'dino' ||
       hash === 'trex' ||
+      hash === 'system-architecture' ||
+      hash === 'architecture' ||
+      hash === 'blueprint-architecture' ||
       raw.includes('dino')
     ) {
       return 'labs';

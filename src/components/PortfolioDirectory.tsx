@@ -64,11 +64,11 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
         en: 'Interactive Engineering Labs'
       },
       desc: {
-        id: 'Tiga simulasi interaktif yang mudah dipahami siapa saja: Video Streaming Cerdas (LiveEuy), Anti-Rebutan Stok Flash Sale, dan Kuis Gaya Kerja Tim (DISC).',
-        en: 'Three intuitive real-world simulators: Smart Video Streaming (LiveEuy), Flash Sale Anti-Overselling, and Workplace DISC Talent Quiz.'
+        id: 'Simulasi interaktif langsung: Blueprint Arsitektur Sistem (React & Go), Video Streaming Cerdas (LiveEuy), Anti-Rebutan Stok Flash Sale, Kuis DISC, & Cyber Dino Runner.',
+        en: 'Hands-on interactive simulators: System Architecture Blueprint (React & Go), Smart Video Streaming (LiveEuy), Flash Sale Mutex Lock, DISC Radar, & Cyber Dino Runner.'
       },
       icon: FlaskConical,
-      highlight: 'LiveEuy Stream • Flash Sale Mutex • Kuis DISC'
+      highlight: 'Arsitektur React & Go • Streaming • Mutex'
     },
     {
       id: 'skills',
@@ -80,11 +80,11 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
         en: 'Technical Competencies & Stack'
       },
       desc: {
-        id: 'Keahlian fullstack (TypeScript, React, Laravel), arsitektur modular, integrasi tool modern, dan rekayasa web skala produksi.',
-        en: 'Fullstack competencies (TypeScript, React, Laravel), modular architecture, modern developer tools, and production web systems.'
+        id: 'Keahlian fullstack (React, Go / Golang, Laravel, TypeScript), arsitektur modular, microservices, dan rekayasa web skala produksi.',
+        en: 'Fullstack competencies (React, Go / Golang, Laravel, TypeScript), modular architecture, microservices, and production web systems.'
       },
       icon: Cpu,
-      highlight: 'TypeScript • React • Laravel'
+      highlight: 'React • Go (Golang) • Laravel • TypeScript'
     }
   ];
 

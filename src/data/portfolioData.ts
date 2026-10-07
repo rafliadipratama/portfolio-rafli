@@ -880,6 +880,17 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         }
       },
       {
+        name: "Go (Golang)",
+        level: "Mahir (Go 1.22+)",
+        experienceYears: "2+ Tahun",
+        icon: "golang",
+        color: "#00ADD8",
+        description: {
+          id: "Goroutines & Channels, High-concurrency microservices, Gin/Fiber framework, distributed mutex locking, streaming I/O.",
+          en: "Goroutines & Channels, High-concurrency microservices, Gin/Fiber framework, distributed mutex locking, streaming I/O."
+        }
+      },
+      {
         name: "PHP",
         level: "Mahir (PHP 8.2+)",
         experienceYears: "4+ Tahun",
