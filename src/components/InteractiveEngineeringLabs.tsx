@@ -104,12 +104,12 @@ export const InteractiveEngineeringLabs: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#090e28] border border-[#ffe600]/40 text-[#ffe600] font-mono text-xs mb-3 shadow-sm font-orbitron">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#090e28] border border-[#ffe600]/40 text-[#ffe600] font-mono text-xs mb-3 shadow-sm">
             <FlaskConical className="w-3.5 h-3.5 text-[#ffe600]" />
-            <span>[ARCADE ENGINEERING LABS // REAL-WORLD DEMOS]</span>
+            <span>Simulasi & Lab Rekayasa Interaktif</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight font-orbitron">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-100 tracking-tight font-sans">
             {language === 'id' ? (
               <>
                 Laboratorium Rekayasa:{' '}
@@ -159,13 +159,13 @@ export const InteractiveEngineeringLabs: React.FC = () => {
 
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-mono font-bold tracking-wider opacity-80 font-orbitron">
+                    <span className="text-[10px] font-mono font-bold tracking-wider opacity-80">
                       {tab.badge}
                     </span>
                     <Icon className="w-4 h-4 shrink-0" />
                   </div>
 
-                  <h3 className="text-sm font-bold text-slate-100 font-orbitron mb-1">
+                  <h3 className="text-sm font-bold text-slate-100 font-sans mb-1">
                     {tab.title[language]}
                   </h3>
 

@@ -47,8 +47,8 @@ export const PROJECTS: Project[] = [
       en: "Modern cinematic video-on-demand (VOD) streaming platform with HLS adaptive playback & ambient theater lighting."
     },
     description: {
-      id: "Platform streaming sinematik generasi baru yang menghadirkan pemutar video HLS.js adaptif, ambient lighting glow dinamis di sekitar layar, scrubbing timeline instan dengan preview gambar, personalisasi Continue Watching, serta 9 modul Admin Studio CMS dengan proteksi RBAC.",
-      en: "Next-gen cinematic web streaming platform delivering HLS.js adaptive bitrate player, real-time ambient lighting glow, timeline preview scrubbing, dynamic catalog recommendations, and 9-module modular Admin Studio CMS."
+      id: "Platform streaming video on-demand (VOD) dengan pemutar video HLS adaptif, ambient lighting dinamis real-time di sekitar layar, scrubbing timeline instan dengan thumbnail preview, personalisasi Continue Watching, serta 9 modul Admin Studio CMS dengan proteksi RBAC.",
+      en: "Full-featured Video-on-Demand (VOD) streaming platform built with adaptive HLS playback, real-time canvas ambient illumination, thumbnail preview scrubbing, and a modular 9-panel Admin Studio CMS."
     },
     metrics: [
       "HLS.js Adaptive Bitrate & Multi-Resolution (4K UHD, 1080p, 720p)",
@@ -541,7 +541,7 @@ class MarketplaceOrderConsumer
         "Dark mode otomatis sesuai preferensi sistem operasi"
       ],
       en: [
-        "Asynchronous REST API consumption with robust fallbacks and skeleton states",
+        "Asynchronous REST API consumption with resilient error fallbacks and skeleton loading states",
         "Debounced live search with multi-category taxonomy",
         "Adaptive card layouts with native lazy-loading image optimization",
         "System-aware dark mode integration"
@@ -676,7 +676,7 @@ export const EXPERIENCES: Experience[] = [
           ],
           en: [
             "Applying Clean Code standards, SOLID design principles, and modular architecture across modern enterprise web stacks.",
-            "Collaborating within software engineering teams across agile sprints, pull request code reviews, and robust RESTful API pipelines.",
+            "Collaborating within software engineering teams across agile sprints, pull request code reviews, and production RESTful API pipelines.",
             "Exploring and adopting modern tooling (including CLI automation & agent workflows) to accelerate software delivery cycles."
           ]
         }

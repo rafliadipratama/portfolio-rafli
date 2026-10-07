@@ -77,13 +77,13 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'help':
         resultNode = (
           <div className="space-y-1 text-slate-300 font-mono">
-            <div className="text-[#00f0ff] font-bold font-orbitron">Available System Commands:</div>
-            <div>• <span className="text-[#00ff9d] font-mono">status</span> - Inspect real-time Antigravity 3P quota & context HUD</div>
+            <div className="text-[#00f0ff] font-bold font-mono">Daftar Perintah Sistem:</div>
+            <div>• <span className="text-[#00ff9d] font-mono">status</span> - Cek status ketersediaan kerja, domisili, dan fokus engineering</div>
             <div>• <span className="text-[#00ff9d] font-mono">liveeuy</span> - Inspect LiveEuy cinematic streaming architecture</div>
             <div>• <span className="text-[#00ff9d] font-mono">padepokan</span> - View PT Padepokan 79 internship profile</div>
             <div>• <span className="text-[#00ff9d] font-mono">bio</span> - Overview of Rafli's professional profile</div>
-            <div>• <span className="text-[#00ff9d] font-mono">skills</span> - Display tech stack & AI agentic skills matrix</div>
-            <div>• <span className="text-[#00ff9d] font-mono">projects</span> - List deployed systems & streaming engines</div>
+            <div>• <span className="text-[#00ff9d] font-mono">skills</span> - Display tech stack & competencies matrix</div>
+            <div>• <span className="text-[#00ff9d] font-mono">projects</span> - List deployed systems & applications</div>
             <div>• <span className="text-[#00ff9d] font-mono">exp</span> - Display industrial work history</div>
             <div>• <span className="text-[#00ff9d] font-mono">contact</span> - Output direct communication channels</div>
             <div>• <span className="text-[#00ff9d] font-mono">dino / game</span> - Play Cyber Dino 2D Pixel Endless Runner</div>
@@ -97,16 +97,16 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'status':
       case 'quota':
         resultNode = (
-          <div className="p-3 rounded bg-[#070b22] border border-[#00f0ff]/40 text-slate-200 font-mono space-y-1.5">
-            <div className="text-[#00f0ff] font-bold font-orbitron">🚀 ANTIGRAVITY TELEMETRY STATUSLINE</div>
+          <div className="p-3 rounded bg-[#070b22] border border-[#00f0ff]/40 text-slate-200 font-mono space-y-1.5 text-xs">
+            <div className="text-[#00f0ff] font-bold font-mono">⚡ STATUS ENGINEERING & KETERSEDIAAN KERJA</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
-              <div>⚡ <span className="text-slate-400">3P Quota (Claude/GPT):</span> <span className="text-[#00ff9d] font-bold">100.0%</span></div>
-              <div>⚡ <span className="text-slate-400">Gemini Rolling Quota:</span> <span className="text-[#00ff9d] font-bold">100.0%</span></div>
-              <div>🧠 <span className="text-slate-400">Context Window Used:</span> <span className="text-[#ffe600] font-bold">0% ctx</span></div>
-              <div>🕹️ <span className="text-slate-400">Active Quest:</span> <span className="text-[#ff007f] font-bold">PT Padepokan 79</span></div>
+              <div>🟢 <span className="text-slate-400">Status:</span> <span className="text-[#00ff9d] font-bold">Open for Work (Full-time / Kontrak)</span></div>
+              <div>📍 <span className="text-slate-400">Domisili:</span> <span className="text-slate-200 font-bold">Bandung / Jakarta (Onsite & Remote)</span></div>
+              <div>🛠️ <span className="text-slate-400">Core Stack:</span> <span className="text-[#00f0ff] font-bold">TypeScript, React, Laravel, PHP</span></div>
+              <div>🏢 <span className="text-slate-400">Posisi Terkini:</span> <span className="text-[#ffe600] font-bold">SE Intern @ PT Padepokan 79</span></div>
             </div>
             <div className="text-[11px] text-slate-400 border-t border-slate-800 pt-1 mt-1">
-              Powered by custom `agy-statusline` and Antigravity Agentic Tooling.
+              Fokus: Arsitektur perangkat lunak skala produksi, Clean Code, dan reliabilitas sistem.
             </div>
           </div>
         );
@@ -115,7 +115,7 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'liveeuy':
         resultNode = (
           <div className="p-3 rounded bg-[#090d28] border border-[#ff007f]/40 text-slate-200 font-mono space-y-1 text-xs">
-            <div className="text-[#ff007f] font-bold font-orbitron">🎬 LIVEEUY STREAMING PLATFORM</div>
+            <div className="text-[#ff007f] font-bold font-mono">🎬 LIVEEUY STREAMING PLATFORM</div>
             <div>Stack: React 18, TypeScript, Tailwind CSS, HLS.js, Lucide Icons</div>
             <div>Key Tech: Real-time Ambient Lighting Glow, Adaptive HLS Bitrate, 9-module Admin CMS</div>
             <div>Repo: <a href="https://github.com/rafliadipratama/LiveEuy" target="_blank" className="text-[#00f0ff] underline">github.com/rafliadipratama/LiveEuy</a></div>
@@ -126,7 +126,7 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
       case 'padepokan':
         resultNode = (
           <div className="p-3 rounded bg-[#070b22] border border-[#ffe600]/40 text-slate-200 font-mono space-y-1 text-xs">
-            <div className="text-[#ffe600] font-bold font-orbitron">🏢 PT PADEPOKAN 79 (MAGANGHUB)</div>
+            <div className="text-[#ffe600] font-bold font-mono">🏢 PT PADEPOKAN 79 (MAGANGHUB)</div>
             <div>Role: Software Engineer Intern (MagangHub / MSIB)</div>
             <div>Focus: Clean Architecture, Enterprise Web Development, Agile Engineering, and System Scalability.</div>
           </div>
@@ -135,9 +135,9 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
 
       case 'bio':
         resultNode = (
-          <div className="space-y-2 text-slate-300">
-            <div className="font-bold text-[#00f0ff] font-orbitron">{PERSONAL_INFO.name} ({PERSONAL_INFO.roleTitle[language]})</div>
-            <div className="text-slate-300 leading-relaxed">{PERSONAL_INFO.bio[language]}</div>
+          <div className="space-y-2 text-slate-300 font-mono text-xs">
+            <div className="font-bold text-[#00f0ff]">{PERSONAL_INFO.name} ({PERSONAL_INFO.roleTitle[language]})</div>
+            <div className="text-slate-300 leading-relaxed font-sans">{PERSONAL_INFO.bio[language]}</div>
             <div className="text-slate-400 text-xs">Based in {PERSONAL_INFO.location} • {PERSONAL_INFO.timezone}</div>
           </div>
         );
@@ -145,10 +145,10 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
 
       case 'skills':
         resultNode = (
-          <div className="space-y-3">
+          <div className="space-y-3 font-mono text-xs">
             {SKILL_CATEGORIES.map((c, idx) => (
               <div key={idx} className="space-y-1">
-                <div className="text-[#ffe600] font-bold font-mono"># {c.category[language]}</div>
+                <div className="text-[#ffe600] font-bold"># {c.category[language]}</div>
                 <div className="text-slate-300 text-xs">
                   {c.skills.map(s => `${s.name} (${s.experienceYears})`).join(', ')}
                 </div>
@@ -160,8 +160,8 @@ export const TerminalConsole: React.FC<TerminalConsoleProps> = ({ isOpen, onClos
 
       case 'projects':
         resultNode = (
-          <div className="space-y-2">
-            <div className="text-[#00f0ff] font-bold font-orbitron">Deployed Systems & Streaming Engines:</div>
+          <div className="space-y-2 font-mono text-xs">
+            <div className="text-[#00f0ff] font-bold">Deployed Systems & Streaming Engines:</div>
             {PROJECTS.map(p => (
               <div key={p.id} className="text-xs">
                 <span className="text-[#00ff9d] font-mono font-bold">[{p.category.toUpperCase()}]</span>{' '}

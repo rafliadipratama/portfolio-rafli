@@ -51,8 +51,8 @@ const DISC_QUESTIONS: Question[] = [
       {
         trait: 'C',
         text: {
-          id: "Mengisolasi akar masalah (root cause), memverifikasi log teliti, dan memastikan kepatuhan SOP.",
-          en: "Isolate root cause analytically, verify server logs meticulously, and ensure SOP compliance."
+          id: "Mengidentifikasi akar masalah secara analitis, memeriksa log server secara mendalam, dan menjaga kepatuhan SOP.",
+          en: "Isolate the root cause analytically, inspect server logs thoroughly, and ensure SOP compliance."
         }
       }
     ]

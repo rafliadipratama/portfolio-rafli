@@ -21,7 +21,7 @@ const ContactSection = lazy(() => import('./components/ContactSection').then(m =
 const TerminalConsole = lazy(() => import('./components/TerminalConsole').then(m => ({ default: m.TerminalConsole })));
 const CommandPalette = lazy(() => import('./components/CommandPalette').then(m => ({ default: m.CommandPalette })));
 const ProjectDetailModal = lazy(() => import('./components/ProjectDetailModal').then(m => ({ default: m.ProjectDetailModal })));
-const OdysseusAgentWidget = lazy(() => import('./components/OdysseusAgentWidget').then(m => ({ default: m.OdysseusAgentWidget })));
+const QuickContactWidget = lazy(() => import('./components/QuickContactWidget').then(m => ({ default: m.QuickContactWidget })));
 
 const ModuleLoadingFallback: React.FC = () => (
   <div className="min-h-[40vh] flex flex-col items-center justify-center py-16">
@@ -68,14 +68,14 @@ const PageHeaderBanner: React.FC<{
   return (
     <div className="bg-[#06091e] border-b border-[#1c2452] py-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#091238] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs mb-2 shadow-sm font-orbitron">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#091238] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs mb-2 shadow-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00ff9d] animate-pulse"></span>
           <span>{tag}</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight font-orbitron">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight font-sans">
           {title}
         </h1>
-        <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1 max-w-2xl leading-relaxed">
+        <p className="text-xs sm:text-sm text-slate-400 font-sans mt-1 max-w-2xl leading-relaxed">
           {desc}
         </p>
       </div>
@@ -235,7 +235,7 @@ export const AppContent: React.FC = () => {
                         </button>
                       </div>
 
-                      {/* PT Padepokan 79 Active Quest Card */}
+                      {/* PT Padepokan 79 Current Role Card */}
                       <div className="p-6 rounded-2xl bg-[#0b0f19] border border-slate-800 hover:border-emerald-500/40 transition-all shadow-xl relative overflow-hidden flex flex-col justify-between">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none" />
                         <div>
@@ -434,7 +434,7 @@ export const AppContent: React.FC = () => {
           onClose={() => setSelectedProject(null)}
         />
 
-        <OdysseusAgentWidget />
+        <QuickContactWidget />
       </Suspense>
     </div>
   );
