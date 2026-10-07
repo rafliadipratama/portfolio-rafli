@@ -148,7 +148,7 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Official Resume Card */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-[#0c1222] to-slate-900 border border-slate-800 space-y-3">
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
               <div className="flex items-center gap-2">
                 <FileDown className="w-4 h-4 text-sky-400" />
                 <span className="text-xs font-bold text-slate-200 font-mono">

@@ -66,16 +66,16 @@ export const StreamingLab: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Intro Box: Non-IT Friendly Explanation */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#070d28] via-[#09133b] to-[#070d28] border border-[#00f0ff]/30 shadow-lg">
+      <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-lg">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-950 text-[#00f0ff] border border-[#00f0ff]/50 font-orbitron">
-                KONSEP NON-IT // REAL-WORLD
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-800 text-cyan-400 border border-cyan-500/30">
+                KONSEP REAL-WORLD // ARCHITECTURE
               </span>
               <span className="text-xs font-mono text-slate-400">Proyek: LiveEuy Cinema Platform</span>
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-slate-100 font-orbitron">
+            <h3 className="text-base sm:text-lg font-bold text-slate-100 font-sans">
               {language === 'id' 
                 ? 'Bagaimana Video Streaming Menyesuaikan Sinyal Agar Tidak Buffering?' 
                 : 'How Smart Streaming Eliminates Video Buffering When Signals Fluctuate'}

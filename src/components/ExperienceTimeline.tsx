@@ -21,14 +21,14 @@ export const ExperienceTimeline: React.FC = () => {
             {language === 'id' ? (
               <>
                 Pengalaman Kerja &{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
+                <span className="text-cyan-400">
                   Rekam Jejak Industri
                 </span>
               </>
             ) : (
               <>
                 Professional Track Record &{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
+                <span className="text-cyan-400">
                   Engineering Experience
                 </span>
               </>

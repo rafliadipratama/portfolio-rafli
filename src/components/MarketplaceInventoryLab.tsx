@@ -104,16 +104,16 @@ export const MarketplaceInventoryLab: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Non-IT Friendly Header Box */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#070d28] via-[#09133b] to-[#070d28] border border-[#ff007f]/30 shadow-lg">
+      <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-lg">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-pink-950 text-[#ff007f] border border-[#ff007f]/50 font-orbitron">
-                KONSEP NON-IT // E-COMMERCE
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-pink-950/80 text-pink-400 border border-pink-500/30">
+                KONSEP REAL-WORLD // E-COMMERCE
               </span>
               <span className="text-xs font-mono text-slate-400">Proyek: Marketplace Solas & Inventarisku</span>
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-slate-100 font-orbitron">
+            <h3 className="text-base sm:text-lg font-bold text-slate-100 font-sans">
               {language === 'id'
                 ? 'Bagaimana Toko Online Mencegah Barang Habis Dibeli 2 Orang Bersamaan?'
                 : 'How E-Commerce Prevents Two Customers Buying The Last Item Concurrently'}
@@ -197,7 +197,7 @@ export const MarketplaceInventoryLab: React.FC = () => {
               <button
                 onClick={handleSimulateRaceCondition}
                 disabled={stock <= 0 || isProcessing}
-                className="w-full mt-2 p-3.5 rounded-xl bg-gradient-to-r from-[#ff007f] to-[#9d4edd] hover:brightness-110 text-white font-bold text-xs font-orbitron transition-all shadow-lg shadow-[#ff007f]/20 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                className="w-full mt-2 p-3.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs font-mono transition-all shadow-md shadow-pink-600/20 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 <Zap className="w-4 h-4" />
                 <span>Simulasikan Beli Bersamaan di 1 Milidetik!</span>

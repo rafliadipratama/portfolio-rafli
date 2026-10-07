@@ -89,14 +89,14 @@ export const SkillsMatrix: React.FC = () => {
             {language === 'id' ? (
               <>
                 Matriks Kompetensi &{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-300 to-indigo-400">
+                <span className="text-cyan-400">
                   Stack Teknologi
                 </span>
               </>
             ) : (
               <>
                 Engineering Skills &{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-300 to-indigo-400">
+                <span className="text-cyan-400">
                   Tech Matrix
                 </span>
               </>

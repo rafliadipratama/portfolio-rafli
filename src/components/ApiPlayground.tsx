@@ -314,7 +314,7 @@ export const ApiPlayground: React.FC = () => {
             <span>{language === 'id' ? 'Enterprise API Testbench' : 'Interactive API Console'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Live Mock <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400">REST API Playground</span>
+            Live Mock <span className="text-cyan-400">REST API Playground</span>
           </h2>
           <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
             {language === 'id'
@@ -400,7 +400,7 @@ export const ApiPlayground: React.FC = () => {
               className={`inline-flex items-center gap-2 px-5 py-2 rounded-lg font-bold text-xs font-mono transition-all shadow-md ${
                 isLoading
                   ? 'bg-cyan-600/50 text-slate-300 cursor-wait'
-                  : 'bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-cyan-500/20'
+                  : 'bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-cyan-500/20'
               }`}
             >
               {isLoading ? (

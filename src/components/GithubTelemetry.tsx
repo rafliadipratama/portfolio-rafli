@@ -170,7 +170,7 @@ export const GithubTelemetry: React.FC = () => {
               <span>{language === 'id' ? 'Audit Telemetri Aktivitas' : 'Live Activity Telemetry'}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Live GitHub <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">Activity & Telemetry</span>
+              Live GitHub <span className="text-emerald-400">Activity & Telemetry</span>
             </h2>
             <p className="mt-2 text-slate-400 text-sm max-w-2xl">
               {language === 'id'

@@ -45,8 +45,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
         id: 'Uji bagaimana video otomatis menyesuaikan resolusi saat sinyal naik-turun agar zero-buffering.',
         en: 'Test how video dynamically adapts resolution to fluctuating internet speeds without buffering.'
       },
-      accentColor: 'from-[#00f0ff] to-cyan-500',
-      activeBorder: 'border-[#00f0ff] text-[#00f0ff] shadow-lg shadow-[#00f0ff]/20 bg-[#061e2a]'
+      accentColor: 'bg-cyan-400',
+      activeBorder: 'border-cyan-500/80 text-cyan-300 bg-slate-900 shadow-md'
     },
     {
       id: 'inventory' as const,
@@ -61,8 +61,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
         id: 'Uji bagaimana sistem mencegah barang habis dibeli 2 orang bersamaan di Shopee & Tokopedia.',
         en: 'Test how distributed mutex locks prevent 2 buyers from purchasing the last unit concurrently.'
       },
-      accentColor: 'from-[#ff007f] to-pink-500',
-      activeBorder: 'border-[#ff007f] text-[#ff007f] shadow-lg shadow-[#ff007f]/20 bg-[#280a1c]'
+      accentColor: 'bg-pink-400',
+      activeBorder: 'border-pink-500/80 text-pink-300 bg-slate-900 shadow-md'
     },
     {
       id: 'disc' as const,
@@ -77,8 +77,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
         id: 'Kuis interaktif pemetaan gaya komunikasi dan kecocokan peran di dalam tim kerja.',
         en: 'Interactive quiz mapping communication styles and optimal roles within engineering teams.'
       },
-      accentColor: 'from-[#ffe600] to-amber-500',
-      activeBorder: 'border-[#ffe600] text-[#ffe600] shadow-lg shadow-[#ffe600]/20 bg-[#261e06]'
+      accentColor: 'bg-amber-400',
+      activeBorder: 'border-amber-500/80 text-amber-300 bg-slate-900 shadow-md'
     },
     {
       id: 'dino' as const,
@@ -93,8 +93,8 @@ export const InteractiveEngineeringLabs: React.FC = () => {
         id: 'Game piksel 2D legendaris Chrome T-Rex Jump. Lompat rintangan kaktus & raih skor tertinggi!',
         en: 'Legendary 2D pixel Chrome T-Rex endless runner. Jump cacti, duck birds, and beat high score!'
       },
-      accentColor: 'from-[#00ff9d] to-emerald-500',
-      activeBorder: 'border-[#00ff9d] text-[#00ff9d] shadow-lg shadow-[#00ff9d]/20 bg-[#06241a]'
+      accentColor: 'bg-emerald-400',
+      activeBorder: 'border-emerald-500/80 text-emerald-300 bg-slate-900 shadow-md'
     }
   ];
 
@@ -113,14 +113,14 @@ export const InteractiveEngineeringLabs: React.FC = () => {
             {language === 'id' ? (
               <>
                 Laboratorium Rekayasa:{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
+                <span className="text-cyan-400">
                   Uji Langsung Cara Kerja Sistem
                 </span>
               </>
             ) : (
               <>
                 Engineering Workbench:{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">
+                <span className="text-cyan-400">
                   Hands-On Interactive Demos
                 </span>
               </>
@@ -154,7 +154,7 @@ export const InteractiveEngineeringLabs: React.FC = () => {
               >
                 {/* Active indicator top bar */}
                 {isActive && (
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${tab.accentColor}`} />
+                  <div className={`absolute top-0 left-0 right-0 h-0.5 ${tab.accentColor}`} />
                 )}
 
                 <div>

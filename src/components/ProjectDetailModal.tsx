@@ -141,7 +141,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({ project,
               </div>
 
               {project.impactHighlights && project.impactHighlights.length > 0 && (
-                <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-950/40 to-slate-900 border border-emerald-600/30">
+                <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
                   <h4 className="text-xs font-mono uppercase text-emerald-400 mb-3 flex items-center gap-1.5 font-bold">
                     <ShieldCheck className="w-4 h-4" />
                     <span>{language === 'id' ? 'Sorotan Metrik Kinerja Nyata' : 'Verified Production Impact'}</span>

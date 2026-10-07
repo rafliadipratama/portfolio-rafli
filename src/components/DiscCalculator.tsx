@@ -221,8 +221,8 @@ export const DiscCalculator: React.FC = () => {
     if (primary === 'D') {
       return {
         title: language === 'id' ? 'The Driver / Pioneer (Tipe Dominan)' : 'The Driver / Pioneer (Dominant)',
-        color: 'from-rose-500 to-amber-500',
-        badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/40',
+        textColor: 'text-rose-400',
+        badgeColor: 'bg-rose-500/10 text-rose-300 border-rose-500/30',
         description: language === 'id'
           ? 'Memiliki ketegasan tinggi, berorientasi hasil, mandiri, dan cepat memecahkan kebuntuan teknis di bawah tekanan.'
           : 'High decisiveness, result-oriented, self-directed, excels at breaking technical gridlocks under pressure.'
@@ -230,8 +230,8 @@ export const DiscCalculator: React.FC = () => {
     } else if (primary === 'I') {
       return {
         title: language === 'id' ? 'The Catalyst / Inspiring (Tipe Pengaruh)' : 'The Catalyst / Inspiring (Influential)',
-        color: 'from-amber-400 to-yellow-500',
-        badgeColor: 'bg-amber-500/20 text-amber-300 border-amber-500/40',
+        textColor: 'text-amber-400',
+        badgeColor: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
         description: language === 'id'
           ? 'Komunikator unggul, kolaboratif, memotivasi tim dengan antusiasme, dan piawai menjembatani teknis dengan bisnis.'
           : 'Outstanding communicator, collaborative, energizes peers, bridges gap between technical and business domains.'
@@ -239,8 +239,8 @@ export const DiscCalculator: React.FC = () => {
     } else if (primary === 'S') {
       return {
         title: language === 'id' ? 'The Anchor / Supporter (Tipe Stabil)' : 'The Anchor / Supporter (Steady)',
-        color: 'from-emerald-400 to-teal-500',
-        badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
+        textColor: 'text-emerald-400',
+        badgeColor: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
         description: language === 'id'
           ? 'Pilar konsistensi tim, sangat andal, penuh kesabaran, pendengar ulung, dan menjaga keharmonisan jangka panjang.'
           : 'Anchor of team consistency, highly reliable, patient, active listener, ensures sustainable long-term execution.'
@@ -248,8 +248,8 @@ export const DiscCalculator: React.FC = () => {
     } else {
       return {
         title: language === 'id' ? 'The Architect / Analyst (Tipe Cermat)' : 'The Architect / Analyst (Conscientious)',
-        color: 'from-cyan-400 to-blue-500',
-        badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40',
+        textColor: 'text-cyan-400',
+        badgeColor: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
         description: language === 'id'
           ? 'Spesialis akurasi tinggi, presisi arsitektural, kepatuhan audit standar industri (CPOB/GMP), dan mitigasi bug mendalam.'
           : 'Precision-first engineer, excels in clean architecture, audit-grade compliance (GMP/CPOB), and zero-defect systems.'
@@ -260,17 +260,16 @@ export const DiscCalculator: React.FC = () => {
   const archetype = getArchetype();
 
   return (
-    <section id="disc-assessment" className="py-20 bg-gradient-to-b from-[#0a0d1c] via-[#0d1024] to-[#080b16] border-b border-slate-800/80 relative overflow-hidden">
-      {/* Colorful ambient orbs */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-br from-rose-500/10 via-amber-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-cyan-500/10 via-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+    <section id="disc-assessment" className="py-20 bg-[#0a0d1a] border-b border-slate-800/80 relative overflow-hidden">
+      {/* Subtle single ambient light */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-cyan-500/[0.04] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-violet-950/80 via-indigo-950/80 to-cyan-950/80 border border-violet-700/50 text-violet-300 font-mono text-xs mb-3 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 font-mono text-xs mb-3 shadow-sm">
               <BrainCircuit className="w-3.5 h-3.5 text-cyan-400" />
               <span>HR Recruitment Algorithm Engine (PT. Solas Spec)</span>
             </div>
@@ -278,14 +277,14 @@ export const DiscCalculator: React.FC = () => {
               {language === 'id' ? (
                 <>
                   Simulasi Kalkulator Psikometri{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-amber-300 to-cyan-400">
+                  <span className="text-cyan-400">
                     DISC Assessment
                   </span>
                 </>
               ) : (
                 <>
                   Interactive DISC Psychometric{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-amber-300 to-cyan-400">
+                  <span className="text-cyan-400">
                     Scoring Engine
                   </span>
                 </>
@@ -316,10 +315,10 @@ export const DiscCalculator: React.FC = () => {
           
           {/* Left/Main Column: Questionnaire or Results */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#0f1428] to-[#121832] border border-slate-700/80 shadow-2xl relative overflow-hidden">
+            <div className="p-6 sm:p-8 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl relative overflow-hidden">
               
-              {/* Top Accent Gradient Line */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 via-amber-400 via-emerald-400 to-cyan-400" />
+              {/* Top Accent Line */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-cyan-500/50" />
 
               {!showResult ? (
                 <div>
@@ -334,7 +333,7 @@ export const DiscCalculator: React.FC = () => {
                         <span
                           key={i}
                           className={`w-6 h-1.5 rounded-full transition-all duration-300 ${
-                            i <= currentStep ? 'bg-gradient-to-r from-cyan-400 to-emerald-400' : 'bg-slate-800'
+                            i <= currentStep ? 'bg-cyan-400' : 'bg-slate-800'
                           }`}
                         />
                       ))}
@@ -390,7 +389,7 @@ export const DiscCalculator: React.FC = () => {
                     <p className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-1">
                       {language === 'id' ? 'Arketipe Kepribadian Utama' : 'Primary Behavioral Archetype'}
                     </p>
-                    <h3 className={`text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r ${archetype.color}`}>
+                    <h3 className={`text-xl sm:text-2xl font-extrabold ${archetype.textColor}`}>
                       {archetype.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
@@ -483,7 +482,7 @@ export const DiscCalculator: React.FC = () => {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Real-time Visual Matrix Chart */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0c1022] to-[#10142c] border border-slate-700/80 shadow-xl">
+            <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-mono text-cyan-400 font-bold flex items-center gap-1.5 uppercase">
                   <Award className="w-4 h-4 text-amber-400" />
@@ -545,7 +544,7 @@ export const DiscCalculator: React.FC = () => {
             </div>
 
             {/* Production Context Card */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-indigo-950/40 to-slate-900/60 border border-indigo-800/40 space-y-3">
+            <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span className="text-xs font-bold text-indigo-300 font-mono">

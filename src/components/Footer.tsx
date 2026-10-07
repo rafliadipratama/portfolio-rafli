@@ -87,10 +87,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Column 1: Brandmark & Professional Profile (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#00f0ff] via-[#9d4edd] to-[#ff007f] p-[1.5px] shadow-sm">
-                <div className="w-full h-full rounded-[9.5px] bg-[#070a1e] flex items-center justify-center text-[#00f0ff]">
-                  <Code2 className="w-4 h-4" />
-                </div>
+              <div className="w-8 h-8 rounded-xl bg-slate-900 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shadow-sm">
+                <Code2 className="w-4 h-4" />
               </div>
               <div className="flex items-center gap-1 font-bold tracking-tight text-slate-100">
                 <span className="text-base font-extrabold tracking-tight">RAFLI</span>

@@ -63,14 +63,14 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
               {language === 'id' ? (
                 <>
                   Koleksi Rekayasa Sistem &{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
+                  <span className="text-cyan-400">
                     Aplikasi Produksi
                   </span>
                 </>
               ) : (
                 <>
                   Engineering Portfolio &{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">
+                  <span className="text-cyan-400">
                     Production Systems
                   </span>
                 </>

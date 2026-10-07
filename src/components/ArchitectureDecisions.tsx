@@ -367,7 +367,7 @@ class MarketplaceOrderConsumer
               }`}
             >
               {activeAdrIndex === index && (
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-400 via-indigo-500 to-emerald-400" />
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-sky-400" />
               )}
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-xs font-mono font-bold text-sky-400">{adr.id}</span>

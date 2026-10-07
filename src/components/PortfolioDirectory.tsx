@@ -102,11 +102,11 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
             <h2 className="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight font-sans">
               {language === 'id' ? (
                 <>
-                  Peta Navigasi Portofolio: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">Pilih Halaman Yang Ingin Anda Buka</span>
+                  Peta Navigasi Portofolio: <span className="text-cyan-400">Pilih Halaman Yang Ingin Anda Buka</span>
                 </>
               ) : (
                 <>
-                  Portfolio Roadmap: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#ff007f] to-[#ffe600]">Select A Page To Explore</span>
+                  Portfolio Roadmap: <span className="text-cyan-400">Select A Page To Explore</span>
                 </>
               )}
             </h2>
@@ -132,11 +132,9 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: idx * 0.08 }}
-                whileHover={{ y: -4, scale: 1.01 }}
-                className="group p-5 rounded-2xl bg-[#080d24] border border-[#1c2452] hover:border-[#00f0ff]/60 transition-all flex flex-col justify-between shadow-lg hover:shadow-xl hover:shadow-[#00f0ff]/10 relative overflow-hidden text-left cursor-pointer"
+                whileHover={{ y: -3 }}
+                className="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 hover:bg-slate-900/90 transition-all flex flex-col justify-between shadow-sm relative overflow-hidden text-left cursor-pointer"
               >
-                {/* Subtle top glow highlight */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f0ff]/30 to-transparent group-hover:via-[#00f0ff] transition-all" />
 
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
