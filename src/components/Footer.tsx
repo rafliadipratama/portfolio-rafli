@@ -102,9 +102,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 : 'Fullstack Web Engineer & AI Systems Developer. Focused on Clean Architecture, high-performance streaming platforms, and high-compliance enterprise web systems.'}
             </p>
 
-            {/* Current Position Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+            {/* Current Position */}
+            <div className="flex items-center gap-2 text-xs text-slate-300 pt-0.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
               <span className="text-slate-400">
                 {language === 'id' ? 'Aktif:' : 'Active:'}
               </span>
@@ -189,77 +189,66 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               {language === 'id' ? 'Saluran & Kontak' : 'Direct Channels'}
             </h4>
 
-            {/* Email quick copy card */}
-            <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2 overflow-hidden">
-                <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span className="text-xs font-mono text-slate-200 truncate select-all">
+            {/* Email quick copy */}
+            <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-900/50 border border-slate-800/80">
+              <div className="flex items-center gap-2 overflow-hidden text-xs">
+                <Mail className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                <span className="font-mono text-slate-300 truncate select-all">
                   {PERSONAL_INFO.email}
                 </span>
               </div>
               <button
                 onClick={copyEmail}
-                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors shrink-0"
+                className="p-1 rounded text-slate-400 hover:text-white transition-colors shrink-0 cursor-pointer"
                 title={language === 'id' ? 'Salin email' : 'Copy email'}
               >
                 {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
             </div>
 
-            {/* Social Icons row */}
-            <div className="flex items-center gap-2 pt-1">
-              <a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-2 px-3 rounded-lg bg-slate-900/90 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-all flex items-center justify-center gap-1.5 group"
-                title="GitHub"
-              >
-                <GithubIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-                <span>GitHub</span>
-              </a>
+            {/* Social & Chat Links */}
+            <div className="flex items-center justify-between gap-3 pt-2 text-xs">
+              <div className="flex items-center gap-3.5 text-slate-400">
+                <a
+                  href={PERSONAL_INFO.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                  title="GitHub"
+                >
+                  <GithubIcon className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href={PERSONAL_INFO.gitlab}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-orange-400 transition-colors flex items-center gap-1.5"
+                  title="GitLab"
+                >
+                  <GitlabIcon className="w-3.5 h-3.5" />
+                  <span>GitLab</span>
+                </a>
+                <a
+                  href={PERSONAL_INFO.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-sky-400 transition-colors flex items-center gap-1.5"
+                  title="LinkedIn"
+                >
+                  <LinkedinIcon className="w-3.5 h-3.5" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
 
-              <a
-                href={PERSONAL_INFO.gitlab}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-2 px-3 rounded-lg bg-slate-900/90 border border-slate-800 hover:border-orange-500/40 text-slate-300 hover:text-orange-400 text-xs font-medium transition-all flex items-center justify-center gap-1.5 group"
-                title="GitLab"
-              >
-                <GitlabIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-                <span>GitLab</span>
-              </a>
-
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 py-2 px-3 rounded-lg bg-slate-900/90 border border-slate-800 hover:border-sky-500/40 text-slate-300 hover:text-sky-400 text-xs font-medium transition-all flex items-center justify-center gap-1.5 group"
-                title="LinkedIn"
-              >
-                <LinkedinIcon className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-                <span>LinkedIn</span>
-              </a>
-            </div>
-
-            {/* WhatsApp & Email Direct */}
-            <div className="flex items-center gap-2 pt-1">
               <a
                 href={PERSONAL_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-2 px-2.5 rounded-lg bg-emerald-950/40 border border-emerald-500/30 hover:bg-emerald-950/70 text-emerald-300 text-xs font-medium transition-all flex items-center justify-center gap-1.5"
+                className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors flex items-center gap-1"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
                 <span>WhatsApp</span>
-              </a>
-
-              <a
-                href={`mailto:${PERSONAL_INFO.email}`}
-                className="flex-1 py-2 px-2.5 rounded-lg bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-950/70 text-cyan-300 text-xs font-medium transition-all flex items-center justify-center gap-1.5"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                <span>Email</span>
               </a>
             </div>
 
@@ -278,18 +267,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </span>
           </div>
 
-          {/* Built With Badges */}
-          <div className="flex items-center gap-1.5 text-[11px] text-slate-500 flex-wrap justify-center">
-            <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">React 18</span>
-            <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">TypeScript</span>
-            <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">Tailwind CSS</span>
-            <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">Vite</span>
+          {/* Built With Stack (Unboxed & Clean) */}
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 flex-wrap justify-center">
+            <span>React 18</span>
+            <span className="text-slate-700">•</span>
+            <span>TypeScript</span>
+            <span className="text-slate-700">•</span>
+            <span>Tailwind CSS</span>
+            <span className="text-slate-700">•</span>
+            <span>Vite</span>
           </div>
 
           {/* Back to Top */}
           <button
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white transition-colors cursor-pointer shrink-0"
+            className="inline-flex items-center gap-1 text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer shrink-0 text-xs font-sans"
             title={language === 'id' ? 'Kembali ke atas' : 'Back to top'}
           >
             <span>{language === 'id' ? 'Ke Atas' : 'Top'}</span>
