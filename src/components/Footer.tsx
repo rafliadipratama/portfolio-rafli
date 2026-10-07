@@ -7,7 +7,6 @@ import {
   Mail,
   Copy,
   Check,
-  Terminal,
   MapPin,
   ExternalLink,
   ChevronRight,
@@ -17,11 +16,10 @@ import { GithubIcon, GitlabIcon, LinkedinIcon } from './SocialIcons';
 import { PageId } from './Navbar';
 
 interface FooterProps {
-  onNavigate?: (page: PageId) => void;
-  onOpenTerminal?: () => void;
+  onNavigate?: (pageId: PageId) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenTerminal }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
   const [copiedEmail, setCopiedEmail] = useState(false);
 
@@ -246,7 +244,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenTerminal }) =>
               </a>
             </div>
 
-            {/* WhatsApp direct & Terminal trigger */}
+            {/* WhatsApp & Email Direct */}
             <div className="flex items-center gap-2 pt-1">
               <a
                 href={PERSONAL_INFO.whatsappUrl}
@@ -258,16 +256,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenTerminal }) =>
                 <span>WhatsApp</span>
               </a>
 
-              {onOpenTerminal && (
-                <button
-                  onClick={onOpenTerminal}
-                  className="flex-1 py-2 px-2.5 rounded-lg bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 text-xs font-mono transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-                  title="Buka interactive terminal console"
-                >
-                  <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Terminal</span>
-                </button>
-              )}
+              <a
+                href={`mailto:${PERSONAL_INFO.email}`}
+                className="flex-1 py-2 px-2.5 rounded-lg bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-950/70 text-cyan-300 text-xs font-medium transition-all flex items-center justify-center gap-1.5"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Email</span>
+              </a>
             </div>
 
           </div>

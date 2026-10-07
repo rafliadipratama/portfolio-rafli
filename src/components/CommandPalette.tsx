@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { PROJECTS } from '../data/portfolioData';
-import { Search, X, Layers, Briefcase, Cpu, FileDown, Terminal, Globe, ChevronRight, BrainCircuit, Gamepad2 } from 'lucide-react';
+import { PROJECTS, PERSONAL_INFO } from '../data/portfolioData';
+import { Search, X, Layers, Briefcase, Cpu, FileDown, Globe, ChevronRight, BrainCircuit, Gamepad2 } from 'lucide-react';
 
 interface CommandPaletteProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenTerminal: () => void;
   onSelectProjectById: (id: string) => void;
   onNavigate?: (pageId: 'home' | 'projects' | 'experience' | 'labs' | 'skills' | 'contact') => void;
 }
@@ -14,7 +13,6 @@ interface CommandPaletteProps {
 export const CommandPalette: React.FC<CommandPaletteProps> = ({
   isOpen,
   onClose,
-  onOpenTerminal,
   onSelectProjectById,
   onNavigate,
 }) => {
@@ -104,19 +102,19 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
               {language === 'id' ? 'Aksi Cepat' : 'Quick Actions'}
             </div>
             <div className="space-y-1">
-              <button
-                onClick={() => {
-                  onClose();
-                  onOpenTerminal();
-                }}
+              <a
+                href={PERSONAL_INFO.resumePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
                 className="w-full flex items-center justify-between p-2.5 rounded-lg text-slate-300 hover:bg-slate-800/80 hover:text-white transition-colors"
               >
                 <div className="flex items-center gap-2.5">
-                  <Terminal className="w-4 h-4 text-emerald-400" />
-                  <span>{language === 'id' ? 'Buka Interactive CLI Terminal' : 'Launch Interactive CLI Terminal'}</span>
+                  <FileDown className="w-4 h-4 text-emerald-400" />
+                  <span>{language === 'id' ? 'Unduh Resume / CV (PDF)' : 'Download Resume / CV (PDF)'}</span>
                 </div>
-                <span className="text-[10px] text-slate-500">~</span>
-              </button>
+                <span className="text-[10px] text-emerald-400 font-mono">CV</span>
+              </a>
 
               <button
                 onClick={() => {

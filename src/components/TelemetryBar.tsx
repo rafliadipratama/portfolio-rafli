@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, Clock, Activity, MapPin, Globe } from 'lucide-react';
+import { Clock, Activity, MapPin, Globe } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface TelemetryBarProps {
-  onOpenTerminal: () => void;
   onOpenPalette: () => void;
 }
 
-export const TelemetryBar: React.FC<TelemetryBarProps> = ({ onOpenTerminal, onOpenPalette }) => {
+export const TelemetryBar: React.FC<TelemetryBarProps> = ({ onOpenPalette }) => {
   const { language, toggleLanguage } = useLanguage();
   const [bandungTime, setBandungTime] = useState<string>('');
 
@@ -67,20 +66,10 @@ export const TelemetryBar: React.FC<TelemetryBarProps> = ({ onOpenTerminal, onOp
       </div>
 
       <div className="flex items-center gap-2 ml-auto">
-        {/* CLI Button - Neon Cyan */}
-        <button
-          onClick={onOpenTerminal}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-cyan-950/80 hover:bg-cyan-900 border border-[#00f0ff]/60 text-[#00f0ff] hover:text-white transition-all shadow-sm shadow-[#00f0ff]/20"
-          title="Buka Terminal CLI Antigravity"
-        >
-          <Terminal className="w-3.5 h-3.5 text-[#00f0ff]" />
-          <span className="text-[11px] font-bold">CLI [~]</span>
-        </button>
-
         {/* Palette - Neon Pink */}
         <button
           onClick={onOpenPalette}
-          className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded bg-pink-950/70 hover:bg-pink-900 border border-[#ff007f]/50 text-[#ff007f] hover:text-white transition-all shadow-sm"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-pink-950/70 hover:bg-pink-900 border border-[#ff007f]/50 text-[#ff007f] hover:text-white transition-all shadow-sm"
           title="Command Palette"
         >
           <Activity className="w-3.5 h-3.5 text-[#ff007f]" />

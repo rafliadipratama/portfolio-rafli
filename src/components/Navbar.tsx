@@ -6,7 +6,7 @@ import {
   Send,
   Code2,
   Globe,
-  Terminal,
+  Search,
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
@@ -17,13 +17,12 @@ interface NavbarProps {
   activePage: PageId;
   onNavigate: (page: PageId) => void;
   onOpenPalette?: () => void;
-  onOpenTerminal?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activePage,
   onNavigate,
-  onOpenTerminal,
+  onOpenPalette,
 }) => {
   const { language, toggleLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -101,15 +100,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Action Controls Area */}
         <div className="flex items-center gap-2 shrink-0">
-          {/* Terminal / CLI Trigger Button */}
-          {onOpenTerminal && (
+          {/* Quick Search Palette Trigger */}
+          {onOpenPalette && (
             <button
-              onClick={onOpenTerminal}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-[#070b22] border border-[#1c2452] hover:border-[#00ff9d]/50 text-slate-300 hover:text-[#00ff9d] text-xs font-mono transition-all shadow-sm group cursor-pointer"
-              title="Open Cyber Terminal Console (~)"
+              onClick={onOpenPalette}
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-[#1c2452] hover:border-cyan-500/40 text-slate-300 hover:text-cyan-300 text-xs font-mono transition-all shadow-sm cursor-pointer"
+              title="Cari proyek / halaman (Ctrl+K)"
             >
-              <Terminal className="w-3.5 h-3.5 text-[#00ff9d] group-hover:scale-110 transition-transform" />
-              <span className="hidden sm:inline text-[11px] font-bold">CLI</span>
+              <Search className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="text-[11px] text-slate-400 hidden md:inline">Ctrl+K</span>
             </button>
           )}
 

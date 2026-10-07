@@ -18,7 +18,6 @@ const SkillsMatrix = lazy(() => import('./components/SkillsMatrix').then(m => ({
 const ArchitectureDecisions = lazy(() => import('./components/ArchitectureDecisions').then(m => ({ default: m.ArchitectureDecisions })));
 const GithubTelemetry = lazy(() => import('./components/GithubTelemetry').then(m => ({ default: m.GithubTelemetry })));
 const ContactSection = lazy(() => import('./components/ContactSection').then(m => ({ default: m.ContactSection })));
-const TerminalConsole = lazy(() => import('./components/TerminalConsole').then(m => ({ default: m.TerminalConsole })));
 const CommandPalette = lazy(() => import('./components/CommandPalette').then(m => ({ default: m.CommandPalette })));
 const ProjectDetailModal = lazy(() => import('./components/ProjectDetailModal').then(m => ({ default: m.ProjectDetailModal })));
 const QuickContactWidget = lazy(() => import('./components/QuickContactWidget').then(m => ({ default: m.QuickContactWidget })));
@@ -86,7 +85,6 @@ const PageHeaderBanner: React.FC<{
 
 export const AppContent: React.FC = () => {
   const { language } = useLanguage();
-  const [terminalOpen, setTerminalOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -144,17 +142,10 @@ export const AppContent: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Global key listener for terminal toggle (tilde `~`) and Ctrl+K
+  // Global key listener for Ctrl+K Command Palette
   useEffect(() => {
     const handleGlobalKeys = (e: KeyboardEvent) => {
-      if (e.key === '`' || e.key === '~') {
-        const activeElement = document.activeElement;
-        const isInput = activeElement instanceof HTMLInputElement || activeElement instanceof HTMLTextAreaElement;
-        if (!isInput) {
-          e.preventDefault();
-          setTerminalOpen(prev => !prev);
-        }
-      } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         setPaletteOpen(prev => !prev);
       }
@@ -179,7 +170,6 @@ export const AppContent: React.FC = () => {
           activePage={activePage}
           onNavigate={navigateTo}
           onOpenPalette={() => setPaletteOpen(true)}
-          onOpenTerminal={() => setTerminalOpen(true)}
         />
 
         {/* Multi-Page Dedicated Views with Smooth Framer Motion Transitions */}
@@ -195,7 +185,6 @@ export const AppContent: React.FC = () => {
               >
                 {/* 1. Hero Overview */}
                 <Hero
-                  onOpenTerminal={() => setTerminalOpen(true)}
                   onNavigate={navigateTo}
                 />
 
@@ -411,20 +400,13 @@ export const AppContent: React.FC = () => {
       </div>
 
       {/* Footer */}
-      <Footer onNavigate={navigateTo} onOpenTerminal={() => setTerminalOpen(true)} />
+      <Footer onNavigate={navigateTo} />
 
-      {/* Interactive Terminal Drawer, Command Palette, Project Modal & Floating Widget */}
+      {/* Command Palette, Project Modal & Floating Contact Widget */}
       <Suspense fallback={null}>
-        <TerminalConsole
-          isOpen={terminalOpen}
-          onClose={() => setTerminalOpen(false)}
-          onNavigate={navigateTo}
-        />
-
         <CommandPalette
           isOpen={paletteOpen}
           onClose={() => setPaletteOpen(false)}
-          onOpenTerminal={() => setTerminalOpen(true)}
           onSelectProjectById={handleSelectProjectById}
           onNavigate={navigateTo}
         />

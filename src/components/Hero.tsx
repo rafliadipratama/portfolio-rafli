@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
-import { Terminal, ArrowRight, ShieldCheck, Database, Layers, CheckCircle2, FileText, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Database, Layers, CheckCircle2, FileText, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
-  onOpenTerminal: () => void;
-  onNavigate?: (pageId: 'projects' | 'labs') => void;
+  onNavigate?: (pageId: 'projects' | 'labs' | 'contact') => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onNavigate }) => {
+export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
 
   const titles = [
@@ -178,16 +177,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal, onNavigate }) => {
                 <span>{language === 'id' ? 'Uji Coba Simulator' : 'Test Interactive Labs'}</span>
               </motion.button>
 
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={onOpenTerminal}
+                href={PERSONAL_INFO.resumePdf}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white text-sm transition-colors cursor-pointer shadow-sm"
-                title="Buka interactive terminal"
+                title="Unduh CV Mohamad Rafli Adipratama"
               >
-                <Terminal className="w-4 h-4 text-emerald-400" />
-                <span className="font-mono text-xs">Terminal Console</span>
-              </motion.button>
+                <FileText className="w-4 h-4 text-amber-400" />
+                <span className="font-sans text-xs font-semibold">{language === 'id' ? 'Unduh CV' : 'Download CV'}</span>
+              </motion.a>
             </motion.div>
 
             {/* Grounded Metrics */}
