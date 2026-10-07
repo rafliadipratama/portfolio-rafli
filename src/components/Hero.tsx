@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
-import { ArrowRight, CheckCircle2, FileText, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Database, Layers, CheckCircle2, FileText, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
@@ -115,11 +115,32 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               {PERSONAL_INFO.headline[language]}
             </motion.p>
 
+            {/* Quick architectural spec tags */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-6 flex flex-wrap gap-2 text-xs font-mono"
+            >
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#090e28] border border-[#00f0ff]/40 text-cyan-200 hover:border-[#00f0ff] transition-colors shadow-sm shadow-[#00f0ff]/10">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#00f0ff]" />
+                PT Padepokan 79 (MagangHub)
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#090e28] border border-[#ff007f]/40 text-pink-200 hover:border-[#ff007f] transition-colors shadow-sm shadow-[#ff007f]/10">
+                <Database className="w-3.5 h-3.5 text-[#ff007f]" />
+                LiveEuy Cinema VOD Engine
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#090e28] border border-[#ffe600]/40 text-amber-200 hover:border-[#ffe600] transition-colors shadow-sm shadow-[#ffe600]/10">
+                <Layers className="w-3.5 h-3.5 text-[#ffe600]" />
+                Antigravity Agentic Workflows
+              </span>
+            </motion.div>
+
             {/* Actions with Spring Hover */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <motion.button

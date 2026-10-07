@@ -26,7 +26,7 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
       id: 'projects',
       targetPage: 'projects',
       badge: '01. PROYEK',
-      badgeColor: 'border-cyan-500/30 text-cyan-400 bg-slate-900',
+      badgeColor: 'border-[#00f0ff]/50 text-[#00f0ff] bg-cyan-950/40',
       title: {
         id: 'Sistem & Aplikasi Produksi',
         en: 'Production Systems & Apps'
@@ -42,7 +42,7 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
       id: 'experience',
       targetPage: 'experience',
       badge: '02. KARIER',
-      badgeColor: 'border-emerald-500/30 text-emerald-400 bg-slate-900',
+      badgeColor: 'border-[#00ff9d]/50 text-[#00ff9d] bg-emerald-950/40',
       title: {
         id: 'Rekam Jejak Industri',
         en: 'Industrial Track Record'
@@ -58,7 +58,7 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
       id: 'labs',
       targetPage: 'labs',
       badge: '03. LAB REKAYASA',
-      badgeColor: 'border-amber-500/30 text-amber-400 bg-slate-900',
+      badgeColor: 'border-[#ffe600]/50 text-[#ffe600] bg-amber-950/40',
       title: {
         id: 'Laboratorium Rekayasa Interaktif',
         en: 'Interactive Engineering Labs'
@@ -74,7 +74,7 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
       id: 'skills',
       targetPage: 'skills',
       badge: '04. KEAHLIAN & STACK',
-      badgeColor: 'border-pink-500/30 text-pink-400 bg-slate-900',
+      badgeColor: 'border-[#ff007f]/50 text-[#ff007f] bg-pink-950/40',
       title: {
         id: 'Matriks Keahlian & Teknologi',
         en: 'Technical Competencies & Stack'
@@ -89,14 +89,14 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
   ];
 
   return (
-    <section className="py-10 bg-[#050714] border-b border-slate-800/80 relative overflow-hidden">
+    <section className="py-10 bg-[#050714] border-b border-[#1c2452] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Header Info */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 border border-slate-800 text-cyan-400 font-mono text-xs mb-2 shadow-sm">
-              <Compass className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#090e28] border border-[#00f0ff]/40 text-[#00f0ff] font-mono text-xs mb-2 shadow-sm">
+              <Compass className="w-3.5 h-3.5 text-[#00f0ff]" />
               <span>Direktori Navigasi Utama</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight font-sans">
@@ -141,14 +141,14 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
                     <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${dir.badgeColor}`}>
                       {dir.badge}
                     </span>
-                    <div className="w-7 h-7 rounded-lg bg-slate-800 border border-slate-700/60 flex items-center justify-center text-cyan-400 group-hover:text-cyan-300 transition-colors">
+                    <div className="w-7 h-7 rounded-lg bg-[#091238] border border-[#1c2452] flex items-center justify-center text-[#00f0ff] group-hover:border-[#00f0ff] transition-colors">
                       <Icon className="w-3.5 h-3.5" />
                     </div>
                   </div>
 
-                  <h3 className="text-sm font-bold text-slate-100 group-hover:text-cyan-300 transition-colors font-sans mb-1.5 flex items-center gap-1.5">
+                  <h3 className="text-sm font-bold text-slate-100 group-hover:text-[#00f0ff] transition-colors font-sans mb-1.5 flex items-center gap-1.5">
                     <span>{dir.title[language]}</span>
-                    <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-cyan-400" />
+                    <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#00f0ff]" />
                   </h3>
 
                   <p className="text-xs text-slate-400 leading-relaxed font-sans line-clamp-3">
@@ -156,9 +156,9 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400 w-full">
+                <div className="mt-4 pt-3 border-t border-[#1c2452] flex items-center justify-between text-[11px] font-mono text-slate-400 w-full">
                   <span className="text-[10px] text-cyan-300 font-semibold">{dir.highlight}</span>
-                  <span className="text-slate-500 group-hover:text-cyan-300 transition-colors flex items-center gap-1 font-bold">
+                  <span className="text-slate-500 group-hover:text-[#00f0ff] transition-colors flex items-center gap-1 font-bold">
                     <span>{language === 'id' ? 'Buka Halaman' : 'Open Page'}</span>
                     <span>&rarr;</span>
                   </span>
