@@ -12,21 +12,20 @@ interface PortfolioDirectoryProps {
 export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNavigate }) => {
   const { language } = useLanguage();
 
-  const directories: {
-    id: string;
-    targetPage: DirectoryTarget;
-    badge: string;
-    badgeColor: string;
-    title: { id: string; en: string };
-    desc: { id: string; en: string };
-    icon: React.ComponentType<{ className?: string }>;
-    highlight: string;
-  }[] = [
+  const directories = [
     {
       id: 'projects',
-      targetPage: 'projects',
+      targetPage: 'projects' as DirectoryTarget,
       badge: '01. PROYEK',
-      badgeColor: 'border-[#00f0ff]/50 text-[#00f0ff] bg-cyan-950/40',
+      badgeColor: 'border-cyan-500/50 text-cyan-300 bg-cyan-950/50',
+      accentBar: 'bg-cyan-400',
+      iconBox: 'bg-cyan-950/80 border-cyan-500/40 text-cyan-400 group-hover:border-cyan-400 group-hover:bg-cyan-900/50',
+      glow: 'bg-cyan-500/10',
+      hoverBorder: 'hover:border-cyan-500/60 hover:shadow-cyan-500/10',
+      titleHover: 'group-hover:text-cyan-300',
+      arrowColor: 'text-cyan-400',
+      highlightColor: 'text-cyan-300',
+      actionHover: 'group-hover:text-cyan-400',
       title: {
         id: 'Sistem & Aplikasi Produksi',
         en: 'Production Systems & Apps'
@@ -40,9 +39,17 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
     },
     {
       id: 'experience',
-      targetPage: 'experience',
+      targetPage: 'experience' as DirectoryTarget,
       badge: '02. KARIER',
-      badgeColor: 'border-[#00ff9d]/50 text-[#00ff9d] bg-emerald-950/40',
+      badgeColor: 'border-emerald-500/50 text-emerald-300 bg-emerald-950/50',
+      accentBar: 'bg-emerald-400',
+      iconBox: 'bg-emerald-950/80 border-emerald-500/40 text-emerald-400 group-hover:border-emerald-400 group-hover:bg-emerald-900/50',
+      glow: 'bg-emerald-500/10',
+      hoverBorder: 'hover:border-emerald-500/60 hover:shadow-emerald-500/10',
+      titleHover: 'group-hover:text-emerald-300',
+      arrowColor: 'text-emerald-400',
+      highlightColor: 'text-emerald-300',
+      actionHover: 'group-hover:text-emerald-400',
       title: {
         id: 'Rekam Jejak Industri',
         en: 'Industrial Track Record'
@@ -56,9 +63,17 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
     },
     {
       id: 'labs',
-      targetPage: 'labs',
+      targetPage: 'labs' as DirectoryTarget,
       badge: '03. LAB REKAYASA',
-      badgeColor: 'border-[#ffe600]/50 text-[#ffe600] bg-amber-950/40',
+      badgeColor: 'border-amber-500/50 text-amber-300 bg-amber-950/50',
+      accentBar: 'bg-amber-400',
+      iconBox: 'bg-amber-950/80 border-amber-500/40 text-amber-400 group-hover:border-amber-400 group-hover:bg-amber-900/50',
+      glow: 'bg-amber-500/10',
+      hoverBorder: 'hover:border-amber-500/60 hover:shadow-amber-500/10',
+      titleHover: 'group-hover:text-amber-300',
+      arrowColor: 'text-amber-400',
+      highlightColor: 'text-amber-300',
+      actionHover: 'group-hover:text-amber-400',
       title: {
         id: 'Laboratorium Rekayasa Interaktif',
         en: 'Interactive Engineering Labs'
@@ -72,9 +87,17 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
     },
     {
       id: 'skills',
-      targetPage: 'skills',
+      targetPage: 'skills' as DirectoryTarget,
       badge: '04. KEAHLIAN & STACK',
-      badgeColor: 'border-[#ff007f]/50 text-[#ff007f] bg-pink-950/40',
+      badgeColor: 'border-pink-500/50 text-pink-300 bg-pink-950/50',
+      accentBar: 'bg-pink-400',
+      iconBox: 'bg-pink-950/80 border-pink-500/40 text-pink-400 group-hover:border-pink-400 group-hover:bg-pink-900/50',
+      glow: 'bg-pink-500/10',
+      hoverBorder: 'hover:border-pink-500/60 hover:shadow-pink-500/10',
+      titleHover: 'group-hover:text-pink-300',
+      arrowColor: 'text-pink-400',
+      highlightColor: 'text-pink-300',
+      actionHover: 'group-hover:text-pink-400',
       title: {
         id: 'Matriks Keahlian & Teknologi',
         en: 'Technical Competencies & Stack'
@@ -133,32 +156,37 @@ export const PortfolioDirectory: React.FC<PortfolioDirectoryProps> = ({ onNaviga
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: idx * 0.08 }}
                 whileHover={{ y: -3 }}
-                className="group p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 hover:bg-slate-900/90 transition-all flex flex-col justify-between shadow-sm relative overflow-hidden text-left cursor-pointer"
+                className={`group p-5 rounded-2xl bg-[#080d24]/90 border border-[#1c2452] ${dir.hoverBorder} hover:bg-[#0c1232] transition-all flex flex-col justify-between shadow-sm relative overflow-hidden text-left cursor-pointer`}
               >
+                {/* Accent Top Indicator Bar */}
+                <div className={`absolute top-0 left-0 right-0 h-0.5 ${dir.accentBar}`} />
 
-                <div>
+                {/* Subtle Ambient Radial Glow */}
+                <div className={`absolute top-0 right-0 w-28 h-28 ${dir.glow} rounded-full blur-xl pointer-events-none`} />
+
+                <div className="relative z-10">
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${dir.badgeColor}`}>
                       {dir.badge}
                     </span>
-                    <div className="w-7 h-7 rounded-lg bg-[#091238] border border-[#1c2452] flex items-center justify-center text-[#00f0ff] group-hover:border-[#00f0ff] transition-colors">
-                      <Icon className="w-3.5 h-3.5" />
+                    <div className={`w-8 h-8 rounded-lg border flex items-center justify-center transition-all ${dir.iconBox}`}>
+                      <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-sm font-bold text-slate-100 group-hover:text-[#00f0ff] transition-colors font-sans mb-1.5 flex items-center gap-1.5">
+                  <h3 className={`text-sm font-bold text-slate-100 ${dir.titleHover} transition-colors font-sans mb-1.5 flex items-center gap-1.5`}>
                     <span>{dir.title[language]}</span>
-                    <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-[#00f0ff]" />
+                    <ArrowRight className={`w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity ${dir.arrowColor}`} />
                   </h3>
 
-                  <p className="text-xs text-slate-400 leading-relaxed font-sans line-clamp-3">
+                  <p className="text-xs text-slate-300 leading-relaxed font-sans line-clamp-3">
                     {dir.desc[language]}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#1c2452] flex items-center justify-between text-[11px] font-mono text-slate-400 w-full">
-                  <span className="text-[10px] text-cyan-300 font-semibold">{dir.highlight}</span>
-                  <span className="text-slate-500 group-hover:text-[#00f0ff] transition-colors flex items-center gap-1 font-bold">
+                <div className="mt-4 pt-3 border-t border-[#1c2452] flex items-center justify-between text-[11px] font-mono text-slate-400 w-full relative z-10">
+                  <span className={`text-[10px] ${dir.highlightColor} font-semibold`}>{dir.highlight}</span>
+                  <span className={`text-slate-500 ${dir.actionHover} transition-colors flex items-center gap-1 font-bold`}>
                     <span>{language === 'id' ? 'Buka Halaman' : 'Open Page'}</span>
                     <span>&rarr;</span>
                   </span>
