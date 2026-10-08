@@ -4,8 +4,8 @@ export const PERSONAL_INFO = {
   name: "Mohamad Rafli Adipratama",
   shortName: "Rafli Adipratama",
   roleTitle: {
-    id: "Fullstack Web Engineer & AI Agent Developer",
-    en: "Fullstack Web Engineer & AI Agent Developer"
+    id: "Software Engineer • Fullstack & Mobile Developer",
+    en: "Software Engineer • Fullstack & Mobile Developer"
   },
   headline: {
     id: "Software Engineer Intern di PT Padepokan 79 (MagangHub) & Fullstack Developer. Berpengalaman membangun platform streaming video sinematik (LiveEuy), sistem regulasi industri farmasi CPOB/GMP, serta orkestrasi AI Agent & CLI kustom.",
@@ -995,6 +995,47 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         description: {
           id: "Aksesibilitas semantic (a11y), SEO on-page, OpenGraph metadata, struktur dokumen terstandar W3C.",
           en: "Semantic accessibility (a11y), technical on-page SEO, OpenGraph tags, W3C standards compliance."
+        }
+      }
+    ]
+  },
+  {
+    category: {
+      id: "Mobile Development (Flutter)",
+      en: "Mobile Development (Flutter)"
+    },
+    skills: [
+      {
+        name: "Flutter",
+        level: "Mahir (v3.x+)",
+        experienceYears: "2+ Tahun",
+        icon: "flutter",
+        color: "#02569B",
+        description: {
+          id: "Pengembangan aplikasi cross-platform iOS & Android, widget kustom, state management (Provider/BLoC), clean architecture, animasi UI.",
+          en: "Cross-platform iOS & Android mobile engineering, custom widgets, state management (Provider/BLoC), clean architecture, UI animations."
+        }
+      },
+      {
+        name: "Dart",
+        level: "Mahir",
+        experienceYears: "2+ Tahun",
+        icon: "dart",
+        color: "#0175C2",
+        description: {
+          id: "Pemrograman berorientasi objek murni, sound null-safety, asynchronous programming (Futures & Streams), serialisasi JSON model.",
+          en: "Pure OOP, sound null-safety, asynchronous paradigms (Futures & Streams), JSON serialization & immutable data models."
+        }
+      },
+      {
+        name: "Mobile API Integration",
+        level: "Mahir",
+        experienceYears: "2+ Tahun",
+        icon: "api",
+        color: "#10B981",
+        description: {
+          id: "Konsumsi RESTful API dengan Dio/Http, offline caching SQLite/Hive, secure storage, push notifications, interceptor otentikasi token.",
+          en: "REST API consumption via Dio/Http, offline caching with SQLite/Hive, secure local storage, push notifications, token interceptors."
         }
       }
     ]

@@ -11,6 +11,8 @@ export const SkillsMatrix: React.FC = () => {
   const coreTechList = [
     { name: 'Laravel', category: 'Backend Framework', color: '#F43F5E' },
     { name: 'Go / Golang', category: 'Backend & Concurrency', color: '#00ADD8' },
+    { name: 'Flutter', category: 'Mobile Framework', color: '#02569B' },
+    { name: 'Dart', category: 'Mobile Language', color: '#0175C2' },
     { name: 'PHP', category: 'Backend Language', color: '#818CF8' },
     { name: 'React', category: 'Frontend UI', color: '#38BDF8' },
     { name: 'TypeScript', category: 'Typed Language', color: '#3178C6' },
