@@ -616,31 +616,31 @@ class MarketplaceOrderConsumer
   {
     id: "ecotasks",
     title: "EcoTasks Productivity Engine",
-    category: "javascript",
+    category: "react",
     role: "Frontend Developer",
     tagline: {
-      id: "Aplikasi manajemen produktivitas minimalis tanpa dependensi eksternal berat.",
-      en: "Zero-dependency minimalist productivity engine with persistent local state."
+      id: "Aplikasi manajemen produktivitas modern berbasis React, TypeScript, dan Tailwind CSS.",
+      en: "Modern productivity task engine engineered with React, TypeScript, and Tailwind CSS."
     },
     description: {
-      id: "Aplikasi to-do list ringan yang beroperasi secara offline menggunakan Web Storage API (localStorage). Menyediakan manajemen prioritas tugas, filter status, dan interaksi instan tanpa latency server.",
-      en: "Lightweight, zero-bloat client-side task engine with offline-first persistence via Web Storage API. Built for instantaneous interaction without server latency."
+      id: "Aplikasi to-do list modern yang beroperasi secara offline menggunakan LocalStorage dengan arsitektur komponen React, strict typing TypeScript, dan antarmuka responsif Tailwind CSS tanpa dependensi berat.",
+      en: "Modern, lightweight client-side task engine with offline-first persistence via LocalStorage, built using React component architecture, strict TypeScript typing, and Tailwind CSS."
     },
     keyFeatures: {
       id: [
         "Persistensi data offline-first dengan LocalStorage",
         "Pengelompokan status: Aktif, Selesai, dan Riwayat",
-        "Performa instan 60fps dengan manipulasi DOM efisien",
-        "Antarmuka bersih tanpa gangguan visual"
+        "Antarmuka responsif modern dibangun dengan Tailwind CSS",
+        "Type safety penuh dengan TypeScript dan React hooks"
       ],
       en: [
         "Offline-first client-side state synchronization with LocalStorage",
         "Dynamic categorization: Active, Completed, and Archived workflows",
-        "Instant 60fps interaction via minimal DOM updates",
-        "Distraction-free, clean typography interface"
+        "Modern responsive UI styled with utility-first Tailwind CSS",
+        "Full type safety with TypeScript interfaces and React hooks"
       ]
     },
-    technologies: ["JavaScript ES6+", "HTML5", "CSS3", "LocalStorage API"],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "LocalStorage API"],
     image: "/assets/images/ecotasks.jpg",
     githubUrl: "https://github.com/rafliadipratama/EcoTasks"
   }
@@ -943,36 +943,25 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     },
     skills: [
       {
-        name: "React & TypeScript",
+        name: "React (React 18)",
         level: "Mahir",
         experienceYears: "3+ Tahun",
         icon: "react",
         color: "#38bdf8",
         description: {
-          id: "Komponen fungsional modern, custom hooks, state management, strict TypeScript interfaces, Vite bundler.",
-          en: "Functional components, custom hooks, reactive state models, strict TypeScript interfaces, Vite build tooling."
+          id: "Komponen fungsional modern, custom hooks, reactive state management (Context API), SPA architecture, Vite bundler.",
+          en: "Functional components, custom hooks, reactive state models (Context API), SPA architecture, Vite build tooling."
         }
       },
       {
-        name: "JavaScript (ES6+)",
-        level: "Mahir",
-        experienceYears: "4+ Tahun",
-        icon: "javascript",
-        color: "#fbbf24",
-        description: {
-          id: "Async/await, Promise handling, manipulasi DOM, modular ES Modules, event delegation, LocalStorage API.",
-          en: "Async/await, Promise pipelines, modern DOM APIs, ES Modules, event delegation, LocalStorage persistence."
-        }
-      },
-      {
-        name: "Alpine.js",
+        name: "TypeScript",
         level: "Mahir",
         experienceYears: "3+ Tahun",
-        icon: "alpine",
-        color: "#2dd4bf",
+        icon: "typescript",
+        color: "#3178c6",
         description: {
-          id: "Reaktivitas ringan pada aplikasi monolitik Laravel Blade, x-data binding, transisi micro-UI, AJAX fetch.",
-          en: "Lightweight client reactivity in Laravel Blade monoliths, x-data binding, micro-interactions, asynchronous calls."
+          id: "Static typing ketat, generics, custom interfaces/types, type safety contracts antar modul, integrasi tooling DX.",
+          en: "Strict static typing, generics, robust interfaces/types, cross-module type safety contracts, and modern DX tooling."
         }
       },
       {
@@ -987,14 +976,25 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         }
       },
       {
-        name: "HTML5 & Semantic Web",
-        level: "Tingkat Lanjut",
-        experienceYears: "5+ Tahun",
-        icon: "html",
-        color: "#f97316",
+        name: "JavaScript (ES6+)",
+        level: "Mahir",
+        experienceYears: "4+ Tahun",
+        icon: "javascript",
+        color: "#fbbf24",
         description: {
-          id: "Aksesibilitas semantic (a11y), SEO on-page, OpenGraph metadata, struktur dokumen terstandar W3C.",
-          en: "Semantic accessibility (a11y), technical on-page SEO, OpenGraph tags, W3C standards compliance."
+          id: "Async/await, Promise handling, manipulasi DOM modern, modular ES Modules, event delegation, LocalStorage API.",
+          en: "Async/await, Promise pipelines, modern DOM APIs, ES Modules, event delegation, LocalStorage persistence."
+        }
+      },
+      {
+        name: "Alpine.js",
+        level: "Mahir",
+        experienceYears: "3+ Tahun",
+        icon: "alpine",
+        color: "#2dd4bf",
+        description: {
+          id: "Reaktivitas ringan pada aplikasi monolitik Laravel Blade, x-data binding, transisi micro-UI, AJAX fetch.",
+          en: "Lightweight client reactivity in Laravel Blade monoliths, x-data binding, micro-interactions, asynchronous calls."
         }
       }
     ]
