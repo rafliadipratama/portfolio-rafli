@@ -1099,6 +1099,17 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     },
     skills: [
       {
+        name: "n8n AI Workflow Automation",
+        level: "Mahir",
+        experienceYears: "2025 - Sekarang",
+        icon: "n8n",
+        color: "#EA4B71",
+        description: {
+          id: "Perancangan workflow AI agent otonom, pipeline RAG, integrasi webhook multi-platform, tool-calling LLM, dan automasi proses bisnis cerdas dengan n8n self-hosted.",
+          en: "Autonomous AI agent workflows, RAG pipelines, multi-platform webhook integrations, LLM tool calling, and intelligent business process automation with self-hosted n8n."
+        }
+      },
+      {
         name: "Antigravity CLI & Statuslines",
         level: "Tingkat Lanjut",
         experienceYears: "2026",

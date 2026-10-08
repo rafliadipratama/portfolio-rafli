@@ -27,6 +27,7 @@ export const SkillsMatrix: React.FC = () => {
     { name: 'Linux', category: 'Server Admin', color: '#FACC15' },
     { name: 'Nginx', category: 'Reverse Proxy', color: '#10B981' },
     { name: 'Figma', category: 'Design to Code', color: '#A855F7' },
+    { name: 'n8n', category: 'AI Automation', color: '#EA4B71' },
     { name: 'Antigravity CLI', category: 'Agentic Tooling', color: '#00F0FF' },
     { name: 'AI Agents', category: 'Autonomous AI', color: '#FF007F' },
     { name: 'Clean Code', category: 'Code Architecture', color: '#00FF9D' },
