@@ -20,6 +20,8 @@ const getCategoryBadgeStyle = (category: string) => {
       return 'bg-purple-950/80 text-purple-300 border-purple-800/40';
     case 'javascript':
       return 'bg-amber-950/80 text-amber-300 border-amber-800/40';
+    case 'flutter':
+      return 'bg-sky-950/80 text-sky-300 border-sky-800/40';
     default:
       return 'bg-slate-900 text-slate-300 border-slate-700/80';
   }
@@ -27,10 +29,11 @@ const getCategoryBadgeStyle = (category: string) => {
 
 export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) => {
   const { language } = useLanguage();
-  const [filter, setFilter] = useState<'all' | 'laravel' | 'react' | 'fullstack' | 'javascript'>('all');
+  const [filter, setFilter] = useState<'all' | 'laravel' | 'react' | 'fullstack' | 'javascript' | 'flutter'>('all');
 
   const filterTabs = [
     { id: 'all', label: { id: 'Semua Proyek', en: 'All Systems' } },
+    { id: 'flutter', label: { id: 'Flutter & Mobile', en: 'Flutter & Mobile' } },
     { id: 'react', label: { id: 'React & Streaming', en: 'React & Streaming' } },
     { id: 'laravel', label: { id: 'Laravel & Enterprise', en: 'Laravel & Enterprise' } },
     { id: 'fullstack', label: { id: 'Fullstack & ATS', en: 'Fullstack & ATS' } },
@@ -78,8 +81,8 @@ export const ProjectsGrid: React.FC<ProjectsGridProps> = ({ onSelectProject }) =
             </h2>
             <p className="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
               {language === 'id'
-                ? 'Platform streaming video LiveEuy, tata kelola kepatuhan farmasi CPOB, e-commerce omnichannel, dan aplikasi web performa tinggi berstandar industri.'
-                : 'From the LiveEuy cinema streaming platform and pharmaceutical GMP compliance to omnichannel ecommerce and enterprise web architectures.'}
+                ? 'Platform streaming video LiveEuy, aplikasi finansial offline-first MoneyRecord, tata kelola kepatuhan farmasi CPOB, dan sistem rekayasa perangkat lunak berstandar industri.'
+                : 'From the LiveEuy cinema streaming platform and MoneyRecord offline financial engine to pharmaceutical GMP compliance and enterprise software architectures.'}
             </p>
           </div>
 

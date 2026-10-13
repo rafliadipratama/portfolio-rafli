@@ -3,7 +3,7 @@ export type Language = 'id' | 'en';
 export interface Project {
   id: string;
   title: string;
-  category: 'laravel' | 'react' | 'fullstack' | 'javascript';
+  category: 'laravel' | 'react' | 'fullstack' | 'javascript' | 'flutter';
   tagline: {
     id: string;
     en: string;

@@ -142,6 +142,121 @@ export const CinemaPlayerEngine: React.FC<StreamingPlayerProps> = ({ sourceUrl, 
     githubUrl: "https://github.com/rafliadipratama/LiveEuy"
   },
   {
+    id: "money-record",
+    title: "MoneyRecord — Offline-First Financial Engine",
+    category: "flutter",
+    featured: true,
+    badge: "Flutter Mobile Engine",
+    role: "Lead Mobile Architect & Flutter Developer",
+    tagline: {
+      id: "Aplikasi pencatatan keuangan offline-first dengan kalender arus kas, analitik visual, keypad kalkulator in-app, dan arsitektur BLoC.",
+      en: "Offline-first personal finance engine featuring interactive cashflow calendar, category analytics, in-app math keypad, and BLoC architecture."
+    },
+    description: {
+      id: "Aplikasi mobile finansial offline-first berkinerja tinggi yang dibangun dengan Flutter 3.x dan Clean Architecture. Mengintegrasikan kalender transaksi harian dengan badge selisih arus kas, visualisasi donut chart pengeluaran per kategori, keypad kalkulator in-app dengan algoritma Shunting-Yard (RPN), serta database lokal SQLite berkecepatan tinggi dengan mode Write-Ahead Logging (WAL) untuk privasi 100% tanpa dependensi server.",
+      en: "High-performance offline-first financial mobile application engineered with Flutter 3.x and Clean Architecture. Integrates an interactive cashflow calendar with daily net balance badges, category donut chart analytics, an embedded calculator numpad powered by Dijkstra's Shunting-Yard algorithm (RPN), and zero-latency local SQLite with Write-Ahead Logging (WAL) for 100% privacy and zero server dependence."
+    },
+    metrics: [
+      "Offline-First SQLite WAL Mode (Zero Latency & 100% Data Privacy)",
+      "Interactive Financial Calendar dengan Daily Cashflow Net Balance",
+      "Shunting-Yard In-App Expression Evaluator Engine (Reverse Polish Notation)",
+      "Clean Architecture + BLoC State Management dengan 14/14 Automated Tests"
+    ],
+    impactHighlights: [
+      { id: "100% Offline & Private", en: "100% Offline & Private" },
+      { id: "Zero Latency SQLite WAL", en: "Zero Latency SQLite WAL" },
+      { id: "Shunting-Yard Math Engine", en: "Shunting-Yard Math Engine" },
+      { id: "Interactive Calendar Ledger", en: "Interactive Calendar Ledger" }
+    ],
+    productionCode: {
+      title: {
+        id: "Dijkstra's Shunting-Yard Algorithm: Evaluasi Ekspresi Matematika Real-Time",
+        en: "Dijkstra's Shunting-Yard Algorithm: Real-Time Expression Evaluation"
+      },
+      filename: "expression_evaluator.dart",
+      language: "dart",
+      snippet: `/// Custom Shunting-Yard Algorithm Expression Evaluator
+/// Evaluates arithmetic expressions like "25000 + 15000 * 2"
+/// with operator precedence, parentheses, and zero-division guards.
+class ExpressionEvaluator {
+  ExpressionEvaluator._();
+
+  static double evaluate(String expression) {
+    final sanitized = expression.replaceAll(' ', '').replaceAll(',', '');
+    if (sanitized.isEmpty) return 0.0;
+
+    final tokens = _tokenize(sanitized);
+    if (tokens.isEmpty) return 0.0;
+
+    final postfix = _toPostfix(tokens);
+    return _evaluatePostfix(postfix);
+  }
+
+  static List<String> _toPostfix(List<String> tokens) {
+    final List<String> output = [];
+    final List<String> operators = [];
+
+    for (final token in tokens) {
+      if (_isNumber(token)) {
+        output.add(token);
+      } else if (_isOperator(token)) {
+        while (operators.isNotEmpty &&
+            operators.last != '(' &&
+            _precedence(operators.last) >= _precedence(token)) {
+          output.add(operators.removeLast());
+        }
+        operators.add(token);
+      } else if (token == '(') {
+        operators.add(token);
+      } else if (token == ')') {
+        while (operators.isNotEmpty && operators.last != '(') {
+          output.add(operators.removeLast());
+        }
+        if (operators.isNotEmpty && operators.last == '(') {
+          operators.removeLast();
+        }
+      }
+    }
+
+    while (operators.isNotEmpty) {
+      output.add(operators.removeLast());
+    }
+    return output;
+  }
+}`,
+      rationale: {
+        id: "Menggantikan library parser berat dengan implementasi Shunting-Yard native Dart berkecepatan tinggi, memungkinkan input multi-operasi matematika langsung pada keypad tanpa lag UI.",
+        en: "Replaces heavy third-party parsing dependencies with a lightweight native Dart Shunting-Yard engine, enabling instant multi-operand arithmetic within the in-app numpad without UI frame drops."
+      }
+    },
+    architecture: {
+      id: "Clean Architecture (Data, Domain, Presentation) terpisah secara ketat dengan BLoC State Management. Menggunakan SQLite dengan indeks teroptimasi untuk kueri agregasi per hari dan bulan, didukung CI/CD GitHub Actions dan automated release packaging (APK multi-ABI).",
+      en: "Strict Clean Architecture (Data, Domain, Presentation) decoupled via BLoC State Management. Employs SQLite with indexed aggregation queries for daily and monthly rollups, backed by GitHub Actions CI/CD for multi-ABI release packaging."
+    },
+    keyFeatures: {
+      id: [
+        "Interactive Financial Calendar: Tampilan kalender bulanan dengan indikator dot pengeluaran/pemasukan dan rekap mutasi harian",
+        "Visual Analytics & Donut Chart: Distribusi kategori pengeluaran dan pemasukan dengan fl_chart",
+        "Embedded Math Keypad: Input nominal fleksibel dengan dukungan operasi matematika instan (+, -, *, /)",
+        "Offline-First SQLite WAL: Penyimpanan lokal mandiri dengan indeks tanggal performa tinggi",
+        "Clean Architecture & BLoC: Pemisahan use case, entitas domain, dan state management reaktif",
+        "CI/CD Multi-ABI Build: Rilis otomatis APK arm64-v8a, armeabi-v7a, dan x86_64 via GitHub Actions"
+      ],
+      en: [
+        "Interactive Financial Calendar: Monthly calendar view with expense/income badges and daily breakdown drawer",
+        "Visual Analytics & Donut Charts: Category expense and revenue distribution charts powered by fl_chart",
+        "Embedded Math Keypad: Flexible amount entry with real-time arithmetic operations (+, -, *, /)",
+        "Offline-First SQLite WAL: Autonomous local persistence with high-performance indexed queries",
+        "Clean Architecture & BLoC: Strict separation between use cases, domain entities, and reactive state",
+        "Multi-ABI CI/CD Matrix: Automated GitHub Actions pipeline building arm64-v8a, armeabi-v7a, and x86_64 APKs"
+      ]
+    },
+    technologies: ["Flutter 3.x", "Dart", "BLoC", "SQLite / Sqflite", "Clean Architecture", "fl_chart", "GitHub Actions"],
+    image: "/assets/images/money-record-showcase.jpg",
+    githubUrl: "https://github.com/rafliadipratama/money_record",
+    liveUrl: "https://github.com/rafliadipratama/money_record/releases/tag/v1.0.0"
+  },
+  {
     id: "e-document-system",
     title: "e-Document Management System",
     category: "laravel",
